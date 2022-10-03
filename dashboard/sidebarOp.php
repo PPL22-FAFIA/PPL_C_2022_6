@@ -1,4 +1,3 @@
-<?php include_once '../bootstrap/header.html' ?>
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary position-fixed">
@@ -12,19 +11,11 @@
                     </li>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-white fs-5">
-                            IRS</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle  text-white fs-5">
-                            KHS</a>
+                            Biodata</a>
                     </li>
                     <li>
                         <a href="#" class="nav-link px-0 align-middle text-white fs-5">
-                            PKL</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
-                            Skripsi</a>
+                            Cari User</a>
                     </li>
                 </ul>
                 
@@ -37,5 +28,3 @@
             </div>
         </div>
 </div>
-<?php include_once '../bootstrap/footer.html' ?>
-
