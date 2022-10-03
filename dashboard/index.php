@@ -1,5 +1,5 @@
 <?php include_once '../bootstrap/header.html' ?>
-<?php $user = 2;
+<?php $user = 3;
 // switch case user
 switch ($user) {
     case 1:
@@ -9,7 +9,7 @@ switch ($user) {
         include_once 'sidebarDoswal.php';
         break;
     case 3:
-        include_once 'sidebarDoswal.php';
+        include_once 'sidebarOp.php';
         break;
     case 4:
         include_once 'sidebarDept.php';
