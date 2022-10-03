@@ -14,7 +14,7 @@
                             IRS</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle  text-white fs-5">
+                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
                             KHS</a>
                     </li>
                     <li>
