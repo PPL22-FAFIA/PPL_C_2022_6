@@ -22,7 +22,7 @@
     </div>
 </div>
 <div class="col">
-    <?php include 'dashboardMhs.php' ?>
+    <?php include 'dashboardDpt.php' ?>
 </div>
 
 <?php include_once '../bootstrap/footer.html' ?>
