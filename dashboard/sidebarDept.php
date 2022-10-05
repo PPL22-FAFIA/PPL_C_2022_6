@@ -15,13 +15,13 @@
                     </li>
                     
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../departemen/daftarDosenDept.php" class="nav-link px-0 align-middle text-white fs-5">
                             Daftar Dosen</a>
                     </li>
                 </ul>
                 
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="/logout" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
+                <a href="../auth/logout.php" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
                 <hr>
             </div>

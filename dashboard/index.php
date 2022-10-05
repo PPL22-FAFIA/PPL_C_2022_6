@@ -1,8 +1,15 @@
 <?php include_once '../bootstrap/header.html' ?>
+<?php
+session_start();
+if(!isset($_SESSION['user'])){
+    header("Location: ../auth/login.php");
+}
+?>
 <div class="row g-0">
     <div class="col-2">
 
-        <?php $user = 2;
+        <?php
+        $user = $_SESSION['user']['Role'];
         // switch case user
         switch ($user) {
             case 1:
@@ -34,7 +41,7 @@
                 include_once 'dashboardOp.php';
                 break;
             case 4:
-                include_once 'dashboardDpt.php';
+                include_once 'dashboardDept.php';
                 break;
         }
         ?>

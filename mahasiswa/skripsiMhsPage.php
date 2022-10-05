@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-3">
                             <h4>Status</h4>
-                            <h3 class="text-primary">Aktif</h3>
+                            <h3 class="text-center badge fs-3 text-white text-bg-success">Aktif</h3>
                         </div>
                     </div>
                 </div>

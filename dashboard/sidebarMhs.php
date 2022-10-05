@@ -22,13 +22,13 @@
                             PKL</a>
                     </li>
                     <li>
-                    <a href="../mahasiswa/skripsiMhsPage.php" class="nav-link px-0 align-middle text-white fs-5">
+                    <a href="../mahasiswa/skripsiMhsPage.php" class="nav-link px-0 align-middle fs-5 text-white" id="navSkripsi">
                             Skripsi</a>
                     </li>
                 </ul>
                 
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="/logout" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
+                    <a href="../auth/logout.php" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
             </div>
         </div>
