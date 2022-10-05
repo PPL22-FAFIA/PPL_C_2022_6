@@ -8,7 +8,8 @@ if(!isset($_SESSION['user'])){
 <div class="row g-0">
     <div class="col-2">
 
-        <?php $user = 1;
+        <?php
+        $user = $_SESSION['user']['Role'];
         // switch case user
         switch ($user) {
             case 1:
@@ -40,7 +41,7 @@ if(!isset($_SESSION['user'])){
                 include_once 'dashboardOp.php';
                 break;
             case 4:
-                include_once 'dashboardDpt.php';
+                include_once 'dashboardDept.php';
                 break;
         }
         ?>
