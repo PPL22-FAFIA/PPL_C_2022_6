@@ -6,10 +6,10 @@
     </div>
 </div>
 <div class="col p-4">
-    <h1 class="d-flex justify-content-center">IRS</h1>
+    <h1 class="d-flex justify-content-center">KHS</h1>
     <div class="card">
 
-        <h1 class="card-header">Entry IRS</h1>
+        <h1 class="card-header">Entry KHS</h1>
         <form class="card-body">
             <div class="row gx-5">
                 <div class="col">
@@ -55,7 +55,7 @@
                 <!-- button to add new row mata kuliah -->
                 <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle">+</button>
             </div>
-            <h4 class="fw-bold">Upload IRS</h4>
+            <h4 class="fw-bold">Upload KHS</h4>
             <div class="form-group d-flex flex-column mb-2">
                 <label for="exampleFormControlFile1">Upload File</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">

@@ -2,7 +2,7 @@
 <div class="row g-0">
     <div class="col-3">
 
-        <?php $user = 4;
+        <?php $user = 1;
         // switch case user
         switch ($user) {
             case 1:
@@ -22,7 +22,7 @@
     </div>
 </div>
 <div class="col">
-    <?php include 'dashboardDpt.php' ?>
+    <?php include 'dashboardMhs.php' ?>
 </div>
 
 <?php include_once '../bootstrap/footer.html' ?>
