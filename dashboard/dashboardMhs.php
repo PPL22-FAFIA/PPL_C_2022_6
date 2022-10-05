@@ -13,7 +13,7 @@
                         </div>
                         <div class="row text-center">
                             <h1 class="col">5</h1>
-                            <h3 class="col text-primary">Aktif</h3>
+                            <h3 class="col badge fs-4 text-bg-success text-white">Aktif</h3>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,8 @@
                             <p class="fw-bold m-0">05111940000001</p>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary">Update Data</button>
+                            <!-- anchor editProfil -->
+                            <a href="../mahasiswa/editProfilMhsPage.php" class="btn btn-primary mt-3">Edit Profil</a>
                         </div>
                     </div>
                 </div>

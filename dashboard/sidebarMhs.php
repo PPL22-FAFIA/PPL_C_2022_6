@@ -22,7 +22,7 @@
                             PKL</a>
                     </li>
                     <li>
-                    <a href="../mahasiswa/skripsiMhsPage.php" class="nav-link px-0 align-middle text-white fs-5">
+                    <a href="../mahasiswa/skripsiMhsPage.php" class="nav-link px-0 align-middle fs-5 text-white" id="navSkripsi">
                             Skripsi</a>
                     </li>
                 </ul>

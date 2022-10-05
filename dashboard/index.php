@@ -2,7 +2,7 @@
 <div class="row g-0">
     <div class="col-2">
 
-        <?php $user = 2;
+        <?php $user = 1;
         // switch case user
         switch ($user) {
             case 1:
