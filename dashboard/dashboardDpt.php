@@ -10,25 +10,18 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Jumlah Mahasiswa</h5>
-                                    <!-- <p class="card-text">Total Mahasiswa</p>
-                                    <h1 class="card-text">100</h1> -->
                                     <?php
                                         require_once('db_login.php');
                                         if($stmt = $db->query("SELECT Angkatan, COUNT(*) AS total FROM tb_mhs GROUP BY Angkatan")){
                                             echo "Total : ".$stmt->num_rows."<br>";
                                             $php_data_array = Array(); // create PHP array
-                                            // echo "<table>
-                                            //     <tr> <th>Angkatan</th><th>Total</th></tr>";
                                             while ($row = $stmt->fetch_row()) {
-                                                // echo "<tr><td>$row[0]</td><td>$row[1]</td></tr>";
                                                 $php_data_array[] = $row; // Adding to array
                                             }
                                             // echo "</table>";
                                         }else{
                                             echo $db->error;
                                         }
-                                        // $php_data_array[] = $row; // Adding to array
-                                        // echo json_encode($php_data_array);
                                         echo "<script>
                                         var my_2d = ".json_encode($php_data_array)."
                                         for(i = 0; i < my_2d.length; i++){
@@ -45,16 +38,26 @@
                                         function draw_my_chart() {
                                             // Create the data table .
                                             var data = new google.visualization.DataTable();
-                                            data.addColumn('string', 'language');
-                                            data.addColumn('number', 'Nos');
+                                            data.addColumn('string', 'Angkatan');
+                                            data.addColumn('number', 'Total');
                                             for(i = 0; i < my_2d.length; i++)
                                         data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
                                     // above row adds the JavaScript two dimensional array data into required chart format
-                                        var options = {title:'',
-                                        pieHole: 0.5,
-                                        'width':600,
-                                        'height':500,			   
-                                            };
+                                        var options = {pieHole: 0.5,
+                                            'width':500, 'height':500,
+                                            'legend':'none',
+                                            'chartArea': {'width': '100%', 'height': '80%'},
+                                            'pieSliceText': 'label',
+                                            'pieSliceTextStyle': {
+                                                'color': 'white',
+                                            },
+                                            'tooltip': {
+                                                'text': 'percentage',
+                                                'showColorCode': true
+                                            },
+                                            'backgroundColor': 'transparent',
+                                            'pieStartAngle': 100,
+                                        };
                                             // Instantiate and draw the chart
                                             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
                                             chart.draw(data, options);
