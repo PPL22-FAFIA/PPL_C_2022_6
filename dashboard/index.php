@@ -28,7 +28,7 @@
                 include_once 'dashboardMhs.php';
                 break;
             case 2:
-                include_once 'dashboardDoswal.php';
+                include_once '../doswal/detailMhs.php';
                 break;
             case 3:
                 include_once 'dashboardOp.php';

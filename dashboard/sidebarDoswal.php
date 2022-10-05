@@ -9,7 +9,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../doswal/daftarDoswal.php" class="nav-link px-0 align-middle text-white fs-5">
                             Daftar Mahasiswa</a>
                     </li>
                 </ul>
