@@ -1,17 +1,16 @@
 <!-- login form -->
-<?php require_once("../bootstrap/header.html")?>
-<!-- isset submit post username password -->
-<?php
-if (isset($_POST['username']) && isset($_POST['password'])) {
+<?php require_once("../bootstrap/header.html");
+session_start();
+if (isset($_POST['submit'])) {
     // include db connection
-    include_once("../lib/db_login.php");
+    require_once("../lib/db_login.php");
     // get username password
     $username = $_POST['username'];
     $password = $_POST['password'];
     // query
-    $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+    $query = "SELECT * FROM tb_user WHERE Username = '$username' AND Password = '$password'";
     // execute query
-    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($db,$query);
     // check result
     if (mysqli_num_rows($result) > 0) {
         // get data
@@ -27,7 +26,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 }
 ?>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row d-flex justify-content-center">
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
@@ -44,7 +43,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" name="submit" value="submit" class="btn btn-primary">Login</button>
                         </div>
                     </form>
                 </div>
