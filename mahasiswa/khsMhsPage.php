@@ -4,7 +4,7 @@
         <?php require_once '../dashboard/sidebarMhs.php' ?>
 
     </div>
-</div>
+
 <div class="col p-4">
     <h1 class="d-flex justify-content-center">KHS</h1>
     <div class="card">
@@ -41,10 +41,10 @@
                         <option value="3">Three</option>
                     </select>
                 </div>
-                <div class="col-3 ms-0">
+                <div class="col-3 d-flex flex-column ms-0">
                     <label>Nilai</label>
+                    <div class="ms-3">
                     <!-- div kasih border -->
-                    <div class="border  rounded">
                         B
                     </div>
                     
@@ -66,5 +66,6 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 <?php require_once '../bootstrap/footer.html' ?>
