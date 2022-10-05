@@ -1,8 +1,8 @@
 <?php include_once '../bootstrap/header.html' ?>
 <div class="row g-0">
-    <div class="col-3">
+    <div class="col-2">
 
-        <?php $user = 1;
+        <?php $user = 2;
         // switch case user
         switch ($user) {
             case 1:
@@ -20,9 +20,9 @@
         }
         ?>
     </div>
+    <div class="col h-100">
+        <?php include 'dashboardDoswal.php' ?>
+    </div>
 </div>
-<div class="col">
-    <?php include 'dashboardMhs.php' ?>
-</div>
-
+    
 <?php include_once '../bootstrap/footer.html' ?>
