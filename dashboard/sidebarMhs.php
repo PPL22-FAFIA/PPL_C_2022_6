@@ -6,7 +6,7 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                     id="menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-white fs-5">Dashboard
+                        <a href="../dashboard/" class="nav-link align-middle px-0 text-white fs-5">Dashboard
                         </a>
                     </li>
                     <li>
@@ -18,11 +18,11 @@
                             KHS</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../mahasiswa/pklMhsPage.php" class="nav-link px-0 align-middle text-white fs-5">
                             PKL</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                    <a href="../mahasiswa/skripsiMhsPage.php" class="nav-link px-0 align-middle text-white fs-5">
                             Skripsi</a>
                     </li>
                 </ul>
@@ -30,9 +30,7 @@
                 <div class="d-flex justify-content-center mt-4">
                     <a href="/logout" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
-                <hr>
-
-
             </div>
         </div>
+    </div>
 </div>

@@ -20,9 +20,25 @@
         }
         ?>
     </div>
-    <div class="col h-100">
-        <?php include 'dashboardDoswal.php' ?>
+    <div class="col">
+        <!-- switch user dashboard -->
+        <?php
+        switch ($user) {
+            case 1:
+                include_once 'dashboardMhs.php';
+                break;
+            case 2:
+                include_once 'dashboardDoswal.php';
+                break;
+            case 3:
+                include_once 'dashboardOp.php';
+                break;
+            case 4:
+                include_once 'dashboardDpt.php';
+                break;
+        }
+        ?>
     </div>
 </div>
-    
+
 <?php include_once '../bootstrap/footer.html' ?>

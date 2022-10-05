@@ -10,7 +10,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../departemen/daftarMhsDept.php" class="nav-link px-0 align-middle text-white fs-5">
                             Daftar Mahasiswa</a>
                     </li>
                     
@@ -24,8 +24,7 @@
                     <a href="/logout" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
                 <hr>
-
-
             </div>
         </div>
+    </div>
 </div>
