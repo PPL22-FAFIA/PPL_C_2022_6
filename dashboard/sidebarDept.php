@@ -15,7 +15,7 @@
                     </li>
                     
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../departemen/daftarDosenDept.php" class="nav-link px-0 align-middle text-white fs-5">
                             Daftar Dosen</a>
                     </li>
                 </ul>
