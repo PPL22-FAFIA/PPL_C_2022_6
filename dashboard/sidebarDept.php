@@ -24,8 +24,7 @@
                     <a href="/logout" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
                 <hr>
-
-
             </div>
         </div>
+    </div>
 </div>

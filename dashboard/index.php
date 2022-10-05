@@ -21,7 +21,7 @@
         ?>
     </div>
     <div class="col">
-        <?php include 'dashboardDpt.php' ?>
+        <?php include 'dashboardMhs.php' ?>
     </div>
 </div>
 
