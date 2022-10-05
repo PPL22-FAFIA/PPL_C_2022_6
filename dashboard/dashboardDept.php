@@ -1,4 +1,4 @@
-<?php require_once('db_login.php'); ?>
+<?php require_once('../lib/db_login.php'); ?>
 <h1 class="d-flex justify-content-center">Dashboard Mahasiswa</h1>
     <div class="container">
         <div class="row">
