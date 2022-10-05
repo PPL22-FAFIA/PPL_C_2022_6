@@ -21,9 +21,9 @@
                                     echo $db->error;
                                 }
                                 echo "<script>
-                                    var my_2d = ".json_encode($php_data_array)."
-                                    for(i = 0; i < my_2d.length; i++){
-                                        data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
+                                    var tot_diagram = ".json_encode($php_data_array)."
+                                    for(i = 0; i < tot_diagram.length; i++){
+                                        data.addRow([tot_diagram[i][0], parseInt(tot_diagram[i][1])]);
                                     }
                                 </script>";
                             ?>
@@ -38,8 +38,8 @@
                                     var data = new google.visualization.DataTable();
                                     data.addColumn('string', 'Angkatan');
                                     data.addColumn('number', 'Total');
-                                    for(i = 0; i < my_2d.length; i++)
-                                data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
+                                    for(i = 0; i < tot_diagram.length; i++)
+                                data.addRow([tot_diagram[i][0], parseInt(tot_diagram[i][1])]);
                                 // above row adds the JavaScript two dimensional array data into required chart format
                                 var options = {pieHole: 0.5,
                                     'width':500, 'height':500,
