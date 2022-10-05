@@ -1,5 +1,5 @@
-<h1 class="d-flex justify-content-center">Dashboard Mahasiswa</h1>
-    <div class="container">
+<div class="container">
+        <h1 class="d-flex justify-content-center">Dashboard Mahasiswa</h1>
         <div class="row">
             <div class="col">
                 <div class="card">

@@ -20,9 +20,9 @@
         }
         ?>
     </div>
-</div>
-<div class="col">
-    <?php include 'dashboardMhs.php' ?>
+    <div class="col">
+        <?php include 'dashboardMhs.php' ?>
+    </div>
 </div>
 
 <?php include_once '../bootstrap/footer.html' ?>
