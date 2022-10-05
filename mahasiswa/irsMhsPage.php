@@ -10,7 +10,6 @@
 
             <h1 class="card-header">Entry IRS</h1>
             <form class="card-body">
-                
                 <div class="row gx-5">
                     <div class="col">
                         <label>Semester</label>

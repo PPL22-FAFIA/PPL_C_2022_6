@@ -18,11 +18,11 @@
                             KHS</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../mahasiswa/pklMhsPage.php" class="nav-link px-0 align-middle text-white fs-5">
                             PKL</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                    <a href="../mahasiswa/skripsiMhsPage.php" class="nav-link px-0 align-middle text-white fs-5">
                             Skripsi</a>
                     </li>
                 </ul>
