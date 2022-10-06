@@ -1,4 +1,5 @@
 <?php require_once '../bootstrap/header.html';
+require_once '../lib/db_login.php';
 session_start();
 if(!isset($_SESSION['user'])){
     header("Location: ../auth/login.php");
@@ -8,6 +9,17 @@ else{
     if($user!='1'){
         header("Location: ../index.php");
     }
+}
+$nim = $_SESSION['user']['Nim_Nip'];
+$query = "SELECT * FROM tb_mhs WHERE Nim = '$nim'";
+// execute query
+$result = mysqli_query($db, $query);
+// check result
+if (mysqli_num_rows($result) > 0) {
+    // get data
+    $data = mysqli_fetch_assoc($result);
+    // set session
+    $_SESSION['dataMhs'] = $data;
 }
 ?>
 <div class="row g-0">
@@ -27,12 +39,20 @@ else{
                         <img src="" alt="kosong" class="col-1">
                         <div class="col">
 
-                            <h5>Abyan</h5>
-                            <p>201910370311001</p>
+                            <h5><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
+                            <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                         </div>
                         <div class="col-3">
-                            <h4>Status</h4>
-                            <h3 class="text-center badge fs-3 text-white text-bg-success">Aktif</h3>
+                            <h4>Status</h4><?php
+                        if ($_SESSION['dataMhs']['Status'] == "Aktif") {
+                            echo '<h3 class="col badge fs-4 text-bg-success text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                        } else if($_SESSION['dataMhs']['Status'] == "Cuti"){ 
+                            echo '<h3 class="col badge fs-4 text-bg-primary text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                        }
+                        else{
+                            echo '<h3 class="col badge fs-4 text-bg-danger text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                        }
+                        ?>
                         </div>
                     </div>
                 </div>
