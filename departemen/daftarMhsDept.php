@@ -40,7 +40,7 @@
                     echo '<td>'.$row->Nim.'</td>';
                     echo '<td>'.$row->nama_mhs.'</td>';
                     echo '<td>'.$row->nama_dsn.'</td>';
-                    echo '<td><a href="detailMhs.php?nim='.$row->Nim.'" class="btn btn-primary">Detail</a></td>';
+                    echo '<td><a href="../all/detailMhs.php?nim='.$row->Nim.'" class="btn btn-primary">Detail</a></td>';
                     echo '</tr>';
                     $i++;
                 }
