@@ -1,4 +1,17 @@
-<?php require_once("../lib/db_login.php");?>
+<?php include_once '../lib/db_login.php';
+$nip = $_SESSION['user']['Nim_Nip'];
+$query = "SELECT * FROM tb_dosen WHERE Nip = '$nip'";
+// execute query
+$result = mysqli_query($db, $query);
+// check result
+if (mysqli_num_rows($result) > 0) {
+    // get data
+    $data = mysqli_fetch_assoc($result);
+    // set session
+    $_SESSION['dataDoswal'] = $data;
+}
+
+?>
 <div class="main h-100">
     <div class="title-page text-center display-6 mt-3 fw-semibold">Dashboard Dosen Wali</div>
     <div class="content d-flex align-items-center ">
@@ -8,7 +21,7 @@
                     <img class="img-thumbnail rounded p-3" src="../lib/lecture.jpg" alt="profile">
                 </div>
                 <div class="profile-name text-center">
-                    <h3>Farrel</h3>
+                    <h3><?php echo $_SESSION["dataDoswal"]["Nama"] ?></h3>
                     <p>Dosen Wali</p>
                 </div>
             </div>

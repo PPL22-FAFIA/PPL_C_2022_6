@@ -39,7 +39,7 @@ if (mysqli_num_rows($resultkhs) > 0) {
                     </div>
                     <div class="row text-center">
                         <h1 class="col">5</h1>
-                        <h3 class="col badge fs-4 text-bg-success text-white">Aktif</h3>
+                        <h3 class="col badge fs-4 text-bg-success text-white"><?php echo $_SESSION["dataMhs"]["Status"] ?></h3>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@ if (mysqli_num_rows($resultkhs) > 0) {
                     <div class="row">
                         <div class="col">
                             <p class="text-center m-0">SKS semester</p>
-                            <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Jml_SKS'];?></h3>
+                            <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Jml_SKS_Semester'];?></h3>
                         </div>
                         <div class="col">
                             <p class="text-center m-0">SKS Kumulatif</p>
@@ -92,7 +92,7 @@ if (mysqli_num_rows($resultkhs) > 0) {
                     <div class="row">
                         <div class="col">
                             <p class="text-center m-0">IP semester</p>
-                            <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Nilai'];?></h3>
+                            <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Ip'];?></h3>
                         </div>
                         <div class="col">
                             <p class="text-center m-0">IP Kumulatif</p>

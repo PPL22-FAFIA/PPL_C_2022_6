@@ -49,7 +49,7 @@ if (isset($_GET['nim'])) {
                                     </div>
                                     <div class="sub-value my-2">
                                         <div class="title-value fw-bold">IP Semester Lalu</div>
-                                        <div class="value text-center h2"><?php echo $datakhs['Nilai'] ?></div>
+                                        <div class="value text-center h2"><?php echo $datakhs['Ip'] ?></div>
                                     </div>
                                 </div>
                                 <div class="right ms-2">
