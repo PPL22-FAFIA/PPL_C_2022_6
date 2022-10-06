@@ -9,11 +9,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="" class="nav-link px-0 align-middle text-white fs-5">
                             Biodata</a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../operator/cariUserPage.php" class="nav-link px-0 align-middle text-white fs-5">
                             Cari User</a>
                     </li>
                 </ul>

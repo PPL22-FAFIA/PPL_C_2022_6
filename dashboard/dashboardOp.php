@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary">Add User</button>
+                <a href="../operator/addUserPage.php" class="btn btn-primary">Add User</a>
             </div>
         </div>
         <div class="row mt-3">
