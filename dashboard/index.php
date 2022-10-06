@@ -13,16 +13,16 @@ if(!isset($_SESSION['user'])){
         // switch case user
         switch ($user) {
             case 1:
-                include_once 'sidebarMhs.php';
+                include_once '../dashboard/sidebarMhs.php';
                 break;
             case 2:
-                include_once 'sidebarDoswal.php';
+                include_once '../dashboard/sidebarDoswal.php';
                 break;
             case 3:
-                include_once 'sidebarOp.php';
+                include_once '../dashboard/sidebarOp.php';
                 break;
             case 4:
-                include_once 'sidebarDept.php';
+                include_once '../dashboard/sidebarDept.php';
                 break;
         }
         ?>
@@ -32,16 +32,16 @@ if(!isset($_SESSION['user'])){
         <?php
         switch ($user) {
             case 1:
-                include_once 'dashboardMhs.php';
+                include_once '../dashboard/dashboardMhs.php';
                 break;
             case 2:
-                include_once '../doswal/detailMhs.php';
+                include_once '../dashboard/dashboardDoswal.php';
                 break;
             case 3:
-                include_once 'dashboardOp.php';
+                include_once '../dashboard/dashboardOp.php';
                 break;
             case 4:
-                include_once 'dashboardDept.php';
+                include_once '../dashboard/dashboardDept.php';
                 break;
         }
         ?>

@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<div class="container">
+<div class="container mt-5">
     <div class="row d-flex justify-content-center">
         <div class="col-4">
             <div class="card">
@@ -36,13 +36,19 @@ if (isset($_POST['submit'])) {
                     <form action="login.php" method="post">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php if(isset($_POST["username"])) echo $username?>">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
-                        <div class="text-center">
+                        <!-- error message -->
+                        <?php if (isset($error)) : ?>
+                            <div class="alert alert-danger mt-3" role="alert">
+                                <?php echo $error; ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="text-center mt-3">
                             <button type="submit" name="submit" value="submit" class="btn btn-primary">Login</button>
                         </div>
                     </form>

@@ -1,6 +1,6 @@
 <?php
 require_once('../bootstrap/header.html');
-require_once('../dashboard/db_login.php');
+require_once('../lib/db_login.php');
 ?>
 
 <div class="content w-75 border rounded m-auto">
