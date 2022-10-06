@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-title text-center">
                                     <img src="https://sso.undip.ac.id/assets/app/images/logo-undip.png" alt="Universitas Diponegoro" style="width: 150px;">
                                     <h1><strong>SIAP</strong></h1>
-                                    <h2>Universitas Diponegoro</h2>
+                                    <h2>Informatika Undip</h2>
                                 </div>
                             </div>
                             <div class="card-content">

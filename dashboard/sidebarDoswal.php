@@ -3,13 +3,13 @@
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary position-fixed">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <h1 class="text-white mb-5">SIAP IF</h1>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start d-grid" id="menu">
                     <li class="nav-item">
-                        <a href="../dashboard/" class="nav-link align-middle px-0 text-white fs-5">Dashboard
+                        <a href="../dashboard/" class="nav-link align-middle px-0 text-white fs-5 btn btn-primary">Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="../doswal/daftarDoswal.php" class="nav-link px-0 align-middle text-white fs-5">
+                        <a href="../doswal/daftarDoswal.php" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary">
                             Daftar Mahasiswa</a>
                     </li>
                 </ul>

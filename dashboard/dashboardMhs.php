@@ -57,7 +57,7 @@ if (mysqli_num_rows($resultkhs) > 0) {
         <div class="col">
             <div class="card">
                 <div class="card-body text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
+                <img class="img-thumbnail rounded p-3" src="../lib/lecture.jpg" alt="profile" width="300">
                     <h3 class="m-0"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
                     <p class="m-0"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                     <p class="m-0">Mahasiswa</p>
