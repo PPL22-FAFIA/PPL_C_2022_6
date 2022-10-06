@@ -27,7 +27,7 @@
                     </li>
                 </ul>
                 
-                <div class="d-flex justify-content-center mt-4">
+                <div class="d-flex justify-content-center mb-3">
                     <a href="../auth/logout.php" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
             </div>

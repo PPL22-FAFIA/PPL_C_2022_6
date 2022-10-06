@@ -1,4 +1,15 @@
-<?php require_once '../bootstrap/header.html' ?>
+<?php require_once '../bootstrap/header.html';
+session_start();
+if(!isset($_SESSION['user'])){
+    header("Location: ../auth/login.php");
+}
+else{
+    $user = $_SESSION['user']['Role'];
+    if($user!='1'){
+        header("Location: ../index.php");
+    }
+}
+?>
 <div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>

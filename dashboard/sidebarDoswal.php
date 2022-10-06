@@ -5,7 +5,7 @@
                 <h1 class="text-white mb-5">SIAP IF</h1>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0 text-white fs-5">Dashboard
+                        <a href="../dashboard/" class="nav-link align-middle px-0 text-white fs-5">Dashboard
                         </a>
                     </li>
                     <li>
