@@ -1,10 +1,10 @@
 <?php
 require_once('../bootstrap/header.html');
-require_once('../dashboard/db_login.php');
+require_once('../lib/db_login.php');
 ?>
 
 <div class="content w-75 border rounded m-auto">
-    <div class="profile-mhs d-flex m-auto">
+    <div class="profile-mhs m-auto">
         <div class="tengah d-flex">
             <div class="card">
                 <div class="card-body">
@@ -37,9 +37,9 @@ require_once('../dashboard/db_login.php');
             </div>
             <div class="card">
                 <div class="card-body">
-                    <div class="profile w-50 card">
+                    <div class="profile">
                         <div class="profile-img">
-                            <img class="img-thumbnail rounded p-3" src="../lib/lecture.jpg" alt="profile">
+                            <img class="img-thumbnail p-3" src="../lib/lecture.jpg" alt="profile">
                         </div>
                         <div class="profile-name text-center">
                             <h3>Farrel</h3>
@@ -51,31 +51,31 @@ require_once('../dashboard/db_login.php');
             </div>
         </div>
     </div>
-</div>
-<hr class="w-100 mx-2" />
-<div class="semester">
-    <div class="input">
-        <form action="POST">
-            <select class="form-select w-25 mt-4">
-                <option selected>Pilih angkatan...</option>
-                <option value="1">2016</option>
-                <option value="2">2017</option>
-                <option value="3">2018</option>
-                <option value="4">2019</option>
-                <option value="5">2020</option>
-                <option value="6">2021</option>
-                <option value="7">2022</option>
-            </select>
-        </form>
+    <hr class="w-100" />
+    <div class="semester">
+        <div class="input">
+            <form action="POST">
+                <select class="form-select w-25 mt-4">
+                    <option selected>Pilih angkatan...</option>
+                    <option value="1">2016</option>
+                    <option value="2">2017</option>
+                    <option value="3">2018</option>
+                    <option value="4">2019</option>
+                    <option value="5">2020</option>
+                    <option value="6">2021</option>
+                    <option value="7">2022</option>
+                </select>
+            </form>
+        </div>
+        <div class="nilai-mhs">
+
+        </div>
     </div>
-    <div class="nilai-mhs">
+    <div class="pkl">
 
     </div>
-</div>
-<div class="pkl">
+    <div class="skripsi">
 
-</div>
-<div class="skripsi">
-
+    </div>
 </div>
 </div>
