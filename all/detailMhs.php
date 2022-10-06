@@ -85,16 +85,23 @@ if (isset($_GET['nim'])) {
         <div class="semester">
             <div class="input ms-5">
                 <form action="POST">
-                    <div for="input-semester" class=" fw-semibold h4">Pilih Angkatan:</div>
+                    <div for="input-semester" class=" fw-semibold h4">Pilih Semester:</div>
                     <select class="form-select w-25">
-                        <option selected>Pilih angkatan...</option>
-                        <option value="1">2016</option>
-                        <option value="2">2017</option>
-                        <option value="3">2018</option>
-                        <option value="4">2019</option>
-                        <option value="5">2020</option>
-                        <option value="6">2021</option>
-                        <option value="7">2022</option>
+                        <option selected>Pilih semester...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
                     </select>
                 </form>
             </div>
