@@ -30,8 +30,16 @@ else{
                             <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                         </div>
                         <div class="col-3">
-                            <h4>Status</h4>
-                            <h3 class="text-center badge fs-3 text-white text-bg-success"><?php echo $_SESSION["dataMhs"]["Status"] ?></h3>
+                            <h4>Status</h4><?php
+                        if ($_SESSION['dataMhs']['Status'] == "Aktif") {
+                            echo '<h3 class="col badge fs-4 text-bg-success text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                        } else if($_SESSION['dataMhs']['Status'] == "Cuti"){ 
+                            echo '<h3 class="col badge fs-4 text-bg-primary text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                        }
+                        else{
+                            echo '<h3 class="col badge fs-4 text-bg-danger text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                        }
+                        ?>
                         </div>
                     </div>
                 </div>
