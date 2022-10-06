@@ -1,6 +1,27 @@
 <?php
 require_once('../bootstrap/header.html');
 require_once('../lib/db_login.php');
+if (isset($_GET['nim'])) {
+
+    $nim = $_GET['nim'];
+    $query = "SELECT * FROM tb_mhs WHERE Nim = '$nim'";
+    // execute query
+    $result = mysqli_query($db, $query);
+    // check result
+    if (mysqli_num_rows($result) > 0) {
+        // get data
+        $data = mysqli_fetch_assoc($result);
+    }
+
+    $khs = "SELECT * FROM tb_khs WHERE Nim = '$nim'";
+    // execute query
+    $resultkhs = mysqli_query($db, $khs);
+    // check resultkhs
+    if (mysqli_num_rows($resultkhs) > 0) {
+        // get data
+        $datakhs = mysqli_fetch_assoc($resultkhs);
+    }
+}
 ?>
 <style type="text/css">
     hr {
@@ -24,21 +45,21 @@ require_once('../lib/db_login.php');
                                 <div class="left me-2 ">
                                     <div class="sub-value my-2">
                                         <div class="title-value fw-bold">SKS Semester</div>
-                                        <div class="value text-center h2">92</div>
+                                        <div class="value text-center h2"><?php echo $datakhs['Jml_SKS_Semester'] ?></div>
                                     </div>
                                     <div class="sub-value my-2">
                                         <div class="title-value fw-bold">IP Semester Lalu</div>
-                                        <div class="value text-center h2">3.70</div>
+                                        <div class="value text-center h2"><?php echo $datakhs['Nilai'] ?></div>
                                     </div>
                                 </div>
                                 <div class="right ms-2">
                                     <div class="sub-value my-2">
                                         <div class="title-value fw-bold">SKS Kumulatif</div>
-                                        <div class="value text-center h2">124</div>
+                                        <div class="value text-center h2"><?php echo $datakhs['Jml_SKS_Kumulatif'] ?></div>
                                     </div>
                                     <div class="sub-value my-2">
                                         <div class="title-value fw-bold">IP Kumulatif</div>
-                                        <div class="value text-center h2">3.80</div>
+                                        <div class="value text-center h2"><?php echo $datakhs['Ip_Kumulatif'] ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -51,8 +72,8 @@ require_once('../lib/db_login.php');
                             <img class="img-thumbnail rounded-circle w-50" src="../lib/lecture-square.jpg" alt="profile">
                         </div>
                         <div class="profile-name text-center">
-                            <h3>Farrel</h3>
-                            <div>NIM</div>
+                            <h3><?php echo $data['Nama'] ?></h3>
+                            <div><?php echo $data['Nim'] ?></div>
                             <div>S1 - Informatika</div>
                         </div>
                     </div>

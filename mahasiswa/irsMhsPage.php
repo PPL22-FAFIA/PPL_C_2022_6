@@ -9,6 +9,7 @@ else{
         header("Location: ../index.php");
     }
 }
+
 ?><div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>

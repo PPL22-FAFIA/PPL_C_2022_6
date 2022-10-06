@@ -26,12 +26,12 @@ else{
                         <img src="" alt="kosong" class="col-1">
                         <div class="col">
 
-                            <h5>Abyan</h5>
-                            <p>201910370311001</p>
+                        <h5><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
+                            <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                         </div>
                         <div class="col-3">
                             <h4>Status</h4>
-                            <h3 class="text-center badge fs-3 text-white text-bg-success">Aktif</h3>
+                            <h3 class="text-center badge fs-3 text-white text-bg-success"><?php echo $_SESSION["dataMhs"]["Status"] ?></h3>
                         </div>
                     </div>
                 </div>

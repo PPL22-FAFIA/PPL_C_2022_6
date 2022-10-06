@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
                                     <form class="form-horizontal" action="login.php" method="post" novalidate="">
                                         <fieldset class="form-group position-relative has-icon-left  wrapper_identity mb-3">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="NIM/NIP/username/e-mail official Undip" required="">
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="NIM/NIP/username/e-mail official Undip" required value="<?php if(isset($_POST["username"])) echo $username?>">
                                         </fieldset>
                                         <div class="form-group">
                                             <label for="password">Password</label>
