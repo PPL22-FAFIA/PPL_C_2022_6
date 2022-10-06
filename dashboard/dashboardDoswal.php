@@ -1,3 +1,4 @@
+<?php require_once("../lib/db_login.php");?>
 <div class="main h-100">
     <div class="title-page text-center display-6 mt-3 fw-semibold">Dashboard Dosen Wali</div>
     <div class="content d-flex align-items-center ">
