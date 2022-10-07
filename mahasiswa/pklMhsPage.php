@@ -36,10 +36,10 @@ if (mysqli_num_rows($result) > 0) {
             <form class="card-body">
                 <div class="row gx-5 d-flex">
                     <div class="d-flex flex-row">
-                        <img src="" alt="kosong" class="col-1">
-                        <div class="col">
+                    <img class="img-thumbnail rounded p-3" src="../lib/lecture.jpg" alt="profile" width="150">
+                        <div class="col ms-3">
 
-                            <h5><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
+                            <h5 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
                             <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                         </div>
                         <div class="col-3">
