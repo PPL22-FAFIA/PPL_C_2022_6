@@ -38,7 +38,7 @@ if (mysqli_num_rows($resultkhs) > 0) {
                         <div class="col">Status</div>
                     </div>
                     <div class="row text-center">
-                        <h1 class="col">5</h1>
+                        <h1 class="col"><?php echo $_SESSION["dataMhs"]["Semester"] ?></h1>
                         <?php
                         if ($_SESSION['dataMhs']['Status'] == "Aktif") {
                             echo '<h3 class="col badge fs-4 text-bg-success text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
