@@ -1,11 +1,27 @@
-<?php require_once("../lib/db_login.php");?>
+<?php require_once("../lib/db_login.php");
+$nim = $_SESSION['user']['Nim_Nip'];
+$query1 = "SELECT * FROM tb_mhs";
+// execute query
+$result1 = mysqli_query($db, $query1);
+
+$nip = $_SESSION['user']['Nim_Nip'];
+$query2 = "SELECT * FROM tb_dosen";
+// execute query
+$result2 = mysqli_query($db, $query2);
+
+$total = $_SESSION['user']['Nim_Nip'];
+$query3 = "SELECT * FROM tb_User";
+// execute query
+$result3 = mysqli_query($db, $query3);
+
+    ?>
 <h1 class="d-flex justify-content-center">Dashboard Operator</h1>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data User</h4>
+                        <h4 class="card-title">Data Mahasiswa</h4>
                         <?php
                                 if($stmt = $db->query("SELECT Angkatan, COUNT(*) AS total FROM tb_mhs GROUP BY Angkatan")){
                                     $sum = $db->query("SELECT COUNT(*) AS total FROM tb_mhs");
@@ -75,19 +91,17 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Data Mahasiswa</h4>
-                        <table border=5 width=50% align=”center”>
-                            <tr>
-                                <td>Mahasiswa</td>
-                                <td>---</td> </tr><tr>
-                                <td>Dosen Wali</td>
-                                <td>---</td> </tr><tr>
-                                <td>Operator</td>
-                                <td>---</td> </tr><tr>
-                                <td>Departemen</td> <td>---</td>
-                            </tr>
-                        </table>
-
+                        <h5 class="card-title text-center">Data User</h5>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center m-0">Mahasiswa</p>
+                                <h3 class="text-center"><?php echo mysqli_num_rows($result1);?></h3>
+                            </div>
+                            <div class="col">
+                                <p class="text-center m-0">Dosen</p>
+                                <h3 class="text-center"><?php echo mysqli_num_rows($result2);?></h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +111,7 @@
                         <h5 class="card-title text-center">Total User</h5>
                         <div class="row">
                             <div class="col">
-                               <h3 class="card-title text-center">765</h3>
+                            <h3 class="text-center"><?php echo mysqli_num_rows($result3);?></h3>
                             </div>
                         </div>
                     </div>
