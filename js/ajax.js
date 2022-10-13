@@ -38,22 +38,22 @@ function callAjax(url, inner) {
 }
 // edit profile mhs ajax
 function editProfile(){
-    var xmlhttp = getXMLHTTPRequest();
+    var xmlhttp = getXMLHttpRequest();
     //get input value
     var noHP = document.getElementById("noHP").value;
     var email = document.getElementById('email').value;
     var alamat = document.getElementById('alamat').value;
-    var provinsi = document.getElementById('provinsi').value;
     var kabupaten = document.getElementById('kabupaten').value;
+    var nim = document.getElementById('nim').value;
     //validate
-    if (name !="" && address != "" && city != "") {
+    if (noHP !="" && email != "" && alamat != "") {
 
         //set url and inner
         var url = "../function/edit_profile.php";
         //alert (url);
-        var inner = "add_response";
+        var inner = "responseedit";
         //open request
-        var params = "name=" + name + "&address=" + address + "&city=" + city;
+        var params = "nim="+ nim + "&no_hp=" + noHP + "&email=" + email + "&alamat=" + alamat + "&kabupaten=" + kabupaten;
         xmlhttp.open('POST' , url, true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.onreadystatechange = function(){

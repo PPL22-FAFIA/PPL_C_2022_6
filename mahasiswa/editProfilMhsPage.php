@@ -37,23 +37,23 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="form-group">
                         <label class="fw-bold">Nama</label>
                         <div class="col">
-                            <label><?php echo $_SESSION["dataMhs"]["Nama"];?></label>
-                            <input type="hidden" name="nama" value="<?php echo $_SESSION["dataMhs"]["Nim"];?>">;
+                            <label><?php echo $_SESSION["dataMhs"]["Nama"]?></label>
+                            <input type="hidden" name="nama" value="<?php echo $_SESSION["dataMhs"]["Nama"]?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
 
                         <label class="fw-bold">NIM</label>
                         <div class="col">
-                            <label><?php echo $_SESSION["dataMhs"]["Nim"];?></label>
-                            <input type="hidden" name="nim" value="<?php echo $_SESSION["dataMhs"]["Nim"];?>">;
+                            <label><?php echo $_SESSION["dataMhs"]["Nim"]?></label>
+                            <input type="hidden" id="nim" name="nim" value="<?php echo $_SESSION["dataMhs"]["Nim"]?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Angkatan</label>
                         <div class="col">
                             <label><?php echo $_SESSION["dataMhs"]["Angkatan"];?></label>
-                            <input type="hidden" name="hidden" value="<?php echo $_SESSION["dataMhs"]["Angkatan"];?>">
+                            <input type="hidden"  name="angkatan" value="<?php echo $_SESSION["dataMhs"]["Angkatan"];?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
@@ -78,6 +78,7 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">Provinsi</label>
                         <div class="col">
                             <select class="form-control" id="provinsi" name="provinsi" onchange="getKabupaten(this.value)">
+                            <option value="0">Pilih Provinsi</option>
                                 <?php
                                     $result3 = $db->query('select * from tb_provinsi');
 
@@ -93,6 +94,7 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">Kabupaten</label>
                         <div class="col">
                             <select class="form-control" id="kabupaten" name="kabupaten">
+                            <option value="0">Pilih Kabupaten</option>
                             </select>
                             <small class="form-text text-danger" id="kabupaten_error"></small>
                         </div>
@@ -101,6 +103,8 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="text-center">
                     <button type="button" onclick="editProfile()" class="btn btn-primary fw-bold mt-4">Update</button>
+                </div>
+                <div id="responseedit">
                 </div>
 
             </form>

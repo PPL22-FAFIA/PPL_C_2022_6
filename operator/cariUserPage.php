@@ -6,15 +6,12 @@
     </div>
     <div class="col p-4">
     <h1 class="d-flex justify-content-center">Cari User</h1>
-        <div class="d-flex mb-3">
-            <button class="me-auto btn btn-primary mt-3">Role</button>
-                <form action="card-body">
-                    <div class ="col">
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </div>       
-                </form>
-    </div>
-    <div class="row">
+        <div class="d-flex flex-row col-3">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                aria-describedby="button-addon2" class="f">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Filter</button>
+        </div>
+    <div class="row mt-3">
         <div class="card">
             <form class="card-body"></form>
                 <div class="row gx-5 d-flex">
