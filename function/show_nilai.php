@@ -1,5 +1,5 @@
-<?php 
-    require_once('../lib/db_login.php'); 
+<?php
+    require_once('../lib/db_login.php');
 
     if (isset($_GET['smt'])){
         $nim = $_GET['nim'];
@@ -12,27 +12,29 @@
         if (!$result) {
             die("Could not query the database: <br />" . $db->error . "<br>Query: " . $query);
         }
-
-        // Execute the query 
-        // Fetch and display the results 
-        echo("<table>");
-        echo("<tr>");
-        echo("<th>Mata Kuliah</th>");
-        echo("<th>Nilai</th>");
-        echo("<th>SKS</th>");
-        echo("</tr>");
-        while ($row = $result->fetch_object()) {
-            echo '<tr>';
-            echo '<td>' . $row->nama_mk . '</td>';
-            echo '<td>' . $row->nilai . '</td>';
-            echo '<td>' . $row->sks . '</td>';
-            echo '</tr>';
-        }
-        echo '</table>';
-    
-        $result->free();
-        $db->close();
-    }
-
-    
 ?>
+        <table class="table table-borderless text-center">
+            <thead>
+                <th scope="col" class="h5">No</th>
+                <th scope="col" class="h5">Mata Kuliah</th>
+                <th scope="col" class="h5">Nilai</th>
+                <th scope="col" class="h5">SKS</th>
+            </thead>
+            <tbody>
+            <?php
+            $i = 1;
+            while ($row = $result->fetch_object()) {
+                echo '<tr>';
+                echo '<th>' . $i . '</th>';
+                echo '<td>' . $row->nama_mk . '</td>';
+                echo '<td>' . $row->nilai . '</td>';
+                echo '<td>' . $row->sks . '</td>';
+                echo '</tr>';
+                $i++;
+            }
+            $result->free();
+            $db->close();
+        }
+            ?>
+            </tbody>
+        </table>

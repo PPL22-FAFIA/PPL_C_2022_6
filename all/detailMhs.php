@@ -106,7 +106,7 @@ if (isset($_GET['nim'])) {
                     </select>
                 </form>
             </div>
-            <div class="nilai-mhs" id="nilai-mhs" name="nilai-mhs">
+            <div class="nilai-mhs mx-5 my-2" id="nilai-mhs">
 
             </div>
         </div>
