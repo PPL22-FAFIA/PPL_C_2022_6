@@ -23,6 +23,7 @@ if (isset($_GET['nim'])) {
     }
 }
 ?>
+<script src="../js/ajax.js"></script>
 <style type="text/css">
     hr {
         width: 90%;
@@ -86,8 +87,8 @@ if (isset($_GET['nim'])) {
             <div class="input ms-5">
                 <form action="POST">
                     <div for="input-semester" class=" fw-semibold h4">Pilih Semester:</div>
-                    <select class="form-select w-25">
-                        <option selected>Pilih semester...</option>
+                    <select class="form-select w-25" onchange="showNilai(<?php echo $nim ?>, this.value)">
+                        <option selected value="">Pilih semester...</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -105,7 +106,7 @@ if (isset($_GET['nim'])) {
                     </select>
                 </form>
             </div>
-            <div class="nilai-mhs">
+            <div class="nilai-mhs" id="nilai-mhs" name="nilai-mhs">
 
             </div>
         </div>
