@@ -105,7 +105,29 @@ if (isset($_GET['nim'])) {
                     </select>
                 </form>
             </div>
-            <div class="nilai-mhs">
+            <div class="nilai-mhs mx-5 my-2">
+                <table class="table table-borderless text-center">
+                    <thead>
+                        <th scope="col" class="h5">No</th>
+                        <th scope="col" class="h5">Mata Kuliah</th>
+                        <th scope="col" class="h5">Nilai</th>
+                        <th scope="col" class="h5">SKS</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Dasar Pemrograman</td>
+                            <td>A</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Dasar Sistem</td>
+                            <td>E</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </div>
         </div>
