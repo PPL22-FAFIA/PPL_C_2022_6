@@ -68,3 +68,16 @@ function editProfile(){
         alert("Please fill all the fields");
     }
 }
+
+// show table nilai with ajax
+function showNilai(nim, smt){
+  // get input value
+  var inner = "nilai-mhs"
+  var url = `../function/show_nilai.php?nim=${nim}&smt=${smt}`;
+
+  if (smt == "") {
+    document.getElementById(inner).innerHTML = "";
+  } else {
+    callAjax(url, inner);
+  }
+}
