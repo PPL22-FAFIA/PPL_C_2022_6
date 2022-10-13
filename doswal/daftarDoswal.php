@@ -1,6 +1,8 @@
 <?php
 require_once('../bootstrap/header.html');
 require_once('../lib/db_login.php');
+session_start();
+$nip = $_SESSION['user']['Nim_Nip'];
 ?>
 <div class="row g-0">
   <div class="col-2">
@@ -36,7 +38,7 @@ require_once('../lib/db_login.php');
         <div class="d-flex flex-row-reverse">
             <!-- print table from database siap1 -->
             <?php
-                $query = "SELECT m.Nim, m.Nama AS nama_mhs, m.status AS status_mhs, m.Angkatan AS angkatan_mhs FROM tb_mhs m";
+                $query = "SELECT m.Nim, m.Nama AS nama_mhs, m.status AS status_mhs, m.Angkatan AS angkatan_mhs FROM tb_mhs m JOIN tb_dosen d WHERE m.Kode_Wali = d.Kode_Wali AND d.Nip = '$nip'";
                 $result = $db->query($query);
                 if (!$result) {
                     die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
