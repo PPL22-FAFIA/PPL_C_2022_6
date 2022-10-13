@@ -38,6 +38,7 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">Nama</label>
                         <div class="col">
                             <label><?php echo $_SESSION["dataMhs"]["Nama"];?></label>
+                            <input type="hidden" name="nama" value="<?php echo $_SESSION["dataMhs"]["Nim"];?>">;
                         </div>
                     </div>
                     <div class="form-group mt-3">
@@ -45,52 +46,66 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">NIM</label>
                         <div class="col">
                             <label><?php echo $_SESSION["dataMhs"]["Nim"];?></label>
+                            <input type="hidden" name="nim" value="<?php echo $_SESSION["dataMhs"]["Nim"];?>">;
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Angkatan</label>
                         <div class="col">
                             <label><?php echo $_SESSION["dataMhs"]["Angkatan"];?></label>
+                            <input type="hidden" name="hidden" value="<?php echo $_SESSION["dataMhs"]["Angkatan"];?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Email</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Email" value="<?php echo $_SESSION["dataMhs"]["Email_SSO"];?>">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?php echo $_SESSION["dataMhs"]["Email_SSO"];?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">No Telepon</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="No HP" value="<?php echo $_SESSION["dataMhs"]["No_HP"];?>">
+                            <input type="text" id="noHP" name="noHP" class="form-control" placeholder="No HP" value="<?php echo $_SESSION["dataMhs"]["No_HP"];?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Alamat</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Alamat" value="<?php echo $_SESSION["dataMhs"]["Alamat"];?>">
+                            <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Alamat" value="<?php echo $_SESSION["dataMhs"]["Alamat"];?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Provinsi</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Nama">
+                            <select class="form-control" id="provinsi" name="provinsi" onchange="getKabupaten(this.value)">
+                                <?php
+                                    $result3 = $db->query('select * from tb_provinsi');
+
+                                    while ($prov = $result3->fetch_object()):
+                                ?>
+                                    <option value="<?php echo $prov->Kode_Provinsi ?>"><?php echo $prov->Nama_Provinsi ?></option>
+                                <?php endwhile ?>
+                            </select>
+                            <small class="form-text text-danger" id="provinsi_error"></small>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Kabupaten</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Nama">
+                            <select class="form-control" id="kabupaten" name="kabupaten">
+                            </select>
+                            <small class="form-text text-danger" id="kabupaten_error"></small>
                         </div>
                     </div>
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary fw-bold mt-4">Update</button>
+                    <button type="button" onclick="editProfile()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
 
             </form>
         </div>
     </div>
 </div>
+<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>
