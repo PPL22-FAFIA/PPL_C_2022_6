@@ -30,7 +30,7 @@
                 echo '<td>' . $row->nilai . '</td>';
                 echo '<td>' . $row->sks . '</td>';
                 echo '</tr>';
-                $i+=1;
+                $i++;
             }
             $result->free();
             $db->close();
