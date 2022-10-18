@@ -9,8 +9,10 @@ else{
         header("Location: ../index.php");
     }
 }
+?>
+       
 
-?><div class="row g-0">
+<div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>
 
@@ -24,46 +26,58 @@ else{
                 <div class="row gx-5">
                     <div class="col">
                         <label>Semester</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" id="semester" aria-label="Default select example">
                             <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
                         </select>
                     </div>
                     <div class="col">
                         <label>Tahun Ajaran</label>
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="2020/2021">2016/2017</option>
+                            <option value="2020/2021">2017/2018</option>
+                            <option value="2020/2021">2018/2019</option>
+                            <option value="2020/2021">2019/2020</option>
+                            <option value="2020/2021">2020/2021</option>
+                            <option value="2021/2022">2021/2022</option>
+                            <option value="2022/2023">2022/2023</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mt-4 g-0">
-                    <div class="col me-0">
-                        <label>Mata Kuliah</label>
-                        <select class="form-select" aria-label="Default select example">
+                    <div class="col me-0" id="tambahmatkul">
+                        <label for="semester">Mata Kuliah</label>
+                        <select class="form-select" id="mata_kuliah" name="mata_kuliah" aria-label="Default select example">
                             <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
                         </select>
                     </div>
                     <div class="col-3 ms-0">
                         <label>Kelas</label>
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
                         </select>
                     </div>
                 </div>
                 <div class="text-center">
                     <!-- button to add new row mata kuliah -->
-                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle">+</button>
+                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle" onclick="onCallPHP()">+</button>
                 </div>
                 <h4 class="fw-bold">Upload IRS</h4>
                 <div class="form-group d-flex flex-column mb-2">
@@ -77,6 +91,7 @@ else{
             </form>
         </div>
     </div>
-
+    
 </div>
+<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>

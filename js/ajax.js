@@ -81,3 +81,25 @@ function showNilai(nim, smt){
     callAjax(url, inner);
   }
 }
+
+
+//get mata kuliah
+var semester = document.forms.form.semester;
+var matakuliah = document.forms.form.mata_kuliah;
+
+semester.onchange = function(){
+  var smstr = new XMLHttpRequest();
+
+  smstr.open('GET', 'getMatkul.php?id=' + semester.value)
+  smstr.onload = function(){
+    var_dump(smstr.responseText);
+    matakuliah.innerHTML = smstr.responseText;
+  }
+  smstr.send();
+}
+
+function onCallPHP(){
+  var url = "../function/addEntryIRS.php";
+  var inner = "tambahmatkul";
+  callAjax(url, inner);
+}
