@@ -26,7 +26,7 @@ require_once('../lib/db_login.php'); ?>
                 echo '<tr>';
                 echo '<th scope="col">No</th>';
                 echo '<th scope="col">NIM/NIP</th>';
-                echo '<th scope="col">Nama</th>';
+                echo '<th scope="col">Username</th>';
                 echo '<th scope="col">Data User</th>';
                 echo '</tr>';
                 echo '</thead>';

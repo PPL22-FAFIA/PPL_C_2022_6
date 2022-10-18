@@ -23,6 +23,54 @@ if (isset($_GET['nim'])) {
     }
 }
 ?>
+<?php
+    $doswal = $db->query("SELECT d.Nama FROM tb_dosen d JOIN tb_mhs m WHERE d.Kode_Wali = m.Kode_Wali AND Nim = '$nim'")->fetch_object();
+    $dosbingPKL = mysqli_query($db,"SELECT d.Nama as NamaDos FROM tb_dosen d JOIN tb_pkl p WHERE d.Kode_Wali = p.Kode_Pemb_P AND Nim = '$nim'");
+    if (mysqli_num_rows($dosbingPKL) > 0) {
+        // get data
+        $dosbingPKL = mysqli_fetch_assoc($dosbingPKL)['NamaDos'];
+    }
+    else {
+        $dosbingPKL = "Belum ada";
+    }
+    $dosbingSkripsi = mysqli_query($db,"SELECT d.Nama as NamaDos FROM tb_dosen d JOIN tb_skripsi s WHERE d.Kode_Wali = s.Kode_Pemb_S AND Nim = '$nim'");
+    if (mysqli_num_rows($dosbingSkripsi) > 0) {
+        // get data
+        $dosbingSkripsi = mysqli_fetch_assoc($dosbingSkripsi)['NamaDos'];
+    }
+    else {
+        $dosbingSkripsi = "Belum ada";
+    }
+
+    $statusPKL = mysqli_query($db,"SELECT Status FROM tb_pkl WHERE Nim = '$nim'");
+    if (mysqli_num_rows($statusPKL) > 0) {
+        // get data
+        $statusPKL = mysqli_fetch_assoc($statusPKL)['Status'];
+        if($statusPKL == 0){
+            $statusPKL = "Belum Mengambil PKL";
+        }
+        else if($statusPKL == 1){
+            $statusPKL = "Sedang PKL";
+        }
+        else if($statusPKL == 2){
+            $statusPKL = "Selesai PKL";
+        }
+    }
+    $statusSkripsi = mysqli_query($db,"SELECT Status FROM tb_skripsi WHERE Nim = '$nim'");
+    if (mysqli_num_rows($statusSkripsi) > 0) {
+        // get data
+        $statusSkripsi = mysqli_fetch_assoc($statusSkripsi)['Status'];
+        if($statusSkripsi == 0){
+            $statusSkripsi = "Belum Mengambil Skripsi";
+        }
+        else if($statusSkripsi == 1){
+            $statusSkripsi = "Sedang Skripsi";
+        }
+        else if($statusSkripsi == 2){
+            $statusSkripsi = "Selesai Skripsi";
+        }
+    }
+?>
 <script src="../js/ajax.js"></script>
 <style type="text/css">
     hr {
@@ -76,6 +124,7 @@ if (isset($_GET['nim'])) {
                             <h3><?php echo $data['Nama'] ?></h3>
                             <div><?php echo $data['Nim'] ?></div>
                             <div>S1 - Informatika</div>
+                            <div>Nama Doswal: <?php echo $doswal->Nama?></div>
                         </div>
                     </div>
                 </div>
@@ -127,10 +176,13 @@ if (isset($_GET['nim'])) {
                 </div>
                 <div class="answer row gy-3">
                     <div class="jawab-dospem fw-semibold h5">
-                        <div>: <span>Farrel</span></div>
+                        <div>: <span><?php
+                            echo $dosbingPKL;
+                        ?></span></div>
                     </div>
                     <div class="jawab-status fw-semibold">
-                        <div>: <span class="bg-success p-2 text-white fw-semibold rounded h6">Belum Selesai</span></div>
+                        <div>: <span class="bg-success p-2 text-white fw-semibold rounded h6"><?php 
+                        echo $statusPKL?></span></div>
                     </div>
                     <div class="btn-unduh">: <button class="btn btn-success text-white fw-semibold h6">Unduh</button></div>
                 </div>
@@ -153,10 +205,12 @@ if (isset($_GET['nim'])) {
                 </div>
                 <div class="answer row gy-3">
                     <div class="jawab-dospem">
-                        <div>: <span class="h5">Farrel</span></div>
+                        <div>: <span class="h5"><?php
+                            echo $dosbingSkripsi;
+                        ?></span></div>
                     </div>
                     <div class="jawab-status">
-                        <div>: <span class="bg-success p-2 text-white rounded h6">Belum Selesai</span></div>
+                        <div>: <span class="bg-success p-2 text-white rounded h6"><?= $statusSkripsi?></span></div>
                     </div>
                     <div class="btn-unduh">: <button class="btn btn-success text-white h6 fw-semibold">Unduh</button></div>
                 </div>

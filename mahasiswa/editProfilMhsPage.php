@@ -78,7 +78,10 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">Provinsi</label>
                         <div class="col">
                             <select class="form-control" id="provinsi" name="provinsi" onchange="getKabupaten(this.value)">
-                            <option value="0">Pilih Provinsi</option>
+                            <?php $resultProv = $db->query('SELECT p.Nama_Provinsi, p.Kode_Provinsi FROM tb_mhs m JOIN tb_provinsi p JOIN tb_kabupaten k WHERE k.Kode_Kabupaten = m.Kode_Kabupaten AND k.Kode_Provinsi = p.Kode_Provinsi AND m.Nim = "'.$_SESSION["dataMhs"]["Nim"].'"');
+                                $provsaatini = $resultProv->fetch_object();
+                            ?>
+                            <option value="<?php echo $provsaatini->Kode_Provinsi?>"><?php echo $provsaatini->Nama_Provinsi?></option>
                                 <?php
                                     $result3 = $db->query('select * from tb_provinsi');
 
@@ -94,7 +97,12 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">Kabupaten</label>
                         <div class="col">
                             <select class="form-control" id="kabupaten" name="kabupaten">
-                            <option value="0">Pilih Kabupaten</option>
+                                <?php
+                                    $result4 = $db->query('select * from tb_kabupaten where Kode_Kabupaten="'.$_SESSION["dataMhs"]["Kode_Kabupaten"].'"');
+
+                                    $kab = $result4->fetch_object();
+                                ?>
+                            <option value="<?php echo $kab->Kode_Kabupaten?>"><?php echo $kab->Nama_Kabupaten?></option>
                             </select>
                             <small class="form-text text-danger" id="kabupaten_error"></small>
                         </div>

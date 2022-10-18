@@ -3,6 +3,15 @@ require_once('../bootstrap/header.html');
 require_once('../lib/db_login.php');
 session_start();
 $nip = $_SESSION['user']['Nim_Nip'];
+if(!isset($_SESSION['user'])){
+    header("Location: ../auth/login.php");
+}
+else{
+    $user = $_SESSION['user']['Role'];
+    if($user!='2'){
+        header("Location: ../index.php");
+    }
+}
 ?>
 <div class="row g-0">
   <div class="col-2">
@@ -15,7 +24,6 @@ $nip = $_SESSION['user']['Nim_Nip'];
       <input type="text" class="form-control w-25" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
       <div class="d-flex flex-row justify-content-around">
         <div class="d-flex justify-content-between">
-          <input type="text" class="form-control border w-100 mx-5" id="bigger-smaller" placeholder="> / <">
           <input type="text" class="form-control w-100 mx-5" id="angkatan" placeholder="Angkatan...">
           <select class="form-select w-100 mx-5" aria-label="Default select example">
             <option selected>Status PKL</option>
