@@ -6,71 +6,43 @@
     </div>
     <div class="col p-4">
     <h1 class="d-flex justify-content-center">Edit Data Operator</h1>
-    <div class="row">
-        <div class="card">
-            <form class="card-body"></form>
-                <div class="row gx-5 d-flex">
-                    <div class="d-flex flex-row">
-                        <img src="" alt="kosong" class="col-1">
-                        <div class="col">
-                            <h5 class="card-text">Farrel</h5>
-                            <h5 class="p-0">1254809</h5>
-                            <p class="p-0">Operator</p>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary fw-bold mt-4">Edit</button>
-                        </div>
-                    </div>
-            </div>
-        </div> 
-        <form class="card-body">
+    <div class="card">
+            <form class="card-body">
+                <div class="mt-4 row gx-5 d-flex flex-row">
                     <div class="form-group mt-3">
                         <label class="fw-bold">Nama</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Status</label>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
+                            <input type="text" id="Nama" name="Nama" class="form-control" placeholder="Nama">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Email</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <label class="fw-bold">No.Telepon</label>
+                        <label class="fw-bold">Password</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
+                            <input type="text" id="password" name="password" class="form-control" placeholder="Password">
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <label class="fw-bold">Alamat</label>
+                        <label class="fw-bold">No Telepon</label>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Provinsi</label>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Kabupaten</label>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="...">
+                            <input type="text" id="noHP" name="noHP" class="form-control" placeholder="No HP">
                         </div>
                     </div>
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary fw-bold mt-4">Update Data</button>
+                    <button type="button" onclick="editProfile()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
-        </form>
+                <div id="responseedit">
+                </div>
+
+            </form>
+        </div>
     </div>
-    </div>
+
+    <?php require_once '../bootstrap/footer.html' ?>
