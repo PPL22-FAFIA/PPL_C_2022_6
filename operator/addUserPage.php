@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     $result =  $db->query($query);
     if($result){
         if($role==1){
-            $query = "INSERT INTO tb_mhs (Nim, Nama, Email_SSO) VALUES ('$nimnip', '$nama', '$email')";
+            $query = "INSERT INTO tb_mhs (Nim, Nama, Email_SSO, Kode_Kabupaten) VALUES ('$nimnip', '$nama', '$email', '0')";
             $result =  $db->query($query);
             if($result){
                 header("Location: ../operator/listUserPage.php");
@@ -87,7 +87,7 @@ if(isset($_POST['submit'])){
                                 <option value="1">Mahasiswa</option>
                                 <option value="2">Dosen</option>
                                 <option value="3">Operator</option>
-                                
+
                             </select>
                         </div>
                     </div>

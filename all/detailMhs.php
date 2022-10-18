@@ -56,6 +56,9 @@ if (isset($_GET['nim'])) {
             $statusPKL = "Selesai PKL";
         }
     }
+    else {
+        $statusPKL = "Belum Mengambil PKL";
+    }
     $statusSkripsi = mysqli_query($db,"SELECT Status FROM tb_skripsi WHERE Nim = '$nim'");
     if (mysqli_num_rows($statusSkripsi) > 0) {
         // get data
@@ -69,6 +72,9 @@ if (isset($_GET['nim'])) {
         else if($statusSkripsi == 2){
             $statusSkripsi = "Selesai Skripsi";
         }
+    }
+    else{
+        $statusSkripsi = "Belum Mengambil Skripsi";
     }
 ?>
 <script src="../js/ajax.js"></script>
