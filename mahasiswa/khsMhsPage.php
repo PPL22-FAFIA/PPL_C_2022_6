@@ -41,29 +41,20 @@ else{
                         </select>
                     </div>
                 </div>
+                <!-- Input Matkul dan Nilai -->
                 <div class="row mt-4 g-0">
-                    <div class="col me-0">
-                        <label>Mata Kuliah</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-3 d-flex flex-column ms-0">
-                        <label>Nilai</label>
-                        <div class="ms-3">
-                            <!-- div kasih border -->
-                            B
-                        </div>
-
-
-                    </div>
+                    <table>
+                        <tr>
+                            <th>Mata Kuliah</th>
+                            <th>Nilai</th>
+                        </tr>
+                        <tbody id="tambahKHS"></tbody>
+                    </table>
                 </div>
+
                 <div class="text-center">
                     <!-- button to add new row mata kuliah -->
-                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle">+</button>
+                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle" onclick="addEntryKHS()">+</button>
                 </div>
                 <h4 class="fw-bold">Upload KHS</h4>
                 <div class="form-group d-flex flex-column mb-2">
@@ -78,4 +69,5 @@ else{
         </div>
     </div>
 </div>
+<script src="../js/script.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>

@@ -58,27 +58,22 @@ else{
                         </select>
                     </div>
                 </div>
+                <!-- Input Matkul dan Kelas -->
                 <div class="row mt-4 g-0">
-                    <div class="col me-0" id="tambahmatkul">
-                        <label for="semester">Mata Kuliah</label>
-                        <select class="form-select" id="mata_kuliah" name="mata_kuliah" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                        </select>
-                    </div>
-                    <div class="col-3 ms-0">
-                        <label>Kelas</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="a">A</option>
-                            <option value="b">B</option>
-                            <option value="c">C</option>
-                        </select>
-                    </div>
+                    <table>
+                        <tr>
+                            <th>Mata Kuliah</th>
+                            <th>Kelas</th>
+                        </tr>
+                        <tbody id="tambahIRS"></tbody>
+                    </table>
                 </div>
+
                 <div class="text-center">
                     <!-- button to add new row mata kuliah -->
-                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle" onclick="onCallPHP()">+</button>
+                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle" onclick="addEntryIRS()">+</button>
                 </div>
+
                 <h4 class="fw-bold">Upload IRS</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="exampleFormControlFile1">Upload File</label>
@@ -93,5 +88,5 @@ else{
     </div>
     
 </div>
-<script src="../js/ajax.js"></script>
+<script src="../js/script.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>

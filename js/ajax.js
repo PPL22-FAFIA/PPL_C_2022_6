@@ -98,8 +98,8 @@ semester.onchange = function(){
   smstr.send();
 }
 
-function onCallPHP(){
-  var url = "../function/addEntryIRS.php";
-  var inner = "tambahmatkul";
-  callAjax(url, inner);
-}
+// function onCallPHP(){
+//   var url = "../function/addEntryIRS.php";
+//   var inner = "tambahmatkul";
+//   callAjax(url, inner);
+// }
