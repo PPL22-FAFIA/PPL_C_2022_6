@@ -1,14 +1,37 @@
 <?php require_once '../bootstrap/header.html';
-session_start();
-if(!isset($_SESSION['user'])){
-    header("Location: ../auth/login.php");
-}
-else{
-    $user = $_SESSION['user']['Role'];
-    if($user!='1'){
-        header("Location: ../index.php");
+    require_once '../lib/db_login.php';
+    session_start();
+    if(!isset($_SESSION['user'])){
+        header("Location: ../auth/login.php");
     }
-}
+    else{
+        $user = $_SESSION['user']['Role'];
+        if($user!='1'){
+            header("Location: ../index.php");
+        }
+    }
+
+    if (isset($_POST['submit'])) {
+        $nim = $_SESSION['user']['Nim_Nip'];
+        $smt = test_input($_POST['semester']);
+        $sumIRS = 0;
+
+        for ($i=0; $i < count($_POST['mata_kuliah']); $i++) { 
+            $result = $db->query("INSERT INTO tb_nilai (Nim, Semester, Kode_Matkul, Kelas) VALUES ('$nim', '$smt', '".$_POST['mata_kuliah'][$i]."', '".$_POST['kelas'][$i]."')");
+
+            // $sumIRS += $_POST['irs'][$i];
+        }
+
+        $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '$sumIRS')");
+
+        if ($result2):
+        ?>
+            <div class="alert alert-success">Data Tersimpan</div>
+        <?php else: ?>
+            <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div>
+        }
+        <?php endif; 
+    }
 ?>
        
 
@@ -22,7 +45,7 @@ else{
         <div class="card">
 
             <h1 class="card-header">Entry IRS</h1>
-            <form class="card-body">
+            <form class="card-body" method="POST">
                 <div class="row gx-5">
                     <div class="col">
                         <label>Semester</label>
@@ -88,5 +111,26 @@ else{
     </div>
     
 </div>
-<script src="../js/script.js"></script>
+
+<script>
+    function addEntryIRS() {
+        var html = "<tr>";
+            html = html + "<td><select class='form-select' id='mata_kuliah' name='mata_kuliah[]' aria-label='Default select example'>";
+            html = html + "<option selected>Pilih Mata Kuliah</option>";
+            <?php $result = $db->query('select * from tb_matkul'); 
+                while ($mk = $result->fetch_object()): ?>
+                    html = html + "<option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul.' ('.$mk->SKS.' SKS)' ?></option>";
+            <?php endwhile ?>
+            html = html + "</select></td>";
+            
+            html = html + "<td><select class='form-select' name='kelas[]' aria-label='Default select example'>";
+            html = html + "<option selected>Pilih Kelas</option>";
+            html = html + "<option value='A'>A</option>";
+            html = html + "<option value='B'>B</option>";
+            html = html + "<option value='C'>C</option>";
+            html = html + "</select></td>";
+        html += "<tr>"
+        document.getElementById("tambahIRS").insertRow().innerHTML += html;
+    }
+</script>
 <?php require_once '../bootstrap/footer.html' ?>

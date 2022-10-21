@@ -1,4 +1,5 @@
 <?php require_once '../bootstrap/header.html';
+require_once '../lib/db_login.php';
 session_start();
 if(!isset($_SESSION['user'])){
     header("Location: ../auth/login.php");
@@ -69,5 +70,22 @@ else{
         </div>
     </div>
 </div>
-<script src="../js/script.js"></script>
+
+<script>
+    function addEntryKHS() {
+        var html = "<tr>";
+            html = html + "<td><select class='form-select' id='mata_kuliah' name='mata_kuliah[]' aria-label='Default select example'>";
+            html = html + "<option selected>Pilih Mata Kuliah</option>";
+            <?php $result = $db->query('select * from tb_matkul'); 
+                while ($mk = $result->fetch_object()): ?>
+                    html = html + "<option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>";
+            <?php endwhile ?>
+            html = html + "</select></td>";
+
+            html = html + "<td><input name='nilai[]' aria-label='Default select example' placeholder='Nilai'></td>";
+        html += "<tr>"
+        document.getElementById("tambahKHS").insertRow().innerHTML += html;
+    }
+</script>
+<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>

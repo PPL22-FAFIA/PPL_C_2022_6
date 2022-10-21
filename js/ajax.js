@@ -98,8 +98,12 @@ semester.onchange = function(){
   smstr.send();
 }
 
-// function onCallPHP(){
-//   var url = "../function/addEntryIRS.php";
-//   var inner = "tambahmatkul";
-//   callAjax(url, inner);
-// }
+function getMatkul(smt) {
+  var inner = "mata_kuliah";
+  var url = `../function/getMatkul.php?id=${smt}`;
+  if (smt == "") {
+      document.getElementById(inner).innerHTML = "";
+    } else {
+      callAjax(url, inner);
+    }
+}
