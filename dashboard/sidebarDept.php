@@ -6,7 +6,7 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start d-grid"
                     id="menu">
                     <li class="nav-item">
-                        <a href="../dashboard/" class="nav-link align-middle px-0 text-white fs-5 btn btn-primary">Dashboard
+                        <a href="../dashboard/" class="nav-link align-middle text-start px-0 text-white fs-5 btn btn-primary">Dashboard
                         </a>
                     </li>
                     <li>

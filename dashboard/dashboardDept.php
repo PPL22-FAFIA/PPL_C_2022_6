@@ -1,5 +1,11 @@
-<?php require_once("../lib/db_login.php");?>
-<h1 class="d-flex justify-content-center">Dashboard Mahasiswa</h1>
+<?php require_once("../lib/db_login.php");
+
+if(!isset($_SESSION['user'])){
+    header("Location: ./auth/login.php");
+}
+$user = $_SESSION['user']['Username'];
+?>
+<h1 class="d-flex justify-content-center">Dashboard Departemen</h1>
     <div class="container">
         <div class="row">
             <div class="col right-content d-flex flex-column">
@@ -182,7 +188,8 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <img src="https://1.bp.blogspot.com/-ofTtY8AGS78/YZhezd9jcrI/AAAAAAAACj4/-Mku0-NCv34U0UA3U6QfVdTJWMvfHykVgCNcBGAsYHQ/s2048/logo-undip-01.png" width="150" alt="gene">
-                        <h3 class="m-0">Departemen Informatika</h3>
+                        <h2 class="m-0"><?php echo $user?></h2>
+                        <p class="m-0">Departemen Informatika</p>
                         <p class="m-0">Fakultas Sains dan Matematika</p>
                     </div>
                 </div>
