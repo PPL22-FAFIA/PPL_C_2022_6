@@ -107,3 +107,14 @@ function getMatkul(smt) {
       callAjax(url, inner);
     }
 }
+
+function showIRS(nim, smt) {
+  var inner = "irs-mhs";
+  var url = `../function/show_irs.php?nim=${nim}&smt=${smt}`;
+
+  if (smt == "") {
+    document.getElementById(inner).innerHTML = "";
+  } else {
+    callAjax(url, inner);
+  }
+}
