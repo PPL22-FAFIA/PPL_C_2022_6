@@ -107,3 +107,8 @@ function getMatkul(smt) {
       callAjax(url, inner);
     }
 }
+function searchMhs(namaMhs) {
+  var inner = "daftarMhs";
+  var url = `../function/searchMhsDept.php?nama=${namaMhs}`;
+  callAjax(url, inner);
+}
