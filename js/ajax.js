@@ -82,22 +82,6 @@ function showNilai(nim, smt){
   }
 }
 
-
-// //get mata kuliah
-// var semester = document.forms.form.semester;
-// var matakuliah = document.forms.form.mata_kuliah;
-
-// semester.onchange = function(){
-//   var smstr = new XMLHttpRequest();
-
-//   smstr.open('GET', 'getMatkul.php?id=' + semester.value)
-//   smstr.onload = function(){
-//     var_dump(smstr.responseText);
-//     matakuliah.innerHTML = smstr.responseText;
-//   }
-//   smstr.send();
-// }
-
 function getMatkul(smt) {
   var inner = "mata_kuliah";
   var url = `../function/getMatkul.php?id=${smt}`;
@@ -129,7 +113,11 @@ function showKHS(nim, smt) {
     callAjax(url, inner);
   }
 }
-
+function deleteIRS(nim,matkul,kelas){
+  var inner = "editIRS";
+  var url = `../function/deleteIRS.php?nim=${nim}&matkul=${matkul}&kelas=${kelas}`;
+  callAjax(url, inner);
+}
 function searchMhs(namaMhs) {
   var inner = "daftarMhs";
   var url = `../function/searchMhsDept.php?nama=${namaMhs}`;
