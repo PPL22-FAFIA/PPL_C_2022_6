@@ -1,31 +1,7 @@
-<?php 
-require_once ("../bootstrap/header.html");
-require_once('../lib/db_login.php'); ?>
-<div class="row g-0">
-    <div class="col-2">
-        <?php require_once '../dashboard/sidebarOp.php' ?>
-
-    </div>
-    <div class="col p-4">
-    <h1 class="d-flex justify-content-center">Cari User</h1>
-        <div class="d-flex flex-row col-3">
-            <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                aria-describedby="button-addon2" onkeyup="searchUser(this.value)">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Filter</button>
-        </div> 
-        <div class="d-flex flex-row-reverse">
-            <table class="table table-striped table-hover">
-            <thead>
-            <tr>
-            <th scope="col">No</th>
-            <th scope="col">NIM/NIP</th>
-            <th scope="col">Username</th>
-            <th scope="col">Data User</th>
-            </tr>
-            </thead>
-            <tbody id="daftarUser">
-        <?php
-                $query = "SELECT * FROM tb_user";
+<?php
+require_once("../lib/db_login.php");
+    $user = $_GET["username"];
+                $query = "SELECT * FROM tb_user WHERE Username LIKE '%$user%' or Nim_Nip LIKE '%$user%' ";
                 $result = $db->query($query);
                 if (!$result) {
                     die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
@@ -55,11 +31,3 @@ require_once('../lib/db_login.php'); ?>
                 $result->free();
                 $db->close();
                 ?>
-                </tbody>
-                </table>
-        </div>
-    </div>
-    
-
-<script src="../js/ajax.js"></script>
-<?php require_once '../bootstrap/footer.html' ?>

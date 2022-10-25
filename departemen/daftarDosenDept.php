@@ -1,6 +1,15 @@
 <?php 
     require_once('../bootstrap/header.html');
     require_once('../lib/db_login.php'); 
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../auth/login.php");
+      } else {
+        $user = $_SESSION['user']['Role'];
+        if ($user != '4') {
+          header("Location: ../index.php");
+        }
+      }
 ?>
 <div class="row g-0">
     <div class="col-2">

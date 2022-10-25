@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../bootstrap/header.html');
 require_once('../lib/db_login.php');
 if (isset($_GET['nim'])) {
@@ -94,6 +95,20 @@ if (isset($_GET['nim'])) {
             <div class="tengah d-flex">
                 <div class=" col m-auto">
                     <div class="content-body">
+                        <!-- back button -->
+                        <div class="d-flex justify-content-start">
+                            <?php
+                                if($_SESSION['user']['Role'] == "4"){
+
+                                    echo '<a href="../departemen/daftarMhsDept.php" class="btn btn-primary">Back</a>';
+                                }
+                                
+                                if($_SESSION['user']['Role'] == "2"){
+
+                                    echo '<a href="../doswal/daftarDoswal.php" class="btn btn-primary">Back</a>';
+                                }
+
+                            ?>
                         <div class="summary-mhs m-auto">
                             <div class="title text-center h3">Prestasi Akademik</div>
                             <div class="nilai d-flex justify-content-center">

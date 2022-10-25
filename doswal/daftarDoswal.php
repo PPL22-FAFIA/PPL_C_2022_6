@@ -22,7 +22,7 @@ if (!isset($_SESSION['user'])) {
     <div class="w-100">
       <div class="text-search h6 mt-3">Cari mahasiswa</div>
       <div class="d-flex flex-row">
-        <input type="text" class="form-control w-25" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+        <input type="text" class="form-control w-25" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchMhsDoswal(this.value, <?= $nip?>">
         <button class="btn btn-outline-secondary ms-2" type="button" id="button-addon2">Search</button>
       </div>
       <div class="d-flex flex-column ">
@@ -49,6 +49,18 @@ if (!isset($_SESSION['user'])) {
     <div class="col d-flex flex-column mt-3">
       <div class="d-flex flex-row-reverse">
         <!-- print table from database siap1 -->
+        <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+        <th scope="col">No</th>
+        <th scope="col">NIM</th>
+        <th scope="col">Nama</th>
+        <th scope="col">NIM</th>
+        <th scope="col">Angkatan</th>
+        <th scope="col">Rincian Studi</th>
+        </tr>
+        </thead>
+        <tbody id="daftarMhsDoswal">
         <?php
         $query = "SELECT m.Nim, m.Nama AS nama_mhs, m.status AS status_mhs, m.Angkatan AS angkatan_mhs, m.Status_PKL AS status_pkl, m.Status_Skripsi AS status_skripsi FROM tb_mhs m JOIN tb_dosen d WHERE m.Kode_Wali = d.Kode_Wali AND d.Nip = '$nip'";
         $result = $db->query($query);
@@ -56,20 +68,6 @@ if (!isset($_SESSION['user'])) {
           die("Could not query the database: <br>" . $db->error . "<br>Query: " . $query);
         }
         $i = 1;
-        echo '<table class="table table-striped table-hover">';
-        echo '<thead>';
-        echo '<tr>';
-        echo '<th class="text-center" scope="col">No</th>';
-        echo '<th class="text-center" scope="col">NIM</th>';
-        echo '<th class="text-center" scope="col">Nama</th>';
-        echo '<th class="text-center" scope="col">NIM</th>';
-        echo '<th class="text-center" scope="col">Angkatan</th>';
-        echo '<th class="text-center" scope="col">Rincian Studi</th>';
-        echo '<th class="text-center" scope="col">PKL</th>';
-        echo '<th class="text-center" scope="col">Skripsi</th>';
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
         while ($row = $result->fetch_object()) {
           echo '<tr>';
           echo '<th class="text-center" scope="row">' . $i . '</th>';
@@ -83,33 +81,14 @@ if (!isset($_SESSION['user'])) {
           echo '</tr>';
           $i++;
         }
-        echo '</tbody>';
-        echo '</table>';
+        
         $result->free();
         $db->close();
         ?>
+        </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
-
-<!-- MODAL -->
-<div class="modal fade" id="modalFilter" tabindex="-1" role="dialog" aria-labelledby="modalFilterTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalFilterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        amdksmdksmd
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+<script src="../js/ajax.js"></script>

@@ -83,20 +83,20 @@ function showNilai(nim, smt){
 }
 
 
-//get mata kuliah
-var semester = document.forms.form.semester;
-var matakuliah = document.forms.form.mata_kuliah;
+// //get mata kuliah
+// var semester = document.forms.form.semester;
+// var matakuliah = document.forms.form.mata_kuliah;
 
-semester.onchange = function(){
-  var smstr = new XMLHttpRequest();
+// semester.onchange = function(){
+//   var smstr = new XMLHttpRequest();
 
-  smstr.open('GET', 'getMatkul.php?id=' + semester.value)
-  smstr.onload = function(){
-    var_dump(smstr.responseText);
-    matakuliah.innerHTML = smstr.responseText;
-  }
-  smstr.send();
-}
+//   smstr.open('GET', 'getMatkul.php?id=' + semester.value)
+//   smstr.onload = function(){
+//     var_dump(smstr.responseText);
+//     matakuliah.innerHTML = smstr.responseText;
+//   }
+//   smstr.send();
+// }
 
 function getMatkul(smt) {
   var inner = "mata_kuliah";
@@ -140,4 +140,13 @@ function searchDosen(namaDosen) {
   var url = `../function/searchDosenDept.php?nama=${namaDosen}`;
   callAjax(url, inner);
 }
-
+function searchMhsDoswal(namaMhs, nip) {
+  var inner = "daftarMhsDoswal";
+  var url = `../function/searchMhsDoswal.php?nama=${namaMhs}&nip=${nip}`;
+  callAjax(url, inner);
+}
+function searchUser(username) {
+  var inner = "daftarUser";
+  var url = `../function/searchUser.php?username=${username}`;
+  callAjax(url, inner);
+}
