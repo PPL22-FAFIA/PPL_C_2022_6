@@ -118,6 +118,18 @@ function showIRS(nim, smt) {
     callAjax(url, inner);
   }
 }
+
+function showKHS(nim, smt) {
+  var inner = "khs-mhs";
+  var url = `../function/show_khs.php?nim=${nim}&smt=${smt}`;
+
+  if (smt == "") {
+    document.getElementById(inner).innerHTML = "";
+  } else {
+    callAjax(url, inner);
+  }
+}
+
 function searchMhs(namaMhs) {
   var inner = "daftarMhs";
   var url = `../function/searchMhsDept.php?nama=${namaMhs}`;
