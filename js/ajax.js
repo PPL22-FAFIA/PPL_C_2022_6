@@ -135,3 +135,9 @@ function searchMhs(namaMhs) {
   var url = `../function/searchMhsDept.php?nama=${namaMhs}`;
   callAjax(url, inner);
 }
+function searchDosen(namaDosen) {
+  var inner = "daftarDosen";
+  var url = `../function/searchDosenDept.php?nama=${namaDosen}`;
+  callAjax(url, inner);
+}
+
