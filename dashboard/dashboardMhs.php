@@ -21,7 +21,8 @@ if (mysqli_num_rows($resultkhs) > 0) {
     // set session
     $_SESSION['dataKhs'] = $datakhs;
 }
-
+$queryDoswal = "SELECT d.Nip AS nip, d.Nama AS nama_dsn FROM tb_mhs m JOIN tb_dosen d WHERE m.Kode_Wali = d.Kode_Wali AND m.Nim = '$nim'";
+$resultDoswal = $db->query($queryDoswal)->fetch_object();
 ?>
 
 <div class="container">
@@ -31,8 +32,10 @@ if (mysqli_num_rows($resultkhs) > 0) {
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Status Akademik</h4>
-                    <p class="card-text">Dosen Wali</p>
-                    <p class="card-text">NIP</p>
+                    <p class="card-text m-0">Dosen Wali</p>
+                    <p class="fw-bold m-0"><?php echo $resultDoswal->nama_dsn ?></p>
+                    <p class="card-text m-0">NIP</p>
+                    <p class="fw-bold m-0"><?php echo $resultDoswal->nip ?></p>
                     <div class="row text-center">
                         <div class="col">Semester</div>
                         <div class="col">Status</div>
