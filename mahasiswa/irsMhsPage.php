@@ -13,27 +13,6 @@
             header("Location: ../index.php");
         }
     }
-
-    if (isset($_POST['submit'])) {
-        $smt = $_POST['semester'];
-        $sumIRS = 0;
-
-        for ($i=0; $i < count($_POST['mata_kuliah']); $i++) { 
-            $result = $db->query("INSERT INTO tb_nilai (Nim, Semester, Kode_Matkul, Kelas) VALUES ('$nim', '$smt', '".$_POST['mata_kuliah'][$i]."', '".$_POST['kelas'][$i]."')");
-
-            // $sumIRS += $_POST['irs'][$i];
-        }
-
-        $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '$sumIRS')");
-
-        if ($result2):
-        ?>
-            <div class="alert alert-success">Data Tersimpan</div>
-        <?php else: ?>
-            <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div>
-        }
-        <?php endif; 
-    }
 ?>
        
 
@@ -52,7 +31,7 @@
                     <div class="col">
                         <label>Semester</label>
                         <select class="form-select" name="semester" id="semester" aria-label="Default select example" onchange="showIRS(<?php echo $nim ?>, this.value)">
-                            <option value="">Open this select menu</option>
+                            <option value="">Pilih Semester</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
