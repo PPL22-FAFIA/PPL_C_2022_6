@@ -96,7 +96,6 @@ if (isset($_GET['nim'])) {
                 <div class=" col m-auto">
                     <div class="content-body">
                         <!-- back button -->
-                        <div class="d-flex justify-content-start">
                             <?php
                                 if($_SESSION['user']['Role'] == "4"){
 
