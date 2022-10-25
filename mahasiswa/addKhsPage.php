@@ -16,19 +16,21 @@
     
     if (isset($_POST['submit'])) {
         for ($i=0; $i < count($_POST['mata_kuliah']); $i++) {
-            if ($_POST['mata_kuliah'][$i] != "" && $_POST['kelas'][$i] != "") {
-                $result = $db->query("UPDATE tb_nilai SET 'Nilai' = '".$_POST['nilai'][$i]."' WHERE 'Kode_Matkul' = '".$_POST['mata_kuliah'][$i]."', '");
+            if ($_POST['mata_kuliah'][$i] != "" && $_POST['nilai'][$i] != "") {
+                $nilai = $_POST['nilai'][$i];
+                $matkul = $_POST['mata_kuliah'][$i];
+                $queryEdit = "UPDATE tb_nilai SET Nilai = '$nilai' WHERE Kode_Matkul = '$matkul' AND Nim = '$nim' AND Semester = '$smt'";
+                $result = $db->query($queryEdit);
             }
         }
 
-        $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
-        $sumSKS = $db->query($query3)->fetch_object();
-        if ($sumSKS->TotalSKS != null){
-            $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '".$sumSKS->TotalSKS."')");
-        }
-        else{
-            ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
-        }
+        // $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
+        // $sumSKS = $db->query($query3)->fetch_object();
+        // if ($sumSKS->TotalSKS != null){
+        //     $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '".$sumSKS->TotalSKS."')");
+        // }
+        // else{
+        // }
     }
 ?>
 
@@ -80,8 +82,9 @@
                             else{
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
-                                    echo "<td> <input name='mata_kuliah[]' aria-label='Default select example' value='".$row->nama_mk."' disabled='true'></td>";
-                                    echo "<td><input name='nilai[]' aria-label='Default select example' placeholder='.$row->Nilai.'></td>";
+                                    echo '<td>'.$row->nama_mk.'</td>';
+                                    echo "<input type='hidden' name='mata_kuliah[]' value='".$row->Kode_Matkul."'>";
+                                    echo "<td><input name='nilai[]' aria-label='Default select example' value='".$row->Nilai."'></td>";
                                     echo '</tr>';
                                 }
                             }
@@ -89,11 +92,6 @@
                         </tbody>
                     </table>
                     
-                </div>
-
-                <div class="text-center">
-                    <!-- button to add new row mata kuliah -->
-                    <button type="button" class="btn btn-outline-dark fw-bold mt-4 rounded-circle" onclick="addEntryKHS()">+</button>
                 </div>
 
                 <h4 class="fw-bold">Upload KHS</h4>
@@ -110,21 +108,4 @@
     </div>
     
 </div>
-
-<script>
-    function addEntryKHS() {
-        var html = "<tr>";
-            html = html + "<td><select class='form-select' id='mata_kuliah' name='mata_kuliah[]' aria-label='Default select example'>";
-            html = html + "<option selected>Pilih Mata Kuliah</option>";
-            <?php $result = $db->query('select * from tb_matkul'); 
-                while ($mk = $result->fetch_object()): ?>
-                    html = html + "<option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>";
-            <?php endwhile ?>
-            html = html + "</select></td>";
-
-            html = html + "<td><input name='nilai[]' aria-label='Default select example' placeholder='Nilai'></td>";
-        html += "<tr>"
-        document.getElementById("tambahKHS").insertRow().innerHTML += html;
-    }
-</script>
 <?php require_once '../bootstrap/footer.html' ?>

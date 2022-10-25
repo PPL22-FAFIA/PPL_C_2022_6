@@ -15,16 +15,19 @@
     $smt = $_GET['semester'];
     
     if (isset($_POST['submit'])) {
-        for ($i=0; $i < count($_POST['mata_kuliah']); $i++) {
-            if ($_POST['mata_kuliah'][$i] != "" && $_POST['kelas'][$i] != "") {
-                $result = $db->query("UPDATE tb_nilai SET 'Nilai' = '".$_POST['nilai'][$i]."' WHERE 'Kode_Matkul' = '".$_POST['mata_kuliah'][$i]."', '");
+        for ($i=0; $i < count($_POST['edit_mk']); $i++) {
+            if ($_POST['edit_mk'][$i] != "" && $_POST['edit_kelas'][$i] != "") {
+                $editKelas = $_POST['edit_kelas'][$i];
+                $kodeMatkul = $_POST['edit_mk'][$i];
+                $queryEdit = "UPDATE tb_nilai SET Kelas = '$editKelas' WHERE Kode_Matkul = '$kodeMatkul' AND Nim = '$nim' AND Semester = '$smt'";
+                $result = $db->query($queryEdit);
             }
         }
 
         $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
         $sumSKS = $db->query($query3)->fetch_object();
         if ($sumSKS->TotalSKS != null){
-            $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '".$sumSKS->TotalSKS."')");
+            $result2 = $db->query("UPDATE tb_irs SET 'Jml_SKS' = '".$sumSKS->TotalSKS."' WHERE 'Nim' = '".$nim."' AND 'Semester' = '".$smt."'");
         }
         else{
             ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
@@ -72,7 +75,7 @@
                         </tr>
                         <tbody id="editIRS">
                         <?php
-                            $query = "SELECT k.Kode_Matkul, k.Nama_Matkul as nama_mk, Kelas FROM tb_nilai n JOIN tb_matkul k 
+                            $query = "SELECT * FROM tb_nilai n JOIN tb_matkul k 
                             WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
                             $result = $db->query($query);
                             if (!$result) {
@@ -81,9 +84,9 @@
                             else{
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
-                                    echo "<td> <input name='edit_mk[]' aria-label='Default select example' value='".$row->nama_mk."' disabled='true'></td>";
+                                    echo "<td> <input name='edit_mk[]' aria-label='Default select example' value='".$row->Nama_Matkul."'></td>";
                                     echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
-                                    echo "<td><button>Hapus</button></td>";
+                                    echo "<td><button onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas)'>Hapus</button></td>";
                                     echo '</tr>';
                                 }
                             }
@@ -96,7 +99,7 @@
                         <tr>
                             <th>Mata Kuliah</th>
                             <th>Kelas</th>
-                        </tr>
+                        </tr> 
                         <tbody id="tambahIRS">
                         </tbody>
                     </table>
@@ -133,7 +136,7 @@
             <?php endwhile ?>
             html = html + "</select></td>";
 
-            html = html + "<td><input name='nilai[]' aria-label='Default select example' placeholder='Kelas'></td>";
+            html = html + "<td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>";
         html += "<tr>"
         document.getElementById("tambahIRS").insertRow().innerHTML += html;
     }
