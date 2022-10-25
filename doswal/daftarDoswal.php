@@ -52,17 +52,22 @@ if (!isset($_SESSION['user'])) {
         <table class="table table-striped table-hover">
         <thead>
         <tr>
-        <th scope="col">No</th>
-        <th scope="col">NIM</th>
-        <th scope="col">Nama</th>
-        <th scope="col">NIM</th>
-        <th scope="col">Angkatan</th>
-        <th scope="col">Rincian Studi</th>
+            <th class ="text-center" scope="col">No</th>
+            <th class ="text-center" scope="col">NIM</th>
+            <th class ="text-center" scope="col">Nama</th>
+            <th class ="text-center" scope="col">Status</th>
+            <th class ="text-center" scope="col">Angkatan</th>
+            <th class ="text-center" scope="col">PKL</th>
+            <th class ="text-center" scope="col">Skripsi</th>
+            <th class ="text-center" scope="col">Rincian Studi</th>
         </tr>
         </thead>
         <tbody id="daftarMhsDoswal">
         <?php
-        $query = "SELECT m.Nim, m.Nama AS nama_mhs, m.status AS status_mhs, m.Angkatan AS angkatan_mhs, m.Status_PKL AS status_pkl, m.Status_Skripsi AS status_skripsi FROM tb_mhs m JOIN tb_dosen d WHERE m.Kode_Wali = d.Kode_Wali AND d.Nip = '$nip'";
+        //filter angkatan
+        $query = "SELECT m.Nim, m.Nama AS nama_mhs, m.status AS status_mhs, m.Angkatan AS angkatan_mhs, pkl.Status AS status_pkl, skripsi.Status AS status_skripsi FROM tb_mhs m 
+        INNER JOIN tb_dosen d INNER JOIN tb_pkl pkl INNER JOIN tb_skripsi skripsi ON m.Nim = skripsi.Nim AND m.Nim = pkl.Nim AND m.Kode_Wali = d.Kode_Wali AND d.Nip = '$nip'";
+
         $result = $db->query($query);
         if (!$result) {
           die("Could not query the database: <br>" . $db->error . "<br>Query: " . $query);
