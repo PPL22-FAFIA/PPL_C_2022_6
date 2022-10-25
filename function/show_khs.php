@@ -9,7 +9,7 @@
                 WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
         $result = $db->query($query)->num_rows;
         if ($result==0) { 
-            echo '<a href="../mahasiswa/addKhsPage.php" class="btn btn-primary mt-3">Tambah Data KHS</a>';
+            echo 'Mohon Isi IRS Terlebih Dahulu';
         }
         else { ?>
         <table class="table table-borderless text-center">
@@ -40,8 +40,8 @@
             echo 'Jumlah SKS: ' . $sumSKS->TotalSKS . ' SKS';
             ?>
             <div class="d-flex mb-3">
-                <button class="me-auto btn btn-primary mt-3">Download File IRS</button>
-                <a href="../mahasiswa/addIrsPage.php" class="btn btn-primary mt-3">Edit Data IRS</a>
+                <button class="me-auto btn btn-primary mt-3">Download File KHS</button>
+                <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-primary mt-3">Tambah Data KHS</a>
             </div>
         <?php }
     }

@@ -12,7 +12,7 @@
     }
 
     $nim = $_SESSION['user']['Nim_Nip'];
-    $smt = $_POST['semester'];
+    $smt = $_GET['semester'];
     
     if (isset($_POST['submit'])) {
         for ($i=0; $i < count($_POST['mata_kuliah']); $i++) {
@@ -46,23 +46,7 @@
                 <div class="row gx-5">
                     <div class="col">
                         <label>Semester</label>
-                        <select class="form-select" name="semester" id="semester" aria-label="Default select example">
-                            <option value="">Open this select menu</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                        </select>
+                        <p><?php echo $smt?></p>
                     </div>
                     <div class="col">
                         <label>Tahun Ajaran</label>
