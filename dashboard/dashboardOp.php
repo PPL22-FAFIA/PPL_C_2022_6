@@ -77,8 +77,7 @@ $result3 = mysqli_query($db, $query3);
                 <div class="card">
                     <div class="card-body text-center">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
-                        <h3 class="m-0">Farrel</h3>
-                        <p class="m-0">ID Operator</p>
+                        <h3 class="m-0"><?php echo $_SESSION["user"]["Username"]?></h3>
                         <p class="m-0">Operator</p>
                     </div>
                 </div>
