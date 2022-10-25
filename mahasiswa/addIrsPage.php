@@ -30,6 +30,7 @@
         else{
             ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
         }
+        header("Location: ./irsMhsPage.php");
     }
 ?>
        
