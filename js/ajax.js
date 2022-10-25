@@ -145,3 +145,8 @@ function searchMhsDoswal(namaMhs, nip) {
   var url = `../function/searchMhsDoswal.php?nama=${namaMhs}&nip=${nip}`;
   callAjax(url, inner);
 }
+function searchUser(username) {
+  var inner = "daftarUser";
+  var url = `../function/searchUser.php?username=${username}`;
+  callAjax(url, inner);
+}

@@ -4,6 +4,7 @@
 
     $nim = $_SESSION['user']['Nim_Nip'];
 
+    
     if(!isset($_SESSION['user'])){
         header("Location: ../auth/login.php");
     }

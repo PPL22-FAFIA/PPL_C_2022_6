@@ -1,7 +1,7 @@
 <?php
 require_once("../lib/db_login.php");
 $namaDosen = $_GET["nama"];
-                $query = "SELECT Nip, Nama FROM tb_dosen WHERE Nama LIKE '%$namaDosen%' ";
+                $query = "SELECT Nip, Nama FROM tb_dosen WHERE (Nama LIKE '%$namaDosen%' or Nip LIKE '%$namaDosen%') ";
                 $result = $db->query($query);
                 if (!$result) {
                     die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);

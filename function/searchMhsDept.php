@@ -1,7 +1,7 @@
 <?php
     require_once("../lib/db_login.php");
     $namaMhs = $_GET["nama"];
-    $query = "SELECT m.Nim, m.Nama AS nama_mhs, d.Nama AS nama_dsn FROM tb_mhs m JOIN tb_dosen d WHERE m.Nama LIKE '%$namaMhs%' AND m.Kode_Wali = d.Kode_Wali ";
+    $query = "SELECT m.Nim, m.Nama AS nama_mhs, d.Nama AS nama_dsn FROM tb_mhs m JOIN tb_dosen d WHERE (m.Nama LIKE '%$namaMhs%' or m.Nim LIKE '%$namaMhs%' or d.Nama LIKE '%$namaMhs%') AND m.Kode_Wali = d.Kode_Wali ";
         $result = $db->query($query);
             if (!$result) {
                 die("Could not query the database: <br>" . $db->error . "<br>Query: " . $query);
