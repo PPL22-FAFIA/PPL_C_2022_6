@@ -11,7 +11,6 @@ require_once('../lib/db_login.php'); ?>
         <div class="d-flex flex-row col-3">
             <input type="text" class="form-control" placeholder="Search" aria-label="Search"
                 aria-describedby="button-addon2" onkeyup="searchUser(this.value)">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Filter</button>
         </div> 
         <div class="d-flex flex-row-reverse">
             <table class="table table-striped table-hover">
@@ -38,16 +37,16 @@ require_once('../lib/db_login.php'); ?>
                     echo '<td>'.$row->Username.'</td>';
                     if($row->Role == "1"){
 
-                        echo '<td><a href="editDataMhs.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td><a href="editDataMhs.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     else if($row->Role == "2"){
-                        echo '<td><a href="editDataDoswal.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td><a href="editDataDoswal.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     else if($row->Role == "3"){
-                        echo '<td><a href="editDataOp.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td><a href="editDataOp.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     else if($row->Role == "4"){
-                        echo '<td><a href="editDataDept.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td><a href="editDataDept.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     echo '</tr>';
                     $i++;
