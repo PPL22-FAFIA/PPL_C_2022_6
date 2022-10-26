@@ -113,9 +113,9 @@ function showKHS(nim, smt) {
     callAjax(url, inner);
   }
 }
-function deleteIRS(nim,matkul,kelas){
+function deleteIRS(nim,matkul,kelas,smt){
   var inner = "editIRS";
-  var url = `../function/deleteIRS.php?nim=${nim}&matkul=${matkul}&kelas=${kelas}`;
+  var url = `../function/deleteIRS.php?nim=${nim}&matkul=${matkul}&kelas=${kelas}&smt=${smt}`;
   callAjax(url, inner);
 }
 function searchMhs(namaMhs) {

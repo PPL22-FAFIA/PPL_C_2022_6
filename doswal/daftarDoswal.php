@@ -2,20 +2,33 @@
 require_once('../bootstrap/header.html');
 require_once('../lib/db_login.php');
 session_start();
-$nip = $_SESSION['user']['Nim_Nip'];
+
+if(isset($_GET['nip'])){
+    $nip = $_GET['nip'];
+}
+else{
+  $nip = $_SESSION['user']['Nim_Nip'];
+}
 if (!isset($_SESSION['user'])) {
   header("Location: ../auth/login.php");
-} else {
+} 
+else {
   $user = $_SESSION['user']['Role'];
-  if ($user != '2') {
+  if ($user != '2' && $user != '4') {
     header("Location: ../index.php");
   }
 }
 ?>
 <div class="row g-0">
   <div class="col-2">
-    <?php require_once '../dashboard/sidebarDoswal.php' ?>
-
+    
+    <?php
+      if($user == '2'){
+        include_once '../dashboard/sidebarDoswal.php';
+      }
+      else if($user == '4'){
+        include_once '../dashboard/sidebarDept.php';
+      }?>
   </div>
   <div class="col m-5">
     <h3 class="">Daftar Mahasiswa</h3>
