@@ -86,7 +86,7 @@
                                     echo '<tr>';
                                     echo "<td> <input name='edit_mk[]' aria-label='Default select example' value='".$row->Nama_Matkul."'></td>";
                                     echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
-                                    echo "<td><button onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas)'>Hapus</button></td>";
+                                    echo "<td><button type='button' onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas, $smt)'>Hapus</button></td>";
                                     echo '</tr>';
                                 }
                             }
