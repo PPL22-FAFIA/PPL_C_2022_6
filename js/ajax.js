@@ -67,8 +67,39 @@ function editProfile(){
     }else{
         alert("Please fill all the fields");
     }
-}
+}function editMhsOperator(){
+  var xmlhttp = getXMLHttpRequest();
+  //get input value
+  var noHP = document.getElementById("noHP").value;
+  var email = document.getElementById('email').value;
+  var alamat = document.getElementById('alamat').value;
+  var kabupaten = document.getElementById('kabupaten').value;
+  var status = document.getElementById('status').value;
+  var nim = document.getElementById('nim').value;
+  var nama = document.getElementById('nama').value;
+  //validate
+  if (noHP !="" && email != "" && alamat != "") {
 
+      //set url and inner
+      var url = "../function/editMhsOp.php";
+      //alert (url);
+      var inner = "responseedit";
+      //open request
+      var params = "nim="+ nim + "&no_hp=" + noHP + "&email=" + email + "&alamat=" + alamat + "&kabupaten=" + kabupaten + "&nama=" + nama + "&status=" + status;
+      xmlhttp.open('POST' , url, true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xmlhttp.onreadystatechange = function(){
+          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+              document.getElementById(inner).innerHTML = xmlhttp.responseText;
+          }
+          return false;
+      }
+      xmlhttp.send(params);
+  }else{
+      alert("Please fill all the fields");
+  }
+}         
 // show table nilai with ajax
 function showNilai(nim, smt){
   // get input value
@@ -138,8 +169,3 @@ function searchUser(username) {
   var url = `../function/searchUser.php?username=${username}`;
   callAjax(url, inner);
 }
-// function filterAngkatanDoswal(angkatan, nip) {
-//   var inner = "daftarMhsDoswal";
-//   var url = `../function/filterAngkatanDoswal.php?angkatan=${angkatan}&nip=${nip}`;
-//   callAjax(url, inner);
-// }

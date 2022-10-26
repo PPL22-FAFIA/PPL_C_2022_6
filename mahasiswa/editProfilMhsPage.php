@@ -57,9 +57,15 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                     </div>
                     <div class="form-group mt-3">
-                        <label class="fw-bold">Email</label>
+                        <label class="fw-bold">Email SSO</label>
                         <div class="col">
-                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?php echo $_SESSION["dataMhs"]["Email_SSO"];?>">
+                            <label><?php echo $_SESSION["dataMhs"]["Email_SSO"];?></label>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label class="fw-bold">Email Pribadi</label>
+                        <div class="col">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?php echo $_SESSION["dataMhs"]["Email_Pribadi"];?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
@@ -78,16 +84,15 @@ if (mysqli_num_rows($result) > 0) {
                         <label class="fw-bold">Provinsi</label>
                         <div class="col">
                             <select class="form-control" id="provinsi" name="provinsi" onchange="getKabupaten(this.value)">
-                            <?php $resultProv = $db->query('SELECT p.Nama_Provinsi, p.Kode_Provinsi FROM tb_mhs m JOIN tb_provinsi p JOIN tb_kabupaten k WHERE k.Kode_Kabupaten = m.Kode_Kabupaten AND k.Kode_Provinsi = p.Kode_Provinsi AND m.Nim = "'.$_SESSION["dataMhs"]["Nim"].'"');
+                                <?php $resultProv = $db->query('SELECT p.Nama_Provinsi, p.Kode_Provinsi FROM tb_mhs m JOIN tb_provinsi p JOIN tb_kabupaten k WHERE k.Kode_Kabupaten = m.Kode_Kabupaten AND k.Kode_Provinsi = p.Kode_Provinsi AND m.Nim = "' . $_SESSION["dataMhs"]["Nim"] . '"');
                                 $provsaatini = $resultProv->fetch_object();
-                            ?>
-                            <option value="<?php echo $provsaatini->Kode_Provinsi?>"><?php echo $provsaatini->Nama_Provinsi?></option>
-                                <?php
-                                    $result3 = $db->query('select * from tb_provinsi');
-
-                                    while ($prov = $result3->fetch_object()):
                                 ?>
-                                    <option value="<?php echo $prov->Kode_Provinsi ?>"><?php echo $prov->Nama_Provinsi ?></option>
+                                <?php
+                                $result3 = $db->query('select * from tb_provinsi');
+
+                                while ($prov = $result3->fetch_object()) :
+                                ?>
+                                    <option value="<?php echo $prov->Kode_Provinsi ?>" <?php if ($prov->Kode_Provinsi == $provsaatini->Kode_Provinsi) echo "selected" ?>><?php echo $prov->Nama_Provinsi ?></option>
                                 <?php endwhile ?>
                             </select>
                             <small class="form-text text-danger" id="provinsi_error"></small>
@@ -98,11 +103,14 @@ if (mysqli_num_rows($result) > 0) {
                         <div class="col">
                             <select class="form-control" id="kabupaten" name="kabupaten">
                                 <?php
-                                    $result4 = $db->query('select * from tb_kabupaten where Kode_Kabupaten="'.$_SESSION["dataMhs"]["Kode_Kabupaten"].'"');
+                                $result4 = $db->query('select * from tb_kabupaten where Kode_Provinsi="' . $provsaatini->Kode_Provinsi . '"');
 
-                                    $kab = $result4->fetch_object();
+
                                 ?>
-                            <option value="<?php echo $kab->Kode_Kabupaten?>"><?php echo $kab->Nama_Kabupaten?></option>
+                                <?php while ($kab = $result4->fetch_object()) : ?>
+                                    <option value="<?php echo $kab->Kode_Kabupaten ?>" <?php if ($_SESSION["dataMhs"]["Kode_Kabupaten"] == $kab->Kode_Kabupaten) echo "selected" ?>><?php echo $kab->Nama_Kabupaten ?></option>
+                                <?php
+                                endwhile; ?>
                             </select>
                             <small class="form-text text-danger" id="kabupaten_error"></small>
                         </div>
