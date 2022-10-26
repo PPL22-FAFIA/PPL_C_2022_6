@@ -82,24 +82,64 @@ function showNilai(nim, smt){
   }
 }
 
-
-//get mata kuliah
-var semester = document.forms.form.semester;
-var matakuliah = document.forms.form.mata_kuliah;
-
-semester.onchange = function(){
-  var smstr = new XMLHttpRequest();
-
-  smstr.open('GET', 'getMatkul.php?id=' + semester.value)
-  smstr.onload = function(){
-    var_dump(smstr.responseText);
-    matakuliah.innerHTML = smstr.responseText;
-  }
-  smstr.send();
+function getMatkul(smt) {
+  var inner = "mata_kuliah";
+  var url = `../function/getMatkul.php?id=${smt}`;
+  if (smt == "") {
+      document.getElementById(inner).innerHTML = "";
+    } else {
+      callAjax(url, inner);
+    }
 }
 
-function onCallPHP(){
-  var url = "../function/addEntryIRS.php";
-  var inner = "tambahmatkul";
+function showIRS(nim, smt) {
+  var inner = "irs-mhs";
+  var url = `../function/show_irs.php?nim=${nim}&smt=${smt}`;
+
+  if (smt == "") {
+    document.getElementById(inner).innerHTML = "";
+  } else {
+    callAjax(url, inner);
+  }
+}
+
+function showKHS(nim, smt) {
+  var inner = "khs-mhs";
+  var url = `../function/show_khs.php?nim=${nim}&smt=${smt}`;
+
+  if (smt == "") {
+    document.getElementById(inner).innerHTML = "";
+  } else {
+    callAjax(url, inner);
+  }
+}
+function deleteIRS(nim,matkul,kelas,smt){
+  var inner = "editIRS";
+  var url = `../function/deleteIRS.php?nim=${nim}&matkul=${matkul}&kelas=${kelas}&smt=${smt}`;
   callAjax(url, inner);
 }
+function searchMhs(namaMhs) {
+  var inner = "daftarMhs";
+  var url = `../function/searchMhsDept.php?nama=${namaMhs}`;
+  callAjax(url, inner);
+}
+function searchDosen(namaDosen) {
+  var inner = "daftarDosen";
+  var url = `../function/searchDosenDept.php?nama=${namaDosen}`;
+  callAjax(url, inner);
+}
+function searchMhsDoswal(namaMhs,angkatan, nip) {
+  var inner = "daftarMhsDoswal";
+  var url = `../function/searchMhsDoswal.php?nama=${namaMhs}&angkatan=${angkatan}&nip=${nip}`;
+  callAjax(url, inner);
+}
+function searchUser(username) {
+  var inner = "daftarUser";
+  var url = `../function/searchUser.php?username=${username}`;
+  callAjax(url, inner);
+}
+// function filterAngkatanDoswal(angkatan, nip) {
+//   var inner = "daftarMhsDoswal";
+//   var url = `../function/filterAngkatanDoswal.php?angkatan=${angkatan}&nip=${nip}`;
+//   callAjax(url, inner);
+// }

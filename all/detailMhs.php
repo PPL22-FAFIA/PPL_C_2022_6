@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../bootstrap/header.html');
 require_once('../lib/db_login.php');
 if (isset($_GET['nim'])) {
@@ -22,6 +23,7 @@ if (isset($_GET['nim'])) {
         $datakhs = mysqli_fetch_assoc($resultkhs);
     }
 }
+
 ?>
 <?php
     $doswal = $db->query("SELECT d.Nama FROM tb_dosen d JOIN tb_mhs m WHERE d.Kode_Wali = m.Kode_Wali AND Nim = '$nim'")->fetch_object();
@@ -46,15 +48,6 @@ if (isset($_GET['nim'])) {
     if (mysqli_num_rows($statusPKL) > 0) {
         // get data
         $statusPKL = mysqli_fetch_assoc($statusPKL)['Status'];
-        if($statusPKL == 0){
-            $statusPKL = "Belum Mengambil PKL";
-        }
-        else if($statusPKL == 1){
-            $statusPKL = "Sedang PKL";
-        }
-        else if($statusPKL == 2){
-            $statusPKL = "Selesai PKL";
-        }
     }
     else {
         $statusPKL = "Belum Mengambil PKL";
@@ -63,15 +56,6 @@ if (isset($_GET['nim'])) {
     if (mysqli_num_rows($statusSkripsi) > 0) {
         // get data
         $statusSkripsi = mysqli_fetch_assoc($statusSkripsi)['Status'];
-        if($statusSkripsi == 0){
-            $statusSkripsi = "Belum Mengambil Skripsi";
-        }
-        else if($statusSkripsi == 1){
-            $statusSkripsi = "Sedang Skripsi";
-        }
-        else if($statusSkripsi == 2){
-            $statusSkripsi = "Selesai Skripsi";
-        }
     }
     else{
         $statusSkripsi = "Belum Mengambil Skripsi";
@@ -87,6 +71,29 @@ if (isset($_GET['nim'])) {
         width: 100vh;
     }
 </style>
+<div class="row g-0">
+    <div class="col-2">
+
+        <?php
+        $user = $_SESSION['user']['Role'];
+        // switch case user
+        switch ($user) {
+            case 1:
+                include_once '../dashboard/sidebarMhs.php';
+                break;
+            case 2:
+                include_once '../dashboard/sidebarDoswal.php';
+                break;
+            case 3:
+                include_once '../dashboard/sidebarOp.php';
+                break;
+            case 4:
+                include_once '../dashboard/sidebarDept.php';
+                break;
+        }
+        ?>
+    </div>
+    <div class="col">
 <div class="tengah-main d-flex justify-content-center align-items-center">
 
     <div class="w-50 border rounded my-4 py-4 ">
@@ -225,3 +232,4 @@ if (isset($_GET['nim'])) {
         </div>
     </div>
 </div>
+    </div>

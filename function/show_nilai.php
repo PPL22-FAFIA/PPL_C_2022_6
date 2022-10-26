@@ -7,7 +7,7 @@
         
         $query = "SELECT k.Nama_Matkul as nama_mk, n.Nilai as nilai, k.SKS as sks 
                 FROM tb_nilai n JOIN tb_mhs m JOIN tb_matkul k 
-                WHERE n.Nim = m.Nim AND n.Kode_Matkul = k.Kode_Matkul AND m.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
+                WHERE n.Nim = m.Nim AND n.Kode_Matkul = k.Kode_Matkul AND m.Nim = '$nim' AND n.Semester = '$smt' ";
         $result = $db->query($query);
         if (!$result) {
             die("Could not query the database: <br />" . $db->error . "<br>Query: " . $query);
