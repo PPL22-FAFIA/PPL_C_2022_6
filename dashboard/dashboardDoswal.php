@@ -24,6 +24,7 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="profile-name text-center">
                         <h3><?php echo $_SESSION["dataDoswal"]["Nama"] ?></h3>
                         <p>Dosen Wali</p>
+                        <p><?= $nip?></p>
                     </div>
                 </div>
             </div>

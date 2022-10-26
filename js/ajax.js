@@ -138,3 +138,8 @@ function searchUser(username) {
   var url = `../function/searchUser.php?username=${username}`;
   callAjax(url, inner);
 }
+function filterAngkatanDoswal(angkatan, nip) {
+  var inner = "daftarMhsDoswal";
+  var url = `../function/filterAngkatanDoswal.php?angkatan=${angkatan}&nip=${nip}`;
+  callAjax(url, inner);
+}
