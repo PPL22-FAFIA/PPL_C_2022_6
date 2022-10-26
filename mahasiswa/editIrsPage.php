@@ -23,15 +23,28 @@
                 $result = $db->query($queryEdit);
             }
         }
+        
+        for ($i=0; $i < count($_POST['mata_kuliah']); $i++) {
+            $kodeMatkul = $_POST['mata_kuliah'][$i];
+            $editKelas = $_POST['kelas'][$i];
+            if ($kodeMatkul != "" && $editKelas != "") {
+                $query4 = "SELECT * FROM tb_nilai WHERE Nim = '$nim' AND Semester = '$smt' AND Kode_Matkul = '$kodeMatkul'";
+                $result = mysqli_query($db, $query4);
+                if (mysqli_num_rows($result) == 0) {
+                    $result = $db->query("INSERT INTO tb_nilai (Nim, Semester, Kode_Matkul, Kelas) VALUES ('$nim', '$smt', '".$kodeMatkul."', '".$editKelas."')");
+                }
+            }
+        }
 
         $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
         $sumSKS = $db->query($query3)->fetch_object();
         if ($sumSKS->TotalSKS != null){
-            $result2 = $db->query("UPDATE tb_irs SET 'Jml_SKS' = '".$sumSKS->TotalSKS."' WHERE 'Nim' = '".$nim."' AND 'Semester' = '".$smt."'");
+            $result2 = $db->query("UPDATE tb_irs SET Jml_SKS = '$sumSKS->TotalSKS' WHERE Nim = '$nim' AND Semester = '$smt'");
         }
         else{
             ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
         }
+        header("Location: ./irsMhsPage.php");
     }
 ?>
 
@@ -50,19 +63,6 @@
                     <div class="col">
                         <label>Semester</label>
                         <p><?php echo $smt?></p>
-                    </div>
-                    <div class="col">
-                        <label>Tahun Ajaran</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="2020/2021">2016/2017</option>
-                            <option value="2020/2021">2017/2018</option>
-                            <option value="2020/2021">2018/2019</option>
-                            <option value="2020/2021">2019/2020</option>
-                            <option value="2020/2021">2020/2021</option>
-                            <option value="2021/2022">2021/2022</option>
-                            <option value="2022/2023">2022/2023</option>
-                        </select>
                     </div>
                 </div>
                 <!-- Input Matkul dan Kelas -->
@@ -84,7 +84,8 @@
                             else{
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
-                                    echo "<td> <input name='edit_mk[]' aria-label='Default select example' value='".$row->Nama_Matkul."'></td>";
+                                    echo '<td>'.$row->Nama_Matkul.'</td>';
+                                    echo "<input type='hidden' name='edit_mk[]' value='".$row->Kode_Matkul."'>";
                                     echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
                                     echo "<td><button type='button' onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas, $smt)'>Hapus</button></td>";
                                     echo '</tr>';
@@ -101,6 +102,14 @@
                             <th>Kelas</th>
                         </tr> 
                         <tbody id="tambahIRS">
+                            <td><select class='form-select' id='mata_kuliah' name='mata_kuliah[]' aria-label='Default select example'>
+                                <option selected>Pilih Mata Kuliah</option>
+                                <?php $result = $db->query('select * from tb_matkul'); 
+                                    while ($mk = $result->fetch_object()): ?>
+                                        <option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>;
+                                <?php endwhile ?>
+                            </select></td>
+                            <td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>
                         </tbody>
                     </table>
                 </div>
@@ -129,7 +138,7 @@
     function addEntryIRS() {
         var html = "<tr>";
             html = html + "<td><select class='form-select' id='mata_kuliah' name='mata_kuliah[]' aria-label='Default select example'>";
-            html = html + "<option selected>Pilih Mata Kuliah</option>";
+            html = html + "<option>Pilih Mata Kuliah</option>";
             <?php $result = $db->query('select * from tb_matkul'); 
                 while ($mk = $result->fetch_object()): ?>
                     html = html + "<option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>";

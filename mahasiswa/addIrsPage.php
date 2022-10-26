@@ -72,7 +72,16 @@
                             <th>Mata Kuliah</th>
                             <th>Kelas</th>
                         </tr>
-                        <tbody id="tambahIRS"></tbody>
+                        <tbody id="tambahIRS">
+                            <td><select class='form-select' id='mata_kuliah' name='mata_kuliah[]' aria-label='Default select example'>
+                                <option selected>Pilih Mata Kuliah</option>
+                                <?php $result = $db->query('select * from tb_matkul'); 
+                                    while ($mk = $result->fetch_object()): ?>
+                                        <option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>;
+                                <?php endwhile ?>
+                            </select></td>
+                            <td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>
+                        </tbody>
                     </table>
                 </div>
 
