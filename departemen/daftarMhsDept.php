@@ -20,7 +20,6 @@ session_start();
         <h3 class="">Daftar Mahasiswa</h3>
         <div class="d-flex flex-row col-3">
             <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchMhs(this.value)">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Filter</button>
         </div>
         <div class="d-flex flex-row-reverse">
             <!-- print table from database siap1 -->

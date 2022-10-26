@@ -20,7 +20,6 @@
         <h3 class="">Daftar Dosen</h3>
         <div class="d-flex flex-row col-3">
         <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchDosen(this.value)">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Filter</button>
         </div>
         <div class="d-flex flex-row-reverse">
             <!-- print table from database siap1 -->
@@ -47,7 +46,7 @@
                     echo '<th scope="row">'.$i.'</th>';
                     echo '<td>'.$row->Nip.'</td>';
                     echo '<td>'.$row->Nama.'</td>';
-                    echo '<td><a href="detailMhs.php?nip='.$row->Nip.'" class="btn btn-primary">Detail</a></td>';
+                    echo '<td><a href="../doswal/daftarDoswal.php?nip='.$row->Nip.'" class="btn btn-primary">Detail</a></td>';
                     echo '</tr>';
                     $i++;
                 }
