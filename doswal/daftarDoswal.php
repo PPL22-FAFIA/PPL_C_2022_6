@@ -35,7 +35,7 @@ else {
     <div class="w-100">
       <div class="text-search h6 mt-3">Cari mahasiswa</div>
       <div class="d-flex flex-row">
-        <input type="text" id="nama-mhs" class="form-control w-25" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchMhsDoswal(this.value, <?= $nip ?>)">
+        <input type="text" id="nama-mhs" class="form-control w-25" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
       </div>
       <div class="d-flex flex-column ">
         <div class="angaktan">
@@ -55,14 +55,10 @@ else {
               <option value="2022">2022</option>
             </select>
             <script>
-            function filterAngkatanDoswal(angkatan, nip) {
-              var inner = "daftarMhsDoswal";
-              var url = `../function/filterAngkatanDoswal.php?angkatan=${angkatan}&nip=${nip}`;
-              callAjax(url, inner);
-            }
               var tahun = document.getElementById('tahun-angkatan');
+              var namamhs = document.getElementById('nama-mhs');
             </script>
-            <button class="btn btn-outline-secondary ms-2" type="button" id="button-addon2" onclick="filterAngkatanDoswal(tahun.value, <?php echo $nip ?>)">Search</button>
+            <button class="btn btn-outline-secondary ms-2" type="button" id="button-addon2" onclick="searchMhsDoswal(namamhs.value,tahun.value, <?php echo $nip ?>)">Search</button>
           </div>
         </div>
       </div>

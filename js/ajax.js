@@ -128,9 +128,9 @@ function searchDosen(namaDosen) {
   var url = `../function/searchDosenDept.php?nama=${namaDosen}`;
   callAjax(url, inner);
 }
-function searchMhsDoswal(namaMhs, nip) {
+function searchMhsDoswal(namaMhs,angkatan, nip) {
   var inner = "daftarMhsDoswal";
-  var url = `../function/searchMhsDoswal.php?nama=${namaMhs}&nip=${nip}`;
+  var url = `../function/searchMhsDoswal.php?nama=${namaMhs}&angkatan=${angkatan}&nip=${nip}`;
   callAjax(url, inner);
 }
 function searchUser(username) {
@@ -138,8 +138,8 @@ function searchUser(username) {
   var url = `../function/searchUser.php?username=${username}`;
   callAjax(url, inner);
 }
-function filterAngkatanDoswal(angkatan, nip) {
-  var inner = "daftarMhsDoswal";
-  var url = `../function/filterAngkatanDoswal.php?angkatan=${angkatan}&nip=${nip}`;
-  callAjax(url, inner);
-}
+// function filterAngkatanDoswal(angkatan, nip) {
+//   var inner = "daftarMhsDoswal";
+//   var url = `../function/filterAngkatanDoswal.php?angkatan=${angkatan}&nip=${nip}`;
+//   callAjax(url, inner);
+// }
