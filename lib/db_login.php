@@ -1,6 +1,6 @@
 <?php 
 $db_host = 'localhost';
-$db_database = 'siapif-fix';
+$db_database = 'siapif_fix-2';
 $db_username = 'root';
 $db_password = '';
 // connect database 

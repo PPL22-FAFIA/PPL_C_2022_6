@@ -82,40 +82,34 @@ $result3 = mysqli_query($db, $query3);
                         <p class="m-0">Operator</p>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <a href="../operator/addUserPage.php" class="btn btn-primary">Add User</a>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Data User</h5>
-                        <div class="row">
-                            <div class="col">
-                                <p class="text-center m-0">Mahasiswa</p>
-                                <h3 class="text-center"><?php echo mysqli_num_rows($result1);?></h3>
+                    <div class="col mt-3">
+                        <div class="card">
+                            <div class="card-body"> 
+                                <h3 class="card-title text-center" class="m">Data User</h3>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-center m-0">Mahasiswa</p>
+                                        <h3 class="text-center"><?php echo mysqli_num_rows($result1);?></h3>
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-center m-0">Dosen</p>
+                                        <h3 class="text-center"><?php echo mysqli_num_rows($result2);?></h3>
+                                    </div>
+                                </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col">
+                                    <p class="text-center m-0">Total User</p>
+                                        <h3 class="text-center"><?php echo mysqli_num_rows($result3);?></h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col">
-                                <p class="text-center m-0">Dosen</p>
-                                <h3 class="text-center"><?php echo mysqli_num_rows($result2);?></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Total User</h5>
-                        <div class="row">
-                            <div class="col">
-                            <h3 class="text-center"><?php echo mysqli_num_rows($result3);?></h3>
+                            <div class="text-center mt-4">
+                                <a href="../operator/addUserPage.php" class="btn btn-primary">Add User</a>
                             </div>
                         </div>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
