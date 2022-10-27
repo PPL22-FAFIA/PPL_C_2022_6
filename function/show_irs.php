@@ -35,9 +35,9 @@
             $result2->free();
             echo '</tbody>';
             echo '</table>';
-            $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
+            $query3 = "SELECT Jml_SKS FROM tb_irs WHERE Nim = '$nim' AND Semester = '$smt' ";
             $sumSKS = $db->query($query3)->fetch_object();
-            echo 'Jumlah SKS: ' . $sumSKS->TotalSKS . ' SKS';
+            echo 'Jumlah SKS: ' . $sumSKS->Jml_SKS . ' SKS';
             ?>
             <div class="d-flex mb-3">
                 <button class="me-auto btn btn-primary mt-3">Download File IRS</button>
