@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="lurus d-flex justify-content-center">
                 <div class="profile border rounded p-3 w-75">
                     <div>
-                        <img class="img-thumbnail rounded" src="../lib/lecture.jpg" alt="profile">
+                        <img class="img-thumbnail rounded" src="../lib/pp.jpg" alt="profile">
                     </div>
                     <div class="profile-name text-center">
                         <h3><?php echo $_SESSION["dataDoswal"]["Nama"] ?></h3>
