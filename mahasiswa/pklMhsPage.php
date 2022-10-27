@@ -78,7 +78,7 @@ if (mysqli_num_rows($result) > 0) {
                     <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="btn btn-primary"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
                     <p id="file_info"></p>
                     <p><button type="button" onclick="btnUpload()" id="btn_upload" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
-                    <input type="file" display="none" id="selectfile">
+                    <input type="file" hidden id="selectfile">
                     <p id="message_info"></p>
                 </div>
                 <button class=" btn btn-primary mt-3">Simpan</button>
@@ -87,6 +87,7 @@ if (mysqli_num_rows($result) > 0) {
     </div>
 </div>
 </div>
+<?php require_once '../bootstrap/footer.html' ?>
 <script>
     var fileobj;
     function btnFilePick() {
@@ -117,7 +118,7 @@ if (mysqli_num_rows($result) > 0) {
             form_data.append('upload_file', file_obj);
             $.ajax({
                 type: 'POST',
-                url: 'upload_skripsi.php',
+                url: '../function/upload_pkl.php',
                 contentType: false,
                 processData: false,
                 data: form_data,
@@ -140,4 +141,3 @@ if (mysqli_num_rows($result) > 0) {
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     }
 </script>
-<?php require_once '../bootstrap/footer.html' ?>
