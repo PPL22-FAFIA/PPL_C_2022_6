@@ -41,7 +41,7 @@
             ?>
             <div class="d-flex mb-3">
                 <button class="me-auto btn btn-primary mt-3">Download File IRS</button>
-                <a href="../mahasiswa/editIrsPage.php?semester=<?php echo $smt?>" class="btn btn-primary mt-3">Edit Data IRS</a>
+                <a href="../mahasiswa/editIrsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Edit Data IRS</a>
             </div>
         <?php }
     }

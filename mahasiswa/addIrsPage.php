@@ -41,10 +41,10 @@
 
     </div>
     <div class="col p-4">
-        <h1 class="d-flex justify-content-center">IRS</h1>
+        <h3 class="d-flex justify-content-center">IRS</h3>
         <div class="card">
 
-            <h1 class="card-header">Entry IRS</h1>
+            <h4 class="card-header">Entry IRS</h4>
             <form class="card-body" method="POST" action="">
                 <div class="row gx-5">
                     <div class="col">
@@ -80,7 +80,7 @@
                                         <option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>;
                                 <?php endwhile ?>
                             </select></td>
-                            <td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>
+                            <td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas' class="form-control"></td>
                         </tbody>
                     </table>
                 </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="d-flex mb-3">
                     <button class="me-auto btn btn-primary mt-3">Upload</button>
-                    <button type="submit" name="submit" class=" btn btn-primary mt-3">Simpan</button>
+                    <button type="submit" name="submit" class=" btn btn-success mt-3">Simpan</button>
                 </div>
             </form>
         </div>

@@ -34,7 +34,7 @@ $result3 = mysqli_query($db, $query3);
                             <div class="second-content">
                                 <div class="tengah d-flex justify-content-center">
 
-                                    <div class="chart col text-center">
+                                    <div class="chart col text-center ml-5">
                                         <?php
                                         if ($stmt = $db->query("SELECT Angkatan, COUNT(*) AS total FROM tb_mhs GROUP BY Angkatan")) {
                                             $sum = $db->query("SELECT COUNT(*) AS total FROM tb_mhs");
@@ -89,7 +89,9 @@ $result3 = mysqli_query($db, $query3);
                                                 chart.draw(data, options);
                                             }
                                         </script>
-                                        <div id="totalChart"></div>
+                                        <div class="d-flex justify-content-center">
+                                            <div  id="totalChart"></div>
+                                        </div>
                                     </div>
                                 </div>
                             <div class="col">

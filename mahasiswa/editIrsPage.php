@@ -55,9 +55,9 @@
     </div>
     <div class="col p-4">
         <h1 class="d-flex justify-content-center">IRS</h1>
-        <div class="card">
+        <div class="card mt-3">
 
-            <h1 class="card-header">Edit Data IRS</h1>
+            <h3 class="card-header">Edit Data IRS</h3>
             <form class="card-body" method="POST" action="">
                 <div class="row gx-5">
                     <div class="col">
@@ -85,9 +85,9 @@
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
                                     echo '<td>'.$row->Nama_Matkul.'</td>';
+                                    echo '<td>'.$row->Kelas.'</td>';
                                     echo "<input type='hidden' name='edit_mk[]' value='".$row->Kode_Matkul."'>";
-                                    echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
-                                    echo "<td><button type='button' onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas, $smt)'>Hapus</button></td>";
+                                    echo "<td><button class='btn btn-danger' type='button' onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas, $smt)'>Hapus</button></td>";
                                     echo '</tr>';
                                 }
                             }
@@ -109,7 +109,7 @@
                                         <option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>;
                                 <?php endwhile ?>
                             </select></td>
-                            <td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>
+                            <td><input class="form-control" name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>
                         </tbody>
                     </table>
                 </div>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="d-flex mb-3">
                     <button class="me-auto btn btn-primary mt-3">Upload</button>
-                    <button type="submit" name="submit" class=" btn btn-primary mt-3">Simpan</button>
+                    <button type="submit" name="submit" class=" btn btn-success mt-3">Simpan</button>
                 </div>
             </form>
         </div>
@@ -145,7 +145,7 @@
             <?php endwhile ?>
             html = html + "</select></td>";
 
-            html = html + "<td><input name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>";
+            html = html + "<td><input class='form-control' name='kelas[]' aria-label='Default select example' placeholder='Kelas'></td>";
         html += "<tr>"
         document.getElementById("tambahIRS").insertRow().innerHTML += html;
     }

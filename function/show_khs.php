@@ -41,7 +41,7 @@
             ?>
             <div class="d-flex mb-3">
                 <button class="me-auto btn btn-primary mt-3">Download File KHS</button>
-                <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-primary mt-3">Tambah Data KHS</a>
+                <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Tambah Data KHS</a>
             </div>
         <?php }
     }
