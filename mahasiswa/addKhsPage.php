@@ -52,10 +52,24 @@
                         <p><?php echo $smt?></p>
                     </div>
                     <div class="col">
-                        <label>IP Semester</label>
-                        <input type="number" name='ip'><br>
-                        <label>IP Komulatif</label>
-                        <input type="number" name='ipk'>
+                        <?php 
+                            $query = "SELECT Ip, Ip_Kumulatif FROM tb_khs WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
+                            $result = mysqli_query($db, $query);
+                            // check result
+                            if (mysqli_num_rows($result) > 0) {
+                                $row = $result->fetch_object();
+                                echo "<label>IP Semester</label>";
+                                echo "<input type='number' name='ip' value='".$row->Ip."'><br>";
+                                echo "<label>IP Komulatif</label>";
+                                echo "<input type='number' name='ipk' value='".$row->Ip_Kumulatif."''>";
+                            }
+                            else{
+                                echo "<label>IP Semester</label>";
+                                echo "<input type='number' name='ip'><br>";
+                                echo "<label>IP Komulatif</label>";
+                                echo "<input type='number' name='ipk'>";
+                            }
+                        ?>
                     </div>
                 </div>
                 <!-- Input Matkul dan Kelas -->
