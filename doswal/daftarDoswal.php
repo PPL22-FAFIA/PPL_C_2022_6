@@ -60,7 +60,7 @@ else {
               var tahun = document.getElementById('tahun-angkatan');
               var namamhs = document.getElementById('nama-mhs');
             </script>
-            <button class="btn btn-outline-secondary ms-2" type="button" id="button-addon2" onclick="searchMhsDoswal(namamhs.value,tahun.value, <?php echo $nip ?>)">Search</button>
+            <button class="btn btn-outline-secondary ms-2" type="button" id="button-addon2" onclick="searchMhsDoswal(namamhs.value,tahun.value, <?= $nip ?>)">Search</button>
           </div>
         </div>
       </div>

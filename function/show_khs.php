@@ -26,9 +26,9 @@
             $i = 1;
             while ($row = $result2->fetch_object()) {
                 echo '<tr>';
-                echo '<th>' . $i . '</th>';
-                echo '<td>' . $row->nama_mk . ' (' . $row->SKS .  ' SKS) </td>';
-                echo '<td>' . $row->Nilai . '</td>';
+                echo '<th class="text-center">' . $i . '</th>';
+                echo '<td class="text-center">' . $row->nama_mk . ' (' . $row->SKS .  ' SKS) </td>';
+                echo '<td class="text-center">' . $row->Nilai . '</td>';
                 echo '</tr>';
                 $i++;
             }
