@@ -48,7 +48,7 @@ session_start();
                 echo '<th class="text-center" scope="row">' . $i . '</th>';
                 echo '<td class="text-center">' . $row->Nim . '</td>';
                 echo '<td class="text-center">' . $row->nama_mhs . '</td>';
-                echo '<td class="text-center"' . $row->nama_dsn . '</td>';
+                echo '<td class="text-center">' . $row->nama_dsn . '</td>';
                 echo '<td class="text-center"><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
                 echo '</tr>';
                 $i++;
