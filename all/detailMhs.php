@@ -23,6 +23,14 @@ if (isset($_GET['nim'])) {
         $datakhs = mysqli_fetch_assoc($resultkhs);
     }
 }
+if (!isset($_SESSION['user'])) {
+    header("Location: ../auth/login.php");
+  } else {
+    $user = $_SESSION['user']['Role'];
+    if ($user != '4' && $user != '2') {
+      header("Location: ../index.php");
+    }
+  }
 
 ?>
 <?php
@@ -131,7 +139,7 @@ if (isset($_GET['nim'])) {
                 <div class="card col">
                     <div class="profile m-2">
                         <div class="profile-img d-flex justify-content-center">
-                            <img class="img-thumbnail rounded-circle w-50" src="../lib/lecture-square.jpg" alt="profile">
+                            <img class="img-thumbnail rounded-circle w-50" src="../lib/pp.jpg" alt="profile">
                         </div>
                         <div class="profile-name text-center">
                             <h3><?php echo $data['Nama'] ?></h3>
@@ -149,7 +157,7 @@ if (isset($_GET['nim'])) {
             <div class="input ms-5">
                 <form action="POST">
                     <div for="input-semester" class=" fw-semibold h4">Pilih Semester:</div>
-                    <select class="form-select w-25" onchange="showNilai(<?php echo $nim ?>, this.value)">
+                    <select class="form-select w-25" id="input-semester">
                         <option selected value="">Pilih semester...</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -166,9 +174,16 @@ if (isset($_GET['nim'])) {
                         <option value="13">13</option>
                         <option value="14">14</option>
                     </select>
+                    <script>
+                        var semester = document.getElementById('input-semester');
+                    </script>
+                    <button type="button" class="btn btn-primary" onclick="showNilai(<?php echo $nim ?>, semester.value)">Lihat KHS</button>
                 </form>
             </div>
             <div class="nilai-mhs mx-5 my-2" id="nilai-mhs">
+
+            </div>
+            <div id="irs-mhs">
 
             </div>
         </div>

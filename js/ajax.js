@@ -57,7 +57,6 @@ function editProfile(){
         xmlhttp.open('POST' , url, true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.onreadystatechange = function(){
-            document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
             if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
                 document.getElementById(inner).innerHTML = xmlhttp.responseText;
             }
@@ -67,7 +66,30 @@ function editProfile(){
     }else{
         alert("Please fill all the fields");
     }
-}function editMhsOperator(){
+}
+
+function editPKL(){
+  var xmlhttp = getXMLHttpRequest();
+  //get input value
+  var tempat = document.getElementById("tempat").value;
+  var status = document.getElementById('statuspkl').value;
+  //set url and inner
+  var url = "../function/edit_pkl.php";
+  //alert (url);
+  var inner = "responseedit";
+  //open request
+  var params = "tempat="+ tempat + "&status=" + status;
+  xmlhttp.open('POST' , url, true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.onreadystatechange = function(){
+      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+          document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+  }
+  xmlhttp.send(params);
+}
+function editMhsOperator(){
   var xmlhttp = getXMLHttpRequest();
   //get input value
   var noHP = document.getElementById("noHP").value;

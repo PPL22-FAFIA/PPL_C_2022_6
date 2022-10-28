@@ -38,3 +38,7 @@
             ?>
             </tbody>
         </table>
+        <!-- button approve -->
+        <button class="btn btn-success">Approve</button>
+        
+        <button class="btn btn-danger">Deny</button>

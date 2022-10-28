@@ -61,3 +61,4 @@
 
 <script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>
+

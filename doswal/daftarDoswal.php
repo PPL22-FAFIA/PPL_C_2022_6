@@ -32,10 +32,12 @@ else {
   </div>
   <div class="col m-5">
     <h3 class="">Daftar Mahasiswa</h3>
-    <div class="w-100">
-      <div class="text-search h6 mt-3">Cari mahasiswa</div>
-      <div class="d-flex flex-row">
-        <input type="text" id="nama-mhs" class="form-control w-25" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+    <div class="w-100 d-flex flex-row">
+      <div class="search-mahasiswa d-flex flex-column me-3">
+        <div class="text-search h6 mt-3">Cari mahasiswa</div>
+        <div class="d-flex flex-row">
+          <input type="text" id="nama-mhs" class="form-control w-100" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+        </div>
       </div>
       <div class="d-flex flex-column ">
         <div class="angaktan">

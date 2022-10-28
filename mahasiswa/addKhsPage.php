@@ -31,6 +31,7 @@
         // }
         // else{
         // }
+        header("Location: ./khsMhsPage.php");
     }
 ?>
 
@@ -51,17 +52,24 @@
                         <p><?php echo $smt?></p>
                     </div>
                     <div class="col">
-                        <label>Tahun Ajaran</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="2020/2021">2016/2017</option>
-                            <option value="2020/2021">2017/2018</option>
-                            <option value="2020/2021">2018/2019</option>
-                            <option value="2020/2021">2019/2020</option>
-                            <option value="2020/2021">2020/2021</option>
-                            <option value="2021/2022">2021/2022</option>
-                            <option value="2022/2023">2022/2023</option>
-                        </select>
+                        <?php 
+                            $query = "SELECT Ip, Ip_Kumulatif FROM tb_khs WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
+                            $result = mysqli_query($db, $query);
+                            // check result
+                            if (mysqli_num_rows($result) > 0) {
+                                $row = $result->fetch_object();
+                                echo "<label>IP Semester</label>";
+                                echo "<input type='number' name='ip' value='".$row->Ip."'><br>";
+                                echo "<label>IP Komulatif</label>";
+                                echo "<input type='number' name='ipk' value='".$row->Ip_Kumulatif."''>";
+                            }
+                            else{
+                                echo "<label>IP Semester</label>";
+                                echo "<input type='number' name='ip'><br>";
+                                echo "<label>IP Komulatif</label>";
+                                echo "<input type='number' name='ipk'>";
+                            }
+                        ?>
                     </div>
                 </div>
                 <!-- Input Matkul dan Kelas -->
