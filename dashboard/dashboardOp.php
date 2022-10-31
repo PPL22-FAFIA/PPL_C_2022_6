@@ -15,25 +15,16 @@ $query3 = "SELECT * FROM tb_User";
 $result3 = mysqli_query($db, $query3);
 
 ?>
-<div class="content w-100 h-100 m-3">
-    <div class="title text-center h1">Dashboard Operator</div>
-    <div class="main-content d-flex mt-5 mx-3">
-        <div class="left-content col">
+<div class="container">
+    <h3 class="d-flex justify-content-center mt-3">Dashboard Operator</h3>
+    <div class="row">
+        <div class="col">
             <div class="card">
-                <div class="card-body text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
-                    <h3 class="m-0"><?php echo $_SESSION["user"]["Username"] ?></h3>
-                    <p class="m-0">Operator</p>
-                </div>
-            </div>
-            <div class="col mt-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title text-center" class="m">Data User</h3>
-                        <div class="row">
+                <div class="card-body">
+                <h3 class= "card-title">Data Mahasiswa</h3>
+                    <div class="row">
                             <div class="second-content">
                                 <div class="tengah d-flex justify-content-center">
-
                                     <div class="chart col text-center ml-5">
                                         <?php
                                         if ($stmt = $db->query("SELECT Angkatan, COUNT(*) AS total FROM tb_mhs GROUP BY Angkatan")) {
@@ -92,30 +83,43 @@ $result3 = mysqli_query($db, $query3);
                                         <div class="d-flex justify-content-center">
                                             <div  id="totalChart"></div>
                                         </div>
-                                    </div>
-                                </div>
-                            <div class="col">
-                                <p class="text-center m-0">Mahasiswa</p>
-                                <h3 class="text-center"><?php echo mysqli_num_rows($result1); ?></h3>
-                            </div>
-                            <div class="col">
-                                <p class="text-center m-0">Dosen</p>
-                                <h3 class="text-center"><?php echo mysqli_num_rows($result2); ?></h3>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="text-center m-0">Total User</p>
-                                    <h3 class="text-center"><?php echo mysqli_num_rows($result3); ?></h3>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
+                    <h3 class="m-0"><?php echo $_SESSION["user"]["Username"] ?></h3>
+                    <p class="m-0">Operator</p>
+                </div>
+            </div>
+            <div class="row mt-3"></div>
+            <div class="card">
+                <div class="card-body">
+                <h3 class="card-title text-center" class="m">Data User</h3>
+                    <div class= "row">
+                        <div class="col">
+                            <p class="text-center m-0">Mahasiswa</p>
+                            <h3 class="text-center"><?php echo mysqli_num_rows($result1); ?></h3>
+                        </div>
+                        <div class="col">
+                            <p class="text-center m-0">Dosen</p>
+                            <h3 class="text-center"><?php echo mysqli_num_rows($result2); ?></h3>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center m-0">Total User</p>
+                                <h3 class="text-center"><?php echo mysqli_num_rows($result3); ?></h3>
+                            </div>
                         </div>
                         <div class="text-center mt-4">
                             <a href="../operator/addUserPage.php" class="btn btn-primary px-3 py-2">Add User</a>
-                        </div>
+                        </div>     
                     </div>
                 </div>
             </div>
