@@ -39,17 +39,17 @@ if (mysqli_num_rows($result) > 0) {
                             $sum = $db->query("SELECT COUNT(*) AS total FROM tb_pkl p JOIN tb_mhs m ON p.Nim = m.Nim WHERE m.Kode_Wali = '$kodewali'");
                             $row = mysqli_fetch_assoc($sum);
                             echo "Total : " . $row['total'] . "<br>";
-                            $php_data_array = array(); // create PHP array
+                            $array_pkl_done = array(); // create PHP array
                             while ($row = $stmt->fetch_row()) {
-                                $php_data_array[] = $row; // Adding to array
+                                $array_pkl_done[] = $row; // Adding to array
                             }
                         } else {
                             echo $db->error;
                         }
                         echo "<script>
-                                var my_2d = " . json_encode($php_data_array) . "
-                                for(i = 0; i < my_2d.length; i++){
-                                    data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
+                                var my_1d = " . json_encode($array_pkl_done) . "
+                                for(i = 0; i < my_1d.length; i++){
+                                    data.addRow([my_1d[i][0], parseInt(my_1d[i][1])]);
                                 }
                             </script>";
                         ?>
@@ -66,8 +66,8 @@ if (mysqli_num_rows($result) > 0) {
                                 var data = new google.visualization.DataTable();
                                 data.addColumn('string', 'Angkatan');
                                 data.addColumn('number', 'Total');
-                                for (i = 0; i < my_2d.length; i++)
-                                    data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
+                                for (i = 0; i < my_1d.length; i++)
+                                    data.addRow([my_1d[i][0], parseInt(my_1d[i][1])]);
                                 // above row adds the JavaScript two dimensional array data into required chart format
                                 var options = {
                                     pieHole: 0.5,
@@ -165,59 +165,61 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="chart-skripsi border rounded p-3">
                     <h5 class="card-title">Data Mahasiswa Skripsi</h5>
                     <?php
-                    if ($stmt = $db->query("SELECT Angkatan, COUNT(*) AS total FROM tb_mhs GROUP BY Angkatan")) {
-                        $sum = $db->query("SELECT COUNT(*) AS total FROM tb_mhs");
+                    $kodewali =  $_SESSION['dataDoswal']['Kode_Wali'];
+                    if ($stmt = $db->query("SELECT p.Status, COUNT(*) AS total FROM tb_skripsi p JOIN tb_mhs m ON p.Nim = m.Nim WHERE m.Kode_Wali = '$kodewali' GROUP BY p.Status")) {
+                        $sum = $db->query("SELECT COUNT(*) AS total FROM tb_skripsi p JOIN tb_mhs m ON p.Nim = m.Nim WHERE m.Kode_Wali = '$kodewali'");
                         $row = mysqli_fetch_assoc($sum);
                         echo "Total : " . $row['total'] . "<br>";
-                        $php_data_array = array(); // create PHP array
+                        $array_skripsi_done = array(); // create PHP array
                         while ($row = $stmt->fetch_row()) {
-                            $php_data_array[] = $row; // Adding to array
+                            $array_skripsi_done[] = $row; // Adding to array
                         }
                     } else {
                         echo $db->error;
                     }
                     echo "<script>
-                                            var my_2d = " . json_encode($php_data_array) . "
-                                            for(i = 0; i < my_2d.length; i++){
-                                                data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
-                                            }
-                                        </script>";
+                            var my_3d = " . json_encode($array_skripsi_done) . "
+                            for(i = 0; i < my_3d.length; i++){
+                                data.addRow([my_3d[i][0], parseInt(my_3d[i][1])]);
+                            }
+                        </script>";
                     ?>
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <script>
                         google.charts.load('current', {
                             'packages': ['corechart']
-                        });
+                        }
+                        );
                         // Draw the pie chart when Charts is loaded.
                         google.charts.setOnLoadCallback(draw_my_chart);
                         // Callback that draws the pie chart
                         function draw_my_chart() {
-                            // Create the data table .
-                            var data = new google.visualization.DataTable();
-                            data.addColumn('string', 'Angkatan');
-                            data.addColumn('number', 'Total');
-                            for (i = 0; i < my_2d.length; i++)
-                                data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
-                            // above row adds the JavaScript two dimensional array data into required chart format
-                            var options = {
-                                pieHole: 0.5,
-                                'width': 400,
-                                'height': 400,
-                                'legend': 'none',
-                                'alignment': 'center',
-                                'chartArea': {
-                                    'width': '100%',
-                                    'height': '90%'
-                                },
-                                'pieSliceText': 'label',
-                                'pieSliceTextStyle': {
-                                    'color': 'white',
-                                },
-                                'backgroundColor': 'transparent',
-                            };
-                            // Instantiate and draw the chart
-                            var chart = new google.visualization.PieChart(document.getElementById('totalChartSkripsi'));
-                            chart.draw(data, options);
+                        // Create the data table .
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'Angkatan');
+                        data.addColumn('number', 'Total');
+                        for (i = 0; i < my_3d.length; i++)
+                            data.addRow([my_3d[i][0], parseInt(my_3d[i][1])]);
+                                // above row adds the JavaScript two dimensional array data into required chart format
+                                var options = {
+                                    pieHole: 0.5,
+                                    'width': 400,
+                                    'height': 400,
+                                    'legend': 'none',
+                                    'alignment': 'center',
+                                    'chartArea': {
+                                        'width': '100%',
+                                    '   height': '90%'
+                                    },
+                                    'pieSliceText': 'label',
+                                    'pieSliceTextStyle': {
+                                        'color': 'white',
+                                    },
+                                '   backgroundColor': 'transparent',
+                                };
+                                // Instantiate and draw the chart
+                                var chart = new google.visualization.PieChart(document.getElementById('totalChartSkripsi'));
+                                chart.draw(data, options);
                         }
                     </script>
                     <div id="totalChartSkripsi"></div>

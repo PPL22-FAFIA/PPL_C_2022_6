@@ -63,10 +63,20 @@ $statuspkl = $db->query("SELECT * FROM tb_pkl WHERE Nim = '$nim'")->fetch_object
                         <option value="Belum Ambil" <?php if ($statuspkl->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
+                <div>
+                    <label for="nilai" class="form-label">Nilai</label>
+                    <!-- select option A-E -->
+                    <select class="form-select" id="nilai" name="nilai" aria-label="Default select example">
+                        <option value="A" <?php if ($statuspkl->Nilai == "A") echo "selected" ?>>A</option>
+                        <option value="B" <?php if ($statuspkl->Nilai == "B") echo "selected" ?>>B</option>
+                        <option value="C" <?php if ($statuspkl->Nilai == "C") echo "selected" ?>>C</option>
+                        <option value="D" <?php if ($statuspkl->Nilai == "D") echo "selected" ?>>D</option>
+                        <option value="E" <?php if ($statuspkl->Nilai == "E") echo "selected" ?>>E</option>
+                    </select></div>
                 <div class="col">
                     <label>Tempat PKL</label>
                 </div>
-                <input class="form-group form-control" type="text" id="tempat" name="tempat">
+                <input class="form-group form-control" type="text" id="tempat" name="tempat" value="<?= $statuspkl->Tempat?>">
                 <h4 class="fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="exampleFormControlFile1">Upload File</label>

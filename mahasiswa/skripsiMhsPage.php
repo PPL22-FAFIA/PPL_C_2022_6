@@ -9,6 +9,9 @@ else{
         header("Location: ../index.php");
     }
 }
+$nim = $_SESSION['user']['Nim_Nip'];
+require_once("../lib/db_login.php");
+$statusskripsi = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_object();
 ?><div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>
@@ -45,30 +48,23 @@ else{
                 </div>
                 <div class="col">
                     <label>Status Skripsi</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" id="statusskripsi" name="statusskripsi" aria-label="Status Skripsi">
+                        <option value="Sudah Ambil" <?php if ($statusskripsi->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
+                        <option value="Sedang Mengambil" <?php if ($statusskripsi->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
+                        <option value="Belum Ambil" <?php if ($statusskripsi->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
+                <div>
+                    <label for="nilai" class="form-label">Nilai</label>
+                    <!-- select option A-E -->
+                    <select class="form-select" id="nilai" name="nilai" aria-label="Nilai Skripsi">
+                        <option value="A" <?php if ($statusskripsi->Nilai == "A") echo "selected" ?>>A</option>
+                        <option value="B" <?php if ($statusskripsi->Nilai == "B") echo "selected" ?>>B</option>
+                        <option value="C" <?php if ($statusskripsi->Nilai == "C") echo "selected" ?>>C</option>
+                        <option value="D" <?php if ($statusskripsi->Nilai == "D") echo "selected" ?>>D</option>
+                        <option value="E" <?php if ($statusskripsi->Nilai == "E") echo "selected" ?>>E</option>
+                    </select></div>
                 <div class="col">
-                    <label>Tahun Ajaran</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="col me-0">
-                        <label>Mata Kuliah</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
                     <h4 class="fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="exampleFormControlFile1">Upload File</label>
@@ -78,13 +74,14 @@ else{
                     <input type="file" hidden id="selectfile">
                     <p id="message_info"></p>
                 </div>
-                <button class=" btn btn-success mt-3">Simpan</button>
-
+                <button class="btn btn-success mt-3" type="button" onclick="editSkripsi()">Simpan</button>
+                <div id="responseedit"></div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>
 <script>
     var fileobj;
