@@ -33,14 +33,14 @@ $statuspkl = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_ob
                             <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                         </div>
                         <div class="col-3">
-                            <h4>Status</h4><?php
+                            <h4 class="text-center">Status</h4><?php
                         if ($_SESSION['dataMhs']['Status'] == "Aktif") {
-                            echo '<h3 class="col badge fs-4 text-bg-success text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                            echo '<h5 class="mx-auto rounded w-50 px-1 py-1 text-bg-success text-bg-success text-white text-center">'.$_SESSION["dataMhs"]["Status"].'</h5>';
                         } else if($_SESSION['dataMhs']['Status'] == "Cuti"){ 
-                            echo '<h3 class="col badge fs-4 text-bg-primary text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                            echo '<h5 class="mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">'.$_SESSION["dataMhs"]["Status"].'</h5>';
                         }
                         else{
-                            echo '<h3 class="col badge fs-4 text-bg-danger text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
+                            echo '<h5 class="col badge fs-4 text-bg-danger text-white text-center">'.$_SESSION["dataMhs"]["Status"].'</h5>';
                         }
                         ?>
                         </div>
@@ -58,13 +58,13 @@ $statuspkl = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_ob
                     <h4 class="fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="exampleFormControlFile1">Upload File</label>
-                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="btn btn-primary"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
+                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="btn btn-warning"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
                     <p id="file_info"></p>
                     <p><button type="button" onclick="btnUpload()" id="btn_upload" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
                     <input type="file" hidden id="selectfile">
                     <p id="message_info"></p>
                 </div>
-                <button class=" btn btn-primary mt-3">Simpan</button>
+                <button class=" btn btn-success mt-3">Simpan</button>
 
                 </div>
             </form>

@@ -26,7 +26,7 @@
         <h1 class="d-flex justify-content-center">IRS</h1>
         <div class="card">
 
-            <h1 class="card-header">Data IRS</h1>
+            <h3 class="card-header">Data IRS</h3>
             <form class="card-body" method="POST" action="">
                 <div class="row gx-5">
                     <div class="col">
