@@ -73,12 +73,35 @@ function editPKL(){
   //get input value
   var tempat = document.getElementById("tempat").value;
   var status = document.getElementById('statuspkl').value;
+  var nilai = document.getElementById('nilai').value;
   //set url and inner
   var url = "../function/edit_pkl.php";
   //alert (url);
   var inner = "responseedit";
   //open request
-  var params = "tempat="+ tempat + "&status=" + status;
+  var params = "tempat="+ tempat + "&status=" + status + "&nilai=" + nilai;
+  xmlhttp.open('POST' , url, true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.onreadystatechange = function(){
+      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+          document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+  }
+  xmlhttp.send(params);
+}
+
+function editSkripsi(){
+  var xmlhttp = getXMLHttpRequest();
+  //get input value
+  var nilai = document.getElementById("nilai").value;
+  var status = document.getElementById('statusskripsi').value;
+  //set url and inner
+  var url = "../function/edit_skripsi.php";
+  //alert (url);
+  var inner = "responseedit";
+  //open request
+  var params = "nilai="+ nilai + "&status=" + status;
   xmlhttp.open('POST' , url, true);
   xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   xmlhttp.onreadystatechange = function(){

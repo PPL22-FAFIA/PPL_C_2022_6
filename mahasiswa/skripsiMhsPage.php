@@ -11,7 +11,7 @@ else{
 }
 $nim = $_SESSION['user']['Nim_Nip'];
 require_once("../lib/db_login.php");
-$statuspkl = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_object();
+$statusskripsi = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_object();
 ?><div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>
@@ -48,12 +48,22 @@ $statuspkl = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_ob
                 </div>
                 <div class="col">
                     <label>Status Skripsi</label>
-                    <select class="form-select" id="statuspkl" name="statuspkl" aria-label="Default select example">
-                        <option value="Sudah Ambil" <?php if ($statuspkl->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
-                        <option value="Sedang Mengambil" <?php if ($statuspkl->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
-                        <option value="Belum Ambil" <?php if ($statuspkl->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
+                    <select class="form-select" id="statusskripsi" name="statusskripsi" aria-label="Status Skripsi">
+                        <option value="Sudah Ambil" <?php if ($statusskripsi->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
+                        <option value="Sedang Mengambil" <?php if ($statusskripsi->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
+                        <option value="Belum Ambil" <?php if ($statusskripsi->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
+                <div>
+                    <label for="nilai" class="form-label">Nilai</label>
+                    <!-- select option A-E -->
+                    <select class="form-select" id="nilai" name="nilai" aria-label="Nilai Skripsi">
+                        <option value="A" <?php if ($statusskripsi->Nilai == "A") echo "selected" ?>>A</option>
+                        <option value="B" <?php if ($statusskripsi->Nilai == "B") echo "selected" ?>>B</option>
+                        <option value="C" <?php if ($statusskripsi->Nilai == "C") echo "selected" ?>>C</option>
+                        <option value="D" <?php if ($statusskripsi->Nilai == "D") echo "selected" ?>>D</option>
+                        <option value="E" <?php if ($statusskripsi->Nilai == "E") echo "selected" ?>>E</option>
+                    </select></div>
                 <div class="col">
                     <h4 class="fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column mb-2">
@@ -64,13 +74,14 @@ $statuspkl = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_ob
                     <input type="file" hidden id="selectfile">
                     <p id="message_info"></p>
                 </div>
-                <button class=" btn btn-success mt-3">Simpan</button>
-
+                <button class="btn btn-success mt-3" type="button" onclick="editSkripsi()">Simpan</button>
+                <div id="responseedit"></div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>
 <script>
     var fileobj;
