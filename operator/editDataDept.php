@@ -23,7 +23,7 @@ $result = $db->query($query)->fetch_object();
                     <div class="form-group mt-3">
                         <label class="fw-bold">Nama</label>
                         <div class="col">
-                            <input type="text" id="Nama" name="Nama" class="form-control" placeholder="Nama" value="<?=$result->Nama ?>">
+                            <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama" value="<?=$result->Nama ?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
@@ -35,7 +35,8 @@ $result = $db->query($query)->fetch_object();
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
-                    <button type="button" onclick="editDeparOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
+                <input type="hidden" name="nip" value="<?= $nip?>" id="nip">
+                    <button type="button" onclick="editDeptOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
                 <div id="responseedit">
                 </div>
@@ -43,5 +44,7 @@ $result = $db->query($query)->fetch_object();
             </form>
         </div>
     </div>
-
+    <script src="../js/ajax.js">
+    
+    </script>
  <?php require_once '../bootstrap/footer.html' ?>

@@ -23,20 +23,20 @@ $result = $db->query($query)->fetch_object();
                     <div class="form-group mt-3">
                         <label class="fw-bold">Nama</label>
                         <div class="col">
-                            <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama" value="<?=$result->Nama ?>">
+                            <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama" value="<?= $result->Nama ?>">
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label class="fw-bold">Email</label>
                         <div class="col">
-                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?=$result->Email_SSO ?>">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?= $result->Email_SSO ?>">
                         </div>
                     </div>
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
                 <input type="hidden" name="nip" value="<?= $nip?>" id="nip">
-                    <button type="button" onclick="editDoswalOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
+                    <button type="button" onclick="editOpOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
                 <div id="responseedit">
                 </div>

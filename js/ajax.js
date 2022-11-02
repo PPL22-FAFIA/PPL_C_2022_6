@@ -151,7 +151,65 @@ function editDoswalOperator(){
   }else{
       alert("Please fill all the fields");
   }
-}            
+}
+function editOpOperator(){
+  var xmlhttp = getXMLHttpRequest();
+  //get input value
+  var email = document.getElementById('email').value;
+  var nip = document.getElementById('nip').value;
+  var nama = document.getElementById('nama').value;
+  //validate
+  if (email != "") {
+
+      //set url and inner
+      var url = "../function/editOpOp.php";
+      //alert (url);
+      var inner = "responseedit";
+      //open request
+      var params = "nip="+ nip + "&email=" + email + "&nama=" + nama;
+      xmlhttp.open('POST' , url, true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xmlhttp.onreadystatechange = function(){
+          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+              document.getElementById(inner).innerHTML = xmlhttp.responseText;
+          }
+          return false;
+      }
+      xmlhttp.send(params);
+  }else{
+      alert("Please fill all the fields");
+  }
+}
+function editDeptOperator(){
+  var xmlhttp = getXMLHttpRequest();
+  //get input value
+  var email = document.getElementById('email').value;
+  var nip = document.getElementById('nip').value;
+  var nama = document.getElementById('nama').value;
+  //validate
+  if (email != "") {
+
+      //set url and inner
+      var url = "../function/editDeptOp.php";
+      //alert (url);
+      var inner = "responseedit";
+      //open request
+      var params = "nip="+ nip + "&email=" + email + "&nama=" + nama;
+      xmlhttp.open('POST' , url, true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xmlhttp.onreadystatechange = function(){
+          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+              document.getElementById(inner).innerHTML = xmlhttp.responseText;
+          }
+          return false;
+      }
+      xmlhttp.send(params);
+  }else{
+      alert("Please fill all the fields");
+  }
+}               
 // show table nilai with ajax
 function showNilai(nim, smt){
   // get input value
