@@ -60,7 +60,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
         <div class="col">
             <div class="card">
                 <div class="card-body text-center">
-                <img class="img-thumbnail rounded p-3" src="../lib/lecture.jpg" alt="profile" width="300">
+                <img class="img-thumbnail rounded p-3" src="../lib/pp.jpg" alt="profile" width="300">
                     <h3 class="m-0"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
                     <p class="m-0"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                     <p class="m-0">Mahasiswa</p>

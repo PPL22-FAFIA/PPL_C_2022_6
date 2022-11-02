@@ -10,10 +10,10 @@ $namaDosen = $_GET["nama"];
                 
                 while ($row = $result->fetch_object()) {
                     echo '<tr>';
-                    echo '<th scope="row">'.$i.'</th>';
-                    echo '<td>'.$row->Nip.'</td>';
-                    echo '<td>'.$row->Nama.'</td>';
-                    echo '<td><a href="detailMhs.php?nip='.$row->Nip.'" class="btn btn-primary">Detail</a></td>';
+                    echo '<th class="text-center" scope="row">'.$i.'</th>';
+                    echo '<td class="text-center">'.$row->Nip.'</td>';
+                    echo '<td class="text-center">'.$row->Nama.'</td>';
+                    echo '<td class="text-center"><a href="detailMhs.php?nip='.$row->Nip.'" class="btn btn-primary">Detail</a></td>';
                     echo '</tr>';
                     $i++;
                 }

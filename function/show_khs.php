@@ -26,9 +26,9 @@
             $i = 1;
             while ($row = $result2->fetch_object()) {
                 echo '<tr>';
-                echo '<th>' . $i . '</th>';
-                echo '<td>' . $row->nama_mk . ' (' . $row->SKS .  ' SKS) </td>';
-                echo '<td>' . $row->Nilai . '</td>';
+                echo '<th class="text-center">' . $i . '</th>';
+                echo '<td class="text-center">' . $row->nama_mk . ' (' . $row->SKS .  ' SKS) </td>';
+                echo '<td class="text-center">' . $row->Nilai . '</td>';
                 echo '</tr>';
                 $i++;
             }
@@ -41,7 +41,7 @@
             ?>
             <div class="d-flex mb-3">
                 <button class="me-auto btn btn-primary mt-3">Download File KHS</button>
-                <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-primary mt-3">Tambah Data KHS</a>
+                <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Tambah Data KHS</a>
             </div>
         <?php }
     }

@@ -16,9 +16,10 @@ session_start();
         <?php require_once '../dashboard/sidebarDept.php' ?>
 
     </div>
-    <div class="col d-flex flex-column">
-        <h3 class="">Daftar Mahasiswa</h3>
-        <div class="d-flex flex-row col-3">
+    <div class="col m-3">
+        <h3 class="text-center">Daftar Mahasiswa</h3>
+        <div class="col-3 my-3">
+            <div class="h6">Cari Mahasiswa</div>
             <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchMhs(this.value)">
         </div>
         <div class="d-flex flex-row-reverse">
@@ -26,11 +27,11 @@ session_start();
             <table class="table table-striped table-hover">
             <thead>
             <tr>
-            <th scope="col">No</th>
-            <th scope="col">NIM</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Dosen Wali</th>
-            <th scope="col">Rincian Studi</th>
+            <th class="text-center" scope="col">No</th>
+            <th class="text-center" scope="col">NIM</th>
+            <th class="text-center" scope="col">Nama</th>
+            <th class="text-center" scope="col">Dosen Wali</th>
+            <th class="text-center" scope="col">Rincian Studi</th>
             </tr>
             </thead>
             <tbody id="daftarMhs">
@@ -44,11 +45,11 @@ session_start();
             
             while ($row = $result->fetch_object()) {
                 echo '<tr>';
-                echo '<th scope="row">' . $i . '</th>';
-                echo '<td>' . $row->Nim . '</td>';
-                echo '<td>' . $row->nama_mhs . '</td>';
-                echo '<td>' . $row->nama_dsn . '</td>';
-                echo '<td><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
+                echo '<th class="text-center" scope="row">' . $i . '</th>';
+                echo '<td class="text-center">' . $row->Nim . '</td>';
+                echo '<td class="text-center">' . $row->nama_mhs . '</td>';
+                echo '<td class="text-center">' . $row->nama_dsn . '</td>';
+                echo '<td class="text-center"><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
                 echo '</tr>';
                 $i++;
             }

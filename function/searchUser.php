@@ -14,16 +14,16 @@ require_once("../lib/db_login.php");
                     echo '<td>'.$row->Username.'</td>';
                     if($row->Role == "1"){
 
-                        echo '<td><a href="editDataMhs.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td class="text-center"><a href="editDataMhs.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     else if($row->Role == "2"){
-                        echo '<td><a href="editDataDoswal.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td class="text-center"><a href="editDataDoswal.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     else if($row->Role == "3"){
-                        echo '<td><a href="editDataOp.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td class="text-center"><a href="editDataOp.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     else if($row->Role == "4"){
-                        echo '<td><a href="editDataDept.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td class="text-center"><a href="editDataDept.php?nip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
                     echo '</tr>';
                     $i++;

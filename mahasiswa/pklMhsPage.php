@@ -20,7 +20,9 @@ if (mysqli_num_rows($result) > 0) {
     // set session
     $_SESSION['dataMhs'] = $data;
 }
+$statuspkl = $db->query("SELECT * FROM tb_pkl WHERE Nim = '$nim'")->fetch_object();
 ?>
+
 <div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>
@@ -30,25 +32,24 @@ if (mysqli_num_rows($result) > 0) {
     <div class="col p-4">
         <h1 class="d-flex justify-content-center">PKL</h1>
         <div class="card">
-
-            <h1 class="card-header">Entry PKL</h1>
+            <h3 class="card-header">Entry PKL</h3>
             <form class="card-body">
                 <div class="row gx-5 d-flex">
                     <div class="d-flex flex-row">
-                        <img class="img-thumbnail rounded p-3" src="../lib/lecture.jpg" alt="profile" width="150">
-                        <div class="col ms-3">
+                        <img class="img-thumbnail rounded p-3" src="../lib/pp.jpg" alt="profile" width="150">
+                        <div class="col ms-3 my-auto">
 
                             <h5 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
                             <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
                         </div>
                         <div class="col-3">
-                            <h4>Status</h4><?php
+                            <h4 class="text-center">Status</h4><?php
                                             if ($_SESSION['dataMhs']['Status'] == "Aktif") {
-                                                echo '<h3 class="col badge fs-4 text-bg-success text-white">' . $_SESSION["dataMhs"]["Status"] . '</h3>';
+                                                echo '<h5 class=" mx-auto rounded w-50 px-1 py-1 text-bg-success text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             } else if ($_SESSION['dataMhs']['Status'] == "Cuti") {
-                                                echo '<h3 class="col badge fs-4 text-bg-primary text-white">' . $_SESSION["dataMhs"]["Status"] . '</h3>';
+                                                echo '<h5 class="  mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             } else {
-                                                echo '<h3 class="col badge fs-4 text-bg-danger text-white">' . $_SESSION["dataMhs"]["Status"] . '</h3>';
+                                                echo '<h5 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             }
                                             ?>
                         </div>
@@ -56,40 +57,39 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="col">
                     <label>Status PKL</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" id="statuspkl" name="statuspkl" aria-label="Default select example">
+                        <option value="Sudah Ambil" <?php if ($statuspkl->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
+                        <option value="Sedang Mengambil" <?php if ($statuspkl->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
+                        <option value="Belum Ambil" <?php if ($statuspkl->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label>Perwalian Dosen</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label>Tempat PKL</label>
                 </div>
+                <input class="form-group form-control" type="text" id="tempat" name="tempat">
                 <h4 class="fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="exampleFormControlFile1">Upload File</label>
-                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="btn btn-primary"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
+                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="btn btn-warning"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
                     <p id="file_info"></p>
                     <p><button type="button" onclick="btnUpload()" id="btn_upload" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
                     <input type="file" hidden id="selectfile">
                     <p id="message_info"></p>
                 </div>
-                <button class=" btn btn-primary mt-3">Simpan</button>
+                <button class="btn btn-success mt-3" type="button" onclick="editPKL()">Simpan</button>
+                <div id="responseedit"></div>
+            </form>
         </div>
-        </form>
     </div>
 </div>
 </div>
+
+<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>
+
 <script>
     var fileobj;
+
     function btnFilePick() {
         /*normal file pick*/
         document.getElementById('selectfile').click();
@@ -103,6 +103,7 @@ if (mysqli_num_rows($result) > 0) {
             document.getElementById('btn_upload').style.display = "inline";
         };
     }
+
     function btnUpload() {
         if (fileobj == "" || fileobj == null) {
             alert("Please select a file");

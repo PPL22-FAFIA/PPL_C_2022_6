@@ -25,10 +25,10 @@
             $i = 1;
             while ($row = $result->fetch_object()) {
                 echo '<tr>';
-                echo '<th>' . $i . '</th>';
-                echo '<td>' . $row->nama_mk . '</td>';
-                echo '<td>' . $row->nilai . '</td>';
-                echo '<td>' . $row->sks . '</td>';
+                echo '<th class="text-center">' . $i . '</th>';
+                echo '<td class="text-center">' . $row->nama_mk . '</td>';
+                echo '<td class="text-center">' . $row->nilai . '</td>';
+                echo '<td class="text-center">' . $row->sks . '</td>';
                 echo '</tr>';
                 $i++;
             }
@@ -38,3 +38,7 @@
             ?>
             </tbody>
         </table>
+        <!-- button approve -->
+        <button class="btn btn-success">Approve</button>
+        
+        <button class="btn btn-danger">Deny</button>

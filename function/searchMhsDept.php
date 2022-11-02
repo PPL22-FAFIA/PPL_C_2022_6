@@ -10,11 +10,11 @@
             
             while ($row = $result->fetch_object()) {
                 echo '<tr>';
-                echo '<th scope="row">' . $i . '</th>';
-                echo '<td>' . $row->Nim . '</td>';
-                echo '<td>' . $row->nama_mhs . '</td>';
-                echo '<td>' . $row->nama_dsn . '</td>';
-                echo '<td><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
+                echo '<th class="text-center" scope="row">' . $i . '</th>';
+                echo '<td class="text-center">' . $row->Nim . '</td>';
+                echo '<td class="text-center">' . $row->nama_mhs . '</td>';
+                echo '<td class="text-center">' . $row->nama_dsn . '</td>';
+                echo '<td class="text-center"><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
                 echo '</tr>';
                 $i++;
             }

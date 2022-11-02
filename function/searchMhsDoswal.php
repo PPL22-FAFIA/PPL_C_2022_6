@@ -18,14 +18,14 @@ $nama = $_GET["nama"];
         
         while ($row = $result->fetch_object()) {
           echo '<tr>';
-          echo '<th scope="row">' . $i . '</th>';
-          echo '<td>' . $row->Nim . '</td>';
-          echo '<td>' . $row->nama_mhs . '</td>';
-          echo '<td>' . $row->status_mhs . '</td>';
-          echo '<td>' . $row->angkatan_mhs . '</td>';
-          echo '<td>' . $row->status_pkl . '</td>';
-          echo '<td>' . $row->status_skripsi . '</td>';
-          echo '<td><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
+          echo '<th class="text-center" scope="row">' . $i . '</th>';
+          echo '<td class="text-center">' . $row->Nim . '</td>';
+          echo '<td class="text-center">' . $row->nama_mhs . '</td>';
+          echo '<td class="text-center">' . $row->status_mhs . '</td>';
+          echo '<td class="text-center">' . $row->angkatan_mhs . '</td>';
+          echo '<td class="text-center">' . $row->status_pkl . '</td>';
+          echo '<td class="text-center">' . $row->status_skripsi . '</td>';
+          echo '<td class="text-center"><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
           echo '</tr>';
           $i++;
         }

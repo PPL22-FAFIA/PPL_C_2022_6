@@ -35,7 +35,7 @@ $result = $db->query($query)->fetch_object();
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
-                    <button type="button" onclick="editProfile()" class="btn btn-primary fw-bold mt-4">Update</button>
+                    <button type="button" onclick="editDeparOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
                 <div id="responseedit">
                 </div>
