@@ -177,7 +177,8 @@ if (!isset($_SESSION['user'])) {
                     <script>
                         var semester = document.getElementById('input-semester');
                     </script>
-                    <button type="button" class="btn btn-primary" onclick="showNilai(<?php echo $nim ?>, semester.value)">Lihat KHS</button>
+                    <button type="button" class="btn btn-primary" onclick="showIRSD(<?php echo $nim ?>, semester.value)">Lihat IRS</button>
+                    <button type="button" class="btn btn-primary" onclick="showKHSD(<?php echo $nim ?>, semester.value)">Lihat KHS</button>
                 </form>
             </div>
             <div class="nilai-mhs mx-5 my-2" id="nilai-mhs">

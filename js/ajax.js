@@ -122,6 +122,49 @@ function editMhsOperator(){
       alert("Please fill all the fields");
   }
 }
+
+function approveIRS(){
+  var xmlhttp = getXMLHttpRequest();
+  var nim = document.getElementById("nim").value;
+  var smt = document.getElementById('smt').value;
+  //set url and inner
+  var url = "../function/approveIRS.php";
+  //alert (url);
+  var inner = "status";
+  //open request
+  var params = "nim="+ nim + "&smt=" + smt;
+  xmlhttp.open('POST' , url, true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.onreadystatechange = function(){
+      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+          document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+  }
+  xmlhttp.send(params);
+}
+
+function denyIRS(){
+  var xmlhttp = getXMLHttpRequest();
+  var nim = document.getElementById("nim").value;
+  var smt = document.getElementById('smt').value;
+  //set url and inner
+  var url = "../function/denyIRS.php";
+  //alert (url);
+  var inner = "status";
+  //open request
+  var params = "nim="+ nim + "&smt=" + smt;
+  xmlhttp.open('POST' , url, true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.onreadystatechange = function(){
+      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+          document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+  }
+  xmlhttp.send(params);
+}
+
 function editDoswalOperator(){
   var xmlhttp = getXMLHttpRequest();
   //get input value
@@ -153,10 +196,22 @@ function editDoswalOperator(){
   }
 }            
 // show table nilai with ajax
-function showNilai(nim, smt){
+function showIRSD(nim, smt){
   // get input value
   var inner = "nilai-mhs"
-  var url = `../function/show_nilai.php?nim=${nim}&smt=${smt}`;
+  var url = `../function/show_irs_doswal.php?nim=${nim}&smt=${smt}`;
+
+  if (smt == "") {
+    document.getElementById(inner).innerHTML = "";
+  } else {
+    callAjax(url, inner);
+  }
+}
+
+function showKHSD(nim, smt){
+  // get input value
+  var inner = "nilai-mhs"
+  var url = `../function/show_khs_doswal.php?nim=${nim}&smt=${smt}`;
 
   if (smt == "") {
     document.getElementById(inner).innerHTML = "";

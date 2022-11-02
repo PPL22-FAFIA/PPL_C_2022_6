@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '" . $nim . "' AND n.Semester = '" . $smt . "' ";
     $sumSKS = $db->query($query3)->fetch_object();
     if ($sumSKS->TotalSKS != null) {
-        $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '" . $sumSKS->TotalSKS . "')");
+        $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Belum Disetujui', '" . $sumSKS->TotalSKS . "')");
     } else {
 ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
                                                                                                 }

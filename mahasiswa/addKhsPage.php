@@ -24,13 +24,23 @@
             }
         }
 
-        // $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
-        // $sumSKS = $db->query($query3)->fetch_object();
-        // if ($sumSKS->TotalSKS != null){
-        //     $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Aktif', '".$sumSKS->TotalSKS."')");
-        // }
-        // else{
-        // }
+        $ip = $_POST['ip'];
+        $ipk = $_POST['ipk'];
+
+        $query4 = "SELECT SUM(Jml_SKS) as TotalSKS FROM tb_irs WHERE Nim = '".$nim."'";
+        $sumSKS = $db->query($query4)->fetch_object();
+        $query3 = "SELECT Jml_SKS FROM tb_irs WHERE Nim = $nim AND Semester = $smt ";
+        $result3 = $db->query($query3)->fetch_object();
+        
+        $query2 = "SELECT * FROM tb_khs WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
+        $result = mysqli_query($db, $query2);
+        if (mysqli_num_rows($result) == 0) {
+            $result2 = $db->query("INSERT INTO tb_khs(Nim, Semester, Ip, Ip_Kumulatif, Status, Jml_SKS_Kumulatif, Jml_SKS_Semester) VALUES('$nim', '$smt', '$ip', '$ipk', 'Disetujui', '".$sumSKS->TotalSKS."', '".$result3->Jml_SKS."')");
+        }
+        else{
+            $queryEdit = "UPDATE tb_khs SET Ip = '$ip', Ip_Kumulatif = '$ipk', Jml_SKS_Kumulatif = '$sumSKS->TotalSKS', Jml_SKS_Semester = '$result3->Jml_SKS' WHERE Nim = '$nim' AND Semester = '$smt'";
+            $result = $db->query($queryEdit);
+        }
         header("Location: ./khsMhsPage.php");
     }
 ?>
@@ -59,15 +69,15 @@
                             if (mysqli_num_rows($result) > 0) {
                                 $row = $result->fetch_object();
                                 echo "<label>IP Semester</label>";
-                                echo "<input type='number' name='ip' value='".$row->Ip."'><br>";
+                                echo "<input type='text' name='ip' value='".$row->Ip."'><br>";
                                 echo "<label>IP Komulatif</label>";
-                                echo "<input type='number' name='ipk' value='".$row->Ip_Kumulatif."''>";
+                                echo "<input type='text' name='ipk' value='".$row->Ip_Kumulatif."''>";
                             }
                             else{
                                 echo "<label>IP Semester</label>";
-                                echo "<input type='number' name='ip'><br>";
+                                echo "<input type='text' name='ip'><br>";
                                 echo "<label>IP Komulatif</label>";
-                                echo "<input type='number' name='ipk'>";
+                                echo "<input type='text' name='ipk'>";
                             }
                         ?>
                     </div>
