@@ -9,6 +9,9 @@ else{
         header("Location: ../index.php");
     }
 }
+$nim = $_SESSION['user']['Nim_Nip'];
+require_once("../lib/db_login.php");
+$statuspkl = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_object();
 ?><div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>
@@ -45,30 +48,13 @@ else{
                 </div>
                 <div class="col">
                     <label>Status Skripsi</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" id="statuspkl" name="statuspkl" aria-label="Default select example">
+                        <option value="Sudah Ambil" <?php if ($statuspkl->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
+                        <option value="Sedang Mengambil" <?php if ($statuspkl->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
+                        <option value="Belum Ambil" <?php if ($statuspkl->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label>Tahun Ajaran</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                    <div class="col me-0">
-                        <label>Mata Kuliah</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
                     <h4 class="fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="exampleFormControlFile1">Upload File</label>
