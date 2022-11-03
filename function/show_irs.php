@@ -45,7 +45,7 @@
                     $query4 = "SELECT Status FROM tb_irs WHERE Nim = '$nim' AND Semester = '$smt' ";
                     $status = $db->query($query4)->fetch_object();
                     if ($status->Status == 'Belum Disetujui') {
-                        echo '<a href="../mahasiswa/editIrsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Edit Data IRS</a>';
+                        echo '<a href="../mahasiswa/editIrsPage.php?semester='.$smt.'" class="btn btn-warning mt-3">Edit Data IRS</a>';
                     } else {
                         echo '<div class="btn btn-success mt-3">IRS Telah Disetujui</div>';
                     }
