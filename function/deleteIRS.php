@@ -1,15 +1,16 @@
 <?php
 require_once('../lib/db_login.php');
 
-$nim = $_GET['nim'];
-$matkul = $_GET['matkul'];
-$kelas = $_GET['kelas'];
-$smt = $_GET['smt'];
-$query = "DELETE FROM tb_nilai WHERE Nim = '$nim' AND Kode_Matkul = '$matkul' AND Kelas = '$kelas'";
+$nim = $_POST['nim'];
+$matkul = $_POST['matkul'];
+$kelas = $_POST['kelas'];
+$smt = $_POST['smt'];
+$query = "DELETE FROM tb_nilai WHERE Nim = '".$nim."' AND Kode_Matkul = '".$matkul."' AND Kelas = '".$kelas."' AND Semester = '".$smt."'";
 $delete = $db->query($query);
 if (!$delete) {
     die("Could not query the database: <br />" . $db->error);
 } else {
+    echo 'bisa ini cuk';
     $nilai = "SELECT * FROM tb_nilai n JOIN tb_matkul k 
     WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
     $result = $db->query($nilai);

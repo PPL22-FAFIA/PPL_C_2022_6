@@ -333,8 +333,20 @@ function showKHS(nim, smt) {
   }
 }
 function deleteIRS(nim,matkul,kelas,smt){
+  var xmlhttp = getXMLHttpRequest();
   var inner = "editIRS";
-  var url = `../function/deleteIRS.php?nim=${nim}&matkul=${matkul}&kelas=${kelas}&smt=${smt}`;
+  var url = `../function/deleteIRS.php`;
+  var params = "nim="+ nim + "&matkul=" + matkul + "&kelas=" + kelas + "&smt=" + smt;
+      xmlhttp.open('POST' , url, true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xmlhttp.onreadystatechange = function(){
+          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+              document.getElementById(inner).innerHTML = xmlhttp.responseText;
+          }
+          return false;
+      }
+      xmlhttp.send(params);
   callAjax(url, inner);
 }
 function searchMhs(namaMhs) {

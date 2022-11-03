@@ -86,8 +86,8 @@
                                     echo '<tr>';
                                     echo '<td>'.$row->Nama_Matkul.'</td>';
                                     echo '<td>'.$row->Kelas.'</td>';
-                                    echo "<input type='hidden' name='edit_mk[]' value='".$row->Kode_Matkul."'>";
-                                    echo "<td><button class='btn btn-danger' type='button' onclick='deleteIRS($row->Nim, $row->Nama_Matkul, $row->Kelas, $smt)'>Hapus</button></td>";
+                                    echo "<input type='hidden' name='edit_mk[]' value='$row->Kode_Matkul'>";
+                                    echo '<td><button class="btn btn-danger" type="button" onclick="deleteIRS('.$row->Nim.','. $row->Kode_Matkul.','. $row->Kelas.','. $smt.')">Hapus</button></td>';
                                     echo '</tr>';
                                 }
                             }
@@ -137,6 +137,7 @@
     
 </div>
 
+<script src="../js/ajax.js"></script>
 <script>
     function addEntryIRS() {
         var html = "<tr>";
@@ -206,5 +207,4 @@
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     }
 </script>
-<script src="../js/ajax.js"></script>
 <?php require_once '../bootstrap/footer.html' ?>
