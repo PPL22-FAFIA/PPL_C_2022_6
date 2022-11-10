@@ -85,8 +85,8 @@
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
                                     echo '<td>'.$row->Nama_Matkul.'</td>';
-                                    echo '<td>'.$row->Kelas.'</td>';
                                     echo "<input type='hidden' name='edit_mk[]' value='$row->Kode_Matkul'>";
+                                    echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
                                     echo '<td><button class="btn btn-danger" type="button" onclick="deleteIRS('.$row->Nim.','. $row->Kode_Matkul.','. $row->Kelas.','. $smt.')">Hapus</button></td>';
                                     echo '</tr>';
                                 }
