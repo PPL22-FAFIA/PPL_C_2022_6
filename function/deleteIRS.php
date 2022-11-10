@@ -5,8 +5,19 @@ $nim = $_POST['nim'];
 $matkul = $_POST['matkul'];
 $kelas = $_POST['kelas'];
 $smt = $_POST['smt'];
+
+// delete from tb_nilai
 $query = "DELETE FROM tb_nilai WHERE Nim = '".$nim."' AND Kode_Matkul = '".$matkul."' AND Kelas = '".$kelas."' AND Semester = '".$smt."'";
 $delete = $db->query($query);
+
+// update tb_irs
+$query2 = "SELECT COUNT(*) AS total FROM tb_nilai WHERE Nim = '".$nim."' AND Semester = '".$smt."'";
+$sum = $db->query($query2)->fetch_object();
+if($sum->total == 0) {
+    $query3 = "DELETE FROM tb_irs WHERE Nim = '".$nim."' AND Semester = '".$smt."'";
+    $delete2 = $db->query($query3);
+}
+
 if (!$delete) {
     die("Could not query the database: <br />" . $db->error);
 } else {
