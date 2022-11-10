@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
                                     <option selected>Pilih Mata Kuliah</option>
                                     <?php $result = $db->query('select * from tb_matkul');
                                     while ($mk = $result->fetch_object()) : ?>
-                                        <option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul ?></option>;
+                                        <option value='<?php echo $mk->Kode_Matkul ?>'><?php echo $mk->Nama_Matkul . ' (' . $mk->SKS . ' SKS)' ?></option>
                                     <?php endwhile ?>
                                 </select></td>
                             <td><select class='form-select' name='kelas[]' aria-label='Default select example'>

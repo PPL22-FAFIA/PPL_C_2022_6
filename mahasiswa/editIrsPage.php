@@ -36,6 +36,14 @@
             }
         }
 
+        // update tb_irs ketika data dihapus semua
+        $query2 = "SELECT COUNT(*) AS total FROM tb_nilai WHERE Nim = '".$nim."' AND Semester = '".$smt."'";
+        $sum = $db->query($query2)->fetch_object();
+        if($sum->total == 0) {
+            $query3 = "DELETE FROM tb_irs WHERE Nim = '".$nim."' AND Semester = '".$smt."'";
+            $delete2 = $db->query($query3);
+        }
+
         $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '".$nim."' AND n.Semester = '".$smt."' ";
         $sumSKS = $db->query($query3)->fetch_object();
         if ($sumSKS->TotalSKS != null){
@@ -82,12 +90,14 @@
                                 die ("Could not query the database: <br>".$db->error);
                             }
                             else{
+                                echo "<input type='hidden' name='edit_mk[]' value=''>";
+                                echo "<input type='hidden' name='edit_kelas[]' value=''>";
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
                                     echo '<td>'.$row->Nama_Matkul.'</td>';
                                     echo "<input type='hidden' name='edit_mk[]' value='$row->Kode_Matkul'>";
                                     echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
-                                    echo '<td><button class="btn btn-danger" type="button" onclick="deleteIRS('.$row->Nim.','. $row->Kode_Matkul.','. $row->Kelas.','. $smt.')">Hapus</button></td>';
+                                    echo "<td><button class='btn btn-danger' type='button' onclick='deleteIRS(`".$row->Nim."`,`".$row->Kode_Matkul."`,`".$row->Kelas."`,".$smt.")'>Hapus</button></td>";
                                     echo '</tr>';
                                 }
                             }
