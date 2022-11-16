@@ -26,17 +26,17 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
 ?>
 
 <div class="container">
-    <h1 class="d-flex justify-content-center mt-3">Dashboard Mahasiswa</h1>
+    <h1 class="d-flex justify-content-center mt-4 mb-3">Dashboard Mahasiswa</h1>
     <div class="row">
         <div class="col">
-            <div class="card">
+            <div class="card mt-3 ms-3 mb-2">
                 <div class="card-body">
-                    <h4 class="card-title">Status Akademik</h4>
+                    <h4 class="card-title mb-3">Status Akademik</h4>
                     <p class="card-text m-0">Dosen Wali</p>
-                    <p class="fw-bold m-0"><?php echo $resultDoswal->nama_dsn ?></p>
+                    <p class="fw-bold mb-2"><?php echo $resultDoswal->nama_dsn ?></p>
                     <p class="card-text m-0">NIP</p>
                     <p class="fw-bold m-0"><?php echo $resultDoswal->nip ?></p>
-                    <div class="row text-center">
+                    <div class="row text-center mt-4">
                         <div class="col">Semester</div>
                         <div class="col">Status</div>
                     </div>
@@ -58,19 +58,19 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
             </div>
         </div>
         <div class="col">
-            <div class="card">
+            <div class="card mt-3 mb-2 me-4">
                 <div class="card-body text-center">
-                <img class="img-thumbnail rounded p-3" src="../lib/pp.jpg" alt="profile" width="300">
-                    <h3 class="m-0"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
+                <img class="img-thumbnail rounded p-0 mt-1" src="../lib/pp.jpg" alt="profile" width="130">
+                    <h3 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
                     <p class="m-0"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
-                    <p class="m-0">Mahasiswa</p>
+                    <p class="mb-2">Mahasiswa</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col">
-            <div class="card">
+            <div class="card ms-3 mb-5">
                 <div class="card-body">
                     <h4>Data Mahasiswa</h4>
                     <div class="mt-3">
@@ -91,13 +91,13 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Prestasi Akademik</h5>
+                    <h4 class="card-title text-center mb-3">Prestasi Akademik</h4>
                     <div class="row">
-                        <div class="col">
+                        <div class="col mb-1">
                             <p class="text-center m-0">SKS semester</p>
                             <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Jml_SKS_Semester'];?></h3>
                         </div>
-                        <div class="col">
+                        <div class="col mb-1">
                             <p class="text-center m-0">SKS Kumulatif</p>
                             <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Jml_SKS_Kumulatif'];?></h3>
                         </div>
@@ -105,11 +105,11 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
                     <div class="row">
                         <div class="col">
                             <p class="text-center m-0">IP semester</p>
-                            <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Ip'];?></h3>
+                            <h3 class="text-center mb-4"><?php echo $_SESSION['dataKhs']['Ip'];?></h3>
                         </div>
                         <div class="col">
                             <p class="text-center m-0">IP Kumulatif</p>
-                            <h3 class="text-center"><?php echo $_SESSION['dataKhs']['Ip_Kumulatif'];?></h3>
+                            <h3 class="text-center mb-4"><?php echo $_SESSION['dataKhs']['Ip_Kumulatif'];?></h3>
                         </div>
                     </div>
                 </div>
