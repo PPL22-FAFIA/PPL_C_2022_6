@@ -26,8 +26,6 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <div class="app-content content ">
-    <br>
-    <br>
     <div class="content-wrapper">
         <div class="content-header row">
         </div>
@@ -35,12 +33,12 @@ if (isset($_POST['submit'])) {
             <section class="flexbox-container" style="overflow: auto;">
                 <div class="col-12 d-flex align-items-center justify-content-center">
                     <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 box-shadow-2 p-0">
-                        <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
-                            <div class="card-header border-0 pb-0">
+                        <div class="card border-grey border-lighten-3 px-1 py-1 mt-5">
+                            <div class="card-header border-0 pb-0 bg-primary">
                                 <div class="card-title text-center">
                                     <img src="https://sso.undip.ac.id/assets/app/images/logo-undip.png" alt="Universitas Diponegoro" style="width: 150px;">
-                                    <h1><strong>SIAP</strong></h1>
-                                    <h2>Informatika Undip</h2> 
+                                    <h1 class="text-white"><strong>SIAP</strong></h1>
+                                    <h2 class="text-white">Informatika Undip</h2> 
                                 </div>
                             </div>
                             <div class="card-content">
@@ -55,11 +53,11 @@ if (isset($_POST['submit'])) {
                                     </div>
                                     <form class="form-horizontal" action="login.php" method="post" novalidate="">
                                         <fieldset class="form-group position-relative has-icon-left  wrapper_identity mb-3">
-                                            <label for="username">Username</label>
+                                            <label for="username" class="fw-bold">Username</label>
                                             <input type="text" class="form-control" id="username" name="username" placeholder="NIM/NIP/username/e-mail official Undip" required value="<?php if(isset($_POST["username"])) echo $username?>">
                                         </fieldset>
                                         <div class="form-group">
-                                            <label for="password">Password</label>
+                                            <label for="password" class="fw-bold" >Password</label>
                                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                                         </div>
                                         <?php if (isset($error)) : ?>
@@ -68,7 +66,7 @@ if (isset($_POST['submit'])) {
                                             </div>
                                         <?php endif; ?>
                                         <div class="text-center mt-4">
-                                            <button type="submit" name="submit" value="submit" class="btn btn-primary">Login</button>
+                                            <button type="submit" name="submit" value="submit" class="btn btn-primary w-100">Login</button>
                                         </div>
                                     </form>
                                 </div>
