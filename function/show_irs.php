@@ -7,8 +7,10 @@
         
         $query = "SELECT * FROM tb_irs
                 WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
-        $result = $db->query($query)->num_rows;
-        if ($result==0) { 
+        $result = $db->query($query);
+        $resultobjek = $result->fetch_object();
+        $resultrow = $result->num_rows;
+        if ($resultrow==0) { 
             echo '<a href="../mahasiswa/addIrsPage.php?semester='.$smt.'" class="btn btn-primary mt-3">Tambah Data IRS</a>';
         }
         else { ?>
@@ -40,7 +42,7 @@
             echo 'Jumlah SKS: ' . $sumSKS->Jml_SKS . ' SKS';
             ?>
             <div class="d-flex mb-3">
-                <button class="me-auto btn btn-primary mt-3">Download File IRS</button>
+                <button type="button" onclick="location.href = '../upload/irs/<?php echo $resultobjek->File_IRS ?>'" class="me-auto btn btn-primary mt-3">Download File IRS</button>
                 <?php
                     $query4 = "SELECT Status FROM tb_irs WHERE Nim = '$nim' AND Semester = '$smt' ";
                     $status = $db->query($query4)->fetch_object();

@@ -8,6 +8,9 @@
         $query = "SELECT * FROM tb_irs
                 WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
         $result = $db->query($query)->num_rows;
+        $query4 = "SELECT * FROM tb_khs
+        WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
+        $resultobjek = $db->query($query4)->fetch_object();
         if ($result==0) { 
             echo 'Mohon Isi IRS Terlebih Dahulu';
         }
@@ -40,8 +43,9 @@
             echo 'Jumlah SKS: ' . $sumSKS->TotalSKS . ' SKS';
             ?>
             <div class="d-flex mb-3">
-                <button class="me-auto btn btn-primary mt-3">Download File KHS</button>
-                <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Tambah Data KHS</a>
+                
+                <button type="button" onclick="location.href = '../upload/khs/<?php echo $resultobjek->File_KHS ?>'" class="me-auto btn btn-primary mt-3">Download File KHS</button>
+               <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Tambah Data KHS</a>
             </div>
         <?php }
     }

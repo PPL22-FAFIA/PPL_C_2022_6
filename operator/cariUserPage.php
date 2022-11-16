@@ -48,6 +48,7 @@ require_once('../lib/db_login.php'); ?>
                     else if($row->Role == "4"){
                         echo '<td  class="text-center"><a href="editDataDept.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
                     }
+                    
                     echo '</tr>';
                     $i++;
                 }
