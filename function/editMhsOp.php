@@ -8,7 +8,8 @@ require_once('../lib/db_login.php');
     $nim = $_POST['nim'];
     $nama = $_POST['nama'];
     $status = $_POST['status'];
-    $query = "UPDATE tb_mhs SET Email_SSO='$email', Nama ='$nama', Status= '$status', No_HP='$no_hp', Alamat='$alamat', Kode_Kabupaten='$kabupaten' WHERE Nim='$nim'";
+    $doswal = $_POST['doswal'];
+    $query = "UPDATE tb_mhs SET Email_SSO='$email', Nama ='$nama', Status= '$status', No_HP='$no_hp', Alamat='$alamat', Kode_Kabupaten='$kabupaten', Kode_Wali='$doswal' WHERE Nim='$nim'";
     $result = $db->query($query);
     if (!$result) {
         die("Could not query the database: <br />" . $db->error);

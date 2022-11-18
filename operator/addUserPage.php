@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     $result =  $db->query($query);
     if($result){
         if($role==1){
-            $query = "INSERT INTO tb_mhs (Nim, Nama, Email_SSO, Kode_Kabupaten) VALUES ('$nimnip', '$nama', '$email', '0')";
+            $query = "INSERT INTO tb_mhs (Nim, Nama, Email_SSO, Kode_Kabupaten, Kode_Wali) VALUES ('$nimnip', '$nama', '$email', '0', NULL)";
             $result =  $db->query($query);
             if($result){
                 header("Location: ../operator/listUserPage.php");
