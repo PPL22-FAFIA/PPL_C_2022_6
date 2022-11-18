@@ -1,6 +1,19 @@
 <?php 
 require_once ("../bootstrap/header.html");
-require_once('../lib/db_login.php'); ?>
+require_once('../lib/db_login.php'); 
+
+session_start();
+if(!isset($_SESSION['user'])){
+    header("Location: ../auth/login.php");
+}
+else{
+    $user = $_SESSION['user']['Role'];
+    if($user!='3'){
+        header("Location: ../index.php");
+    }
+}
+$username = $_SESSION["user"]["Username"];
+?>
 <div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarOp.php' ?>
@@ -24,7 +37,7 @@ require_once('../lib/db_login.php'); ?>
             </thead>
             <tbody id="daftarUser">
         <?php
-                $query = "SELECT * FROM tb_user";
+                $query = "SELECT * FROM tb_user WHERE Username <> '$username'";
                 $result = $db->query($query);
                 if (!$result) {
                     die ("Could not query the database: <br>".$db->error."<br>Query: ".$query);
@@ -37,16 +50,16 @@ require_once('../lib/db_login.php'); ?>
                     echo '<td class="text-center" >'.$row->Username.'</td>';
                     if($row->Role == "1"){
 
-                        echo '<td  class="text-center" ><a href="editDataMhs.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary ">Edit</a></td>';
+                        echo '<td  class="text-center" ><a href="editDataMhs.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary ">Lihat</a></td>';
                     }
                     else if($row->Role == "2"){
-                        echo '<td  class="text-center" ><a href="editDataDoswal.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td  class="text-center" ><a href="editDataDoswal.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Lihat</a></td>';
                     }
                     else if($row->Role == "3"){
-                        echo '<td  class="text-center"><a href="editDataOp.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td  class="text-center"><a href="editDataOp.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Lihat</a></td>';
                     }
                     else if($row->Role == "4"){
-                        echo '<td  class="text-center"><a href="editDataDept.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Edit</a></td>';
+                        echo '<td  class="text-center"><a href="editDataDept.php?nimnip='.$row->Nim_Nip.'" class="btn btn-primary">Lihat</a></td>';
                     }
                     
                     echo '</tr>';
