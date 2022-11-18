@@ -6,9 +6,31 @@ if (!isset($_SESSION['user'])) {
 }
 $nip = $_GET["nimnip"];
 $query = "SELECT * FROM tb_dosen WHERE Nip = '$nip'";
-// execute query
 $result = $db->query($query)->fetch_object();
-// fetch object
+
+if(isset($_POST['submit'])){
+    $query = "DELETE FROM tb_user WHERE Nim_Nip = '$nip'";
+    $delete = $db->query($query);
+    if (!$delete) {
+        die("Could not query the database: <br />" . $db->error);
+    } else {
+        // Update Kode_Wali in tb_mhs
+        $query = "UPDATE tb_mhs SET Kode_Wali = NULL WHERE Kode_Wali = (SELECT Kode_Wali FROM tb_dosen WHERE Nip = '$nip')";
+        $update = $db->query($query);
+        // Update Kode_Pemb_P in tb_pkl
+        $query = "UPDATE tb_mhs SET Kode_Pemb_P = NULL WHERE Kode_Pemb_P = (SELECT Kode_Wali FROM tb_dosen WHERE Nip = '$nip')";
+        $update = $db->query($query);
+        // Update Kode_Pemb_S in tb_skripsi
+        $query = "UPDATE tb_mhs SET Kode_Pemb_S = NULL WHERE Kode_Pemb_S = (SELECT Kode_Wali FROM tb_dosen WHERE Nip = '$nip')";
+        $update = $db->query($query);
+        // Delete data doswal from tb_dosen
+        $query = "DELETE FROM tb_dosen WHERE Nip = '$nip'";
+        $delete = $db->query($query);
+        
+        header("Location: ../operator/cariUserPage.php");
+        echo "<script>alert('Data berhasil dihapus');window.location.href='cariUserPage.php';</script>";
+    }
+}
 ?>
 <div class="row g-0">
     <div class="col-2">
@@ -18,7 +40,7 @@ $result = $db->query($query)->fetch_object();
     <div class="col p-4">
     <h1 class="d-flex justify-content-center">Edit Data Dosen Wali</h1>
         <div class="card">
-            <form class="card-body">
+            <form class="card-body" method="POST">
                 <div class="mt-4 row gx-5 d-flex flex-row">
                     <div class="form-group mt-3">
                         <label class="fw-bold">Nama</label>
@@ -41,7 +63,8 @@ $result = $db->query($query)->fetch_object();
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
-                <input type="hidden" name="nip" value="<?= $nip?>" id="nip">
+                    <input type="hidden" name="nip" value="<?= $nip?>" id="nip">
+                    <button type="submit" name="submit" class="btn btn-danger fw-bold mt-4">Hapus</button>
                     <button type="button" onclick="editDoswalOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
                 <div id="responseedit">

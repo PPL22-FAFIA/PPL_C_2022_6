@@ -6,9 +6,36 @@ if (!isset($_SESSION['user'])) {
 }
 $nim = $_GET["nimnip"];
 $query = "SELECT * FROM tb_mhs WHERE Nim = '$nim'";
-// execute query
 $result = $db->query($query)->fetch_object();
-// fetch object
+// delete data button onclick
+if(isset($_POST['submit'])){
+    $query = "DELETE FROM tb_user WHERE Nim_Nip = '$nim'";
+    $delete = $db->query($query);
+    if (!$delete) {
+        die("Could not query the database: <br />" . $db->error);
+    } else {
+        // Delete data mahasiswa from tb_nilai
+        $query = "DELETE FROM tb_nilai WHERE Nim = '$nim'";
+        $delete = $db->query($query);
+        // Delete data mahasiswa from tb_irs
+        $query = "DELETE FROM tb_irs WHERE Nim = '$nim'";
+        $delete = $db->query($query);
+        // Delete data mahasiswa from tb_khs
+        $query = "DELETE FROM tb_khs WHERE Nim = '$nim'";
+        $delete = $db->query($query);
+        // Delete data mahasiswa from tb_pkl
+        $query = "DELETE FROM tb_pkl WHERE Nim = '$nim'";
+        $delete = $db->query($query);
+        // Delete data mahasiswa from tb_skripsi
+        $query = "DELETE FROM tb_skripsi WHERE Nim = '$nim'";
+        $delete = $db->query($query);
+        // Delete data mahasiswa from tb_mhs
+        $query = "DELETE FROM tb_mhs WHERE Nim = '$nim'";
+        $delete = $db->query($query);
+        
+        header("Location: ../operator/cariUserPage.php");
+    }
+}
 ?>
 <div class="row g-0">
     <div class="col-2">
@@ -18,7 +45,7 @@ $result = $db->query($query)->fetch_object();
     <div class="col p-4">
         <h1 class="d-flex justify-content-center">Edit Data Mahasiswa</h1>
         <div class="card">
-            <form class="card-body">
+            <form class="card-body" method="POST">
                 <div class="mt-4 row gx-5 d-flex flex-row">
                     <div class="form-group mt-3">
                         <label class="fw-bold">Nama</label>
@@ -76,8 +103,6 @@ $result = $db->query($query)->fetch_object();
                             <select class="form-control" id="kabupaten" name="kabupaten">
                                 <?php
                                 $result4 = $db->query('select * from tb_kabupaten where Kode_Provinsi="' . $provsaatini->Kode_Provinsi . '"');
-
-
                                 ?>
                                 <?php while ($kab = $result4->fetch_object()) : ?>
                                     <option value="<?php echo $kab->Kode_Kabupaten ?>" <?php if ($result->Kode_Kabupaten == $kab->Kode_Kabupaten) echo "selected" ?>><?php echo $kab->Nama_Kabupaten ?></option>
@@ -87,10 +112,26 @@ $result = $db->query($query)->fetch_object();
                             <small class="form-text text-danger" id="kabupaten_error"></small>
                         </div>
                     </div>
+                    <div class="form-group mt-3">
+                        <label class="fw-bold">Dosen Wali</label>
+                        <div class="col">
+                            <select class="form-control" id="doswal" name="doswal">
+                                <option value="">Pilih Dosen Wali</option>
+                                <?php
+                                    $result5 = $db->query('select * from tb_dosen where Kode_Wali IS NOT NULL');
+                                    ?>
+                                    <?php while ($doswal = $result5->fetch_object()) : ?>
+                                        <option value="<?php echo $doswal->Kode_Wali ?>" <?php if ($result->Kode_Wali == $doswal->Kode_Wali) echo "selected" ?>><?php echo $doswal->Nama ?></option>
+                                    <?php
+                                    endwhile; ?>
+                            </select>
+                        </div>
+                    </div>
                     <!-- button update data -->
                 </div>
                 <div class="text-center">
                     <input type="hidden" name="nim" value="<?= $nim?>" id="nim">
+                    <button type="submit" name="submit" class="btn btn-danger fw-bold mt-4">Hapus</button>
                     <button type="button" onclick="editMhsOperator()" class="btn btn-primary fw-bold mt-4">Update</button>
                 </div>
                 <div id="responseedit">
