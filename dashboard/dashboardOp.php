@@ -97,7 +97,8 @@ $result3 = mysqli_query($db, $query3);
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
                             <h2><?php echo $_SESSION["user"]["Username"] ?></h2>
                             <h5>Operator</h5>
-                            <a href="editDataOp.php?nimnip=<?php echo $_SESSION["user"]["Nim_Nip"] ?>" class="btn btn-primary">Edit Profil</a>
+                            <!-- Path masih ngebug -->
+                            <a href="editDataOp.php?nimnip=<?php echo $_SESSION["user"]["Nim_Nip"]?>" class="btn btn-primary">Edit Profil</a>
                         </div>
                     </div>
                     <div class="row mt-3"></div>
