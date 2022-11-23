@@ -26,7 +26,15 @@
 
         $ip = $_POST['ip'];
         $ipk = $_POST['ipk'];
-
+        
+    $namaFile = $_FILES['uploadKhs']['name'];
+    $namaSementara = $_FILES['uploadKhs']['tmp_name'];
+    
+    // tentukan lokasi file akan dipindahkan
+    $dirUpload = "../upload/khs/";
+    
+    // pindahkan file
+    $terupload = move_uploaded_file($namaSementara, $dirUpload.$namaFile);
         $query4 = "SELECT SUM(Jml_SKS) as TotalSKS FROM tb_irs WHERE Nim = '".$nim."'";
         $sumSKS = $db->query($query4)->fetch_object();
         $query3 = "SELECT Jml_SKS FROM tb_irs WHERE Nim = $nim AND Semester = $smt ";
@@ -35,7 +43,7 @@
         $query2 = "SELECT * FROM tb_khs WHERE Nim = '".$nim."' AND Semester = '".$smt."' ";
         $result = mysqli_query($db, $query2);
         if (mysqli_num_rows($result) == 0) {
-            $result2 = $db->query("INSERT INTO tb_khs(Nim, Semester, Ip, Ip_Kumulatif, Status, Jml_SKS_Kumulatif, Jml_SKS_Semester) VALUES('$nim', '$smt', '$ip', '$ipk', 'Disetujui', '".$sumSKS->TotalSKS."', '".$result3->Jml_SKS."')");
+            $result2 = $db->query("INSERT INTO tb_khs(Nim, Semester, Ip, Ip_Kumulatif, Status, Jml_SKS_Kumulatif, Jml_SKS_Semester, File_KHS) VALUES('$nim', '$smt', '$ip', '$ipk', 'Disetujui', '".$sumSKS->TotalSKS."', '".$result3->Jml_SKS."','$namaFile')");
         }
         else{
             $queryEdit = "UPDATE tb_khs SET Ip = '$ip', Ip_Kumulatif = '$ipk', Jml_SKS_Kumulatif = '$sumSKS->TotalSKS', Jml_SKS_Semester = '$result3->Jml_SKS' WHERE Nim = '$nim' AND Semester = '$smt'";
@@ -55,7 +63,7 @@
         <div class="card">
 
             <h1 class="card-header">Entry KHS</h1>
-            <form class="card-body" method="POST" action="">
+            <form class="card-body" method="POST" action="" enctype="multipart/form-data">
                 <div class="row gx-5">
                     <div class="col">
                         <label>Semester</label>
@@ -114,11 +122,10 @@
 
                 <h4 class="fw-bold">Upload KHS</h4>
                 <div class="form-group d-flex flex-column mb-2">
-                    <label for="exampleFormControlFile1">Upload File</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <label for="uploadKhs">Upload File</label>
+                    <input type="file" class="form-control-file" name="uploadKhs" id="uploadKhs">
                 </div>
                 <div class="d-flex mb-3">
-                    <button class="me-auto btn btn-primary mt-3">Upload</button>
                     <button type="submit" name="submit" class=" btn btn-primary mt-3">Simpan</button>
                 </div>
             </form>

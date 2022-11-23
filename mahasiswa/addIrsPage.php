@@ -20,11 +20,18 @@ if (isset($_POST['submit'])) {
             $result = $db->query("INSERT INTO tb_nilai (Nim, Semester, Kode_Matkul, Kelas) VALUES ('$nim', '$smt', '" . $_POST['mata_kuliah'][$i] . "', '" . $_POST['kelas'][$i] . "')");
         }
     }
+    $namaFile = $_FILES['uploadIrs']['name'];
+$namaSementara = $_FILES['uploadIrs']['tmp_name'];
 
+// tentukan lokasi file akan dipindahkan
+$dirUpload = "../upload/irs/";
+
+// pindahkan file
+$terupload = move_uploaded_file($namaSementara, $dirUpload.$namaFile);
     $query3 = "SELECT SUM(SKS) as TotalSKS FROM tb_nilai n JOIN tb_matkul k WHERE n.Kode_Matkul = k.Kode_Matkul AND n.Nim = '" . $nim . "' AND n.Semester = '" . $smt . "' ";
     $sumSKS = $db->query($query3)->fetch_object();
     if ($sumSKS->TotalSKS != null) {
-        $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS) VALUES('$nim', '$smt', 'Belum Disetujui', '" . $sumSKS->TotalSKS . "')");
+        $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS, File_IRS) VALUES('$nim', '$smt', 'Belum Disetujui', '" . $sumSKS->TotalSKS . "','$namaFile')");
     } else {
 ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
                                                                                                 }
@@ -43,7 +50,7 @@ if (isset($_POST['submit'])) {
         <div class="card">
 
             <h4 class="card-header">Entry IRS</h4>
-            <form class="card-body" method="POST" action="">
+            <form class="card-body" method="POST" action="" enctype="multipart/form-data">
                 <div class="row gx-5">
                     <div class="col">
                         <label>Semester</label>
@@ -84,11 +91,10 @@ if (isset($_POST['submit'])) {
 
                 <h4 class="fw-bold">Upload IRS</h4>
                 <div class="form-group d-flex flex-column mb-2">
-                    <label for="exampleFormControlFile1">Upload File</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <label for="uploadIrs">Upload File</label>
+                    <input type="file" class="form-control-file" name="uploadIrs" id="uploadIrs">
                 </div>
                 <div class="d-flex mb-3">
-                    <button class="me-auto btn btn-primary mt-3">Upload</button>
                     <button type="submit" name="submit" class=" btn btn-success mt-3">Simpan</button>
                 </div>
             </form>
