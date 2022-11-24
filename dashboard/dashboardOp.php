@@ -98,7 +98,7 @@ $result3 = mysqli_query($db, $query3);
                             <h2><?php echo $_SESSION["user"]["Username"] ?></h2>
                             <h5>Operator</h5>
                             <!-- Path masih ngebug -->
-                            <a href="editDataOp.php?nimnip=<?php echo $_SESSION["user"]["Nim_Nip"]?>" class="btn btn-primary">Edit Profil</a>
+                            <a href="../operator/editProfileOp.php?nimnip=<?php echo $nip?>" class="btn btn-primary">Edit Profil</a>
                         </div>
                     </div>
                     <div class="row mt-3"></div>
