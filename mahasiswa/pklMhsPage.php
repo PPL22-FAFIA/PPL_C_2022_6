@@ -21,6 +21,7 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION['dataMhs'] = $data;
 }
 $statuspkl = $db->query("SELECT * FROM tb_pkl WHERE Nim = '$nim'")->fetch_object();
+$dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_Pemb_P'")->fetch_object();
 ?>
 
 <div class="row g-0">
@@ -41,6 +42,7 @@ $statuspkl = $db->query("SELECT * FROM tb_pkl WHERE Nim = '$nim'")->fetch_object
 
                             <h5 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
                             <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
+                            <h6>Dosen Pembimbing: <?php echo $dosen->Nama ?></h6>
                         </div>
                         <div class="col-3">
                             <h4 class="text-center">Status</h4><?php
