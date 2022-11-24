@@ -19,8 +19,8 @@ $result3 = mysqli_query($db, $query3);
     <h3 class="d-flex justify-content-center mt-3 fw-semibold display-6">Dashboard Operator</h3>
     <div class="row mt-5">
         <div class="col d-flex align-item-center justify-content-center">
-            <div class="card">
-                <div class="card-body">
+            <div class="card round-content">
+                <div class="card-body mt-5">
                     <h3 class="card-title text-center">Data Mahasiswa</h3>
                     <div class="row">
                         <div class="tengah d-flex justify-content-center">
@@ -92,17 +92,17 @@ $result3 = mysqli_query($db, $query3);
             <div class="d-flex align-item-center justify-content-center">
 
                 <div class="align">
-                    <div class="card w-100">
+                    <div class="card round-content w-100">
                         <div class="card-body text-center">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
                             <h2><?php echo $_SESSION["user"]["Username"] ?></h2>
                             <h5>Operator</h5>
                             <!-- Path masih ngebug -->
-                            <a href="editDataOp.php?nimnip=<?php echo $_SESSION["user"]["Nim_Nip"]?>" class="btn btn-primary">Edit Profil</a>
+                            <a href="editDataOp.php?nimnip=<?php echo $_SESSION["user"]["Nim_Nip"] ?>" class="btn btn-primary">Edit Profil</a>
                         </div>
                     </div>
                     <div class="row mt-3"></div>
-                    <div class="card">
+                    <div class="card round-content">
                         <div class="card-body">
                             <h3 class="card-title text-center">Data User</h3>
                             <div class="row">
@@ -125,6 +125,12 @@ $result3 = mysqli_query($db, $query3);
                                 </div>
                             </div>
                         </div>
+                        <style>
+                            .round-content {
+                                border: 2px solid #EAEAEA;
+                                border-radius: 25px;
+                            }
+                        </style>
                     </div>
                 </div>
             </div>

@@ -5,11 +5,11 @@
                 <h1 class="text-white mb-5">SIAP IF</h1>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="../dashboard/" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary">Dashboard
+                        <a href="../dashboard/" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary px-2">Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="../operator/cariUserPage.php" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary">
+                        <a href="../operator/cariUserPage.php" class="nav-link px-0 align-middle text-start text-white fs-5 btn btn-primary px-2">
                             Cari User</a>
                     </li>
                 </ul>

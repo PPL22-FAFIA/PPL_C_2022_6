@@ -5,17 +5,17 @@
                 <h1 class="text-white mb-5">SIAP IF</h1>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start d-grid" id="menu">
                     <li class="nav-item">
-                        <a href="../dashboard/" class="nav-link align-middle px-0 text-white fs-5 text-start btn btn-primary">Dashboard
+                        <a href="../dashboard/" class=" nav-option nav-link align-middle px-0 text-white fs-5 text-start btn btn-primary px-2">Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="../doswal/daftarDoswal.php" class="nav-link px-0 align-middle text-white fs-5  btn btn-primary">
+                        <a href="../doswal/daftarDoswal.php" class="nav-option nav-link px-0 align-middle text-white fs-5  btn btn-primary px-2">
                             Daftar Mahasiswa</a>
                     </li>
                 </ul>
 
                 <div class="d-flex justify-content-center mt-4">
-                <a href="../auth/logout.php" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
+                    <a href="../auth/logout.php" class="btn btn-danger fs-4"><i class="fa-solid fa-power-off"></i><span class="text-white"> Logout</span></a>
                 </div>
                 <hr>
             </div>

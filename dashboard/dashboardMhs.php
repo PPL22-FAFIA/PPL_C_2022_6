@@ -29,36 +29,40 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
     <h1 class="d-flex justify-content-center mt-4 mb-3">Dashboard Mahasiswa</h1>
     <div class="row">
         <div class="col">
-            <div class="card mt-3 ms-3 mb-2">
-                <div class="card-body">
-                    <h4 class="card-title mb-3">Status Akademik</h4>
-                    <p class="card-text m-0">Dosen Wali</p>
-                    <p class="fw-bold mb-2"><?php echo $resultDoswal->nama_dsn ?></p>
-                    <p class="card-text m-0">NIP</p>
-                    <p class="fw-bold m-0"><?php echo $resultDoswal->nip ?></p>
-                    <div class="row text-center mt-4">
-                        <div class="col">Semester</div>
-                        <div class="col">Status</div>
-                    </div>
-                    <div class="row text-center">
-                        <h1 class="col"><?php echo $_SESSION["dataMhs"]["Semester"] ?></h1>
-                        <?php
-                        if ($_SESSION['dataMhs']['Status'] == "Aktif") {
-                            echo '<h3 class="col badge fs-4 text-bg-success text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
-                        } else if($_SESSION['dataMhs']['Status'] == "Cuti"){ 
-                            echo '<h3 class="col badge fs-4 text-bg-primary text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
-                        }
-                        else{
-                            echo '<h3 class="col badge fs-4 text-bg-danger text-white">'.$_SESSION["dataMhs"]["Status"].'</h3>';
-                        }
-                        ?>
-                        
+            <div class="card mt-3 mb-2 w-100 h-100">
+                <div class="d-flex justify-content-center align-middle">
+                    <div class="card-body mt-3">
+                        <h4 class="card-title mb-3">Status Akademik</h4>
+                        <p class="card-text m-0">Dosen Wali</p>
+                        <p class="fw-bold mb-2"><?php echo $resultDoswal->nama_dsn ?></p>
+                        <p class="card-text m-0">NIP</p>
+                        <p class="fw-bold m-0"><?php echo $resultDoswal->nip ?></p>
+                        <div class="semesternstatus mx-2">
+                            <div class="row text-center mt-4">
+                                <div class="col">Semester</div>
+                                <div class="col">Status</div>
+                            </div>
+                            <div class="row text-center">
+                                <h1 class="col"><?php echo $_SESSION["dataMhs"]["Semester"] ?></h1>
+                                <?php
+                                if ($_SESSION['dataMhs']['Status'] == "Aktif") {
+                                    echo '<h4 class="col w-25 badge fs-4 text-bg-success text-white">'.$_SESSION["dataMhs"]["Status"].'</h4>';
+                                } else if($_SESSION['dataMhs']['Status'] == "Cuti"){ 
+                                    echo '<h4 class="col w-25 badge fs-4 text-bg-primary text-white">'.$_SESSION["dataMhs"]["Status"].'</h4>';
+                                }
+                                else{
+                                    echo '<h4 class="col w-25 badge fs-4 text-bg-danger text-white">'.$_SESSION["dataMhs"]["Status"].'</h4>';
+                                }
+                                ?>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card mt-3 mb-2 me-4">
+            <div class="card mt-3 mb-2 me-4 w-100 h-100">
                 <div class="card-body text-center">
                 <img class="img-thumbnail rounded p-0 mt-1" src="../lib/pp.jpg" alt="profile" width="130">
                     <h3 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
@@ -70,7 +74,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
     </div>
     <div class="row mt-3">
         <div class="col">
-            <div class="card ms-3 mb-5">
+            <div class="card w-100 h-100">
                 <div class="card-body">
                     <h4>Data Mahasiswa</h4>
                     <div class="mt-3">
@@ -89,7 +93,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
             </div>
         </div>
         <div class="col">
-            <div class="card">
+            <div class="card w-100 h-100">
                 <div class="card-body">
                     <h4 class="card-title text-center mb-3">Prestasi Akademik</h4>
                     <div class="row">

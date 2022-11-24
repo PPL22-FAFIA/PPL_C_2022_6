@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="col">
                 <div class="d-flex justify-content-center">
                     <div>
-                        <div class="profile border rounded p-3 h-100 w-100">
+                        <div class="round-content profile p-3 h-100 w-100">
                             <div>
                                 <img class="img-fluid" src="../lib/pp.jpg" alt="profile">
                             </div>
@@ -34,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             <!-- Donut Chart Jumlah Mahasiswa -->
             <div class="col text-center">
-                <div class="chart-pkl border rounded p-3 h-100">
+                <div class="chart-pkl round-content p-3 h-100">
                     <h5 class="card-title">Data Mahasiswa PKL</h5>
                     <?php
                     $kodewali =  $_SESSION['dataDoswal']['Kode_Wali'];
@@ -102,7 +102,7 @@ if (mysqli_num_rows($result) > 0) {
         <div class="row mt-4">
             <!-- Donut Chart Jumlah Mahasiswa -->
             <div class="col text-center">
-                <div class="chart-aktif border rounded p-3">
+                <div class="chart-aktif round-content p-3">
                     <h5 class="card-title">Data Mahasiswa Aktif</h5>
                     <?php
                     if ($stmt = $db->query("SELECT Angkatan, COUNT(*) AS total FROM tb_mhs WHERE Kode_Wali = '$kodewali' GROUP BY Angkatan")) {
@@ -169,7 +169,7 @@ if (mysqli_num_rows($result) > 0) {
 
             <div class="col text-center">
 
-                <div class="chart-skripsi border rounded p-3">
+                <div class="chart-skripsi round-content p-3">
                     <h5 class="card-title">Data Mahasiswa Skripsi</h5>
                     <?php
                     $kodewali =  $_SESSION['dataDoswal']['Kode_Wali'];
@@ -234,5 +234,11 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
         </div>
+        <style>
+            .round-content {
+                border: 2px solid #EAEAEA;
+                border-radius: 25px;
+            }
+        </style>
     </div>
 </div>
