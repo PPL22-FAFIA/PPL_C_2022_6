@@ -127,6 +127,38 @@ if(isset($_POST['submit'])){
                             </select>
                         </div>
                     </div>
+                    <div class="form-group mt-3">
+                        <label class="fw-bold">Dosen Pembimbing PKL</label>
+                        <div class="col">
+                            <select class="form-control" id="dosPemP" name="dosPemP">
+                                <option value="">Pilih Dosen Pembimbing</option>
+                                <?php
+                                    $result5 = $db->query('select * from tb_dosen where Kode_Wali IS NOT NULL');
+                                    $pkl = $db->query('SELECT * FROM tb_pkl WHERE Nim = "' . $result->Nim . '"')->fetch_object();
+                                    ?>
+                                    <?php while ($doswal = $result5->fetch_object()) : ?>
+                                        <option value="<?php echo $doswal->Kode_Wali ?>" <?php if ($pkl->Kode_Pemb_P == $doswal->Kode_Wali) echo "selected" ?>><?php echo $doswal->Nama ?></option>
+                                    <?php
+                                    endwhile; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label class="fw-bold">Dosen Pembimbing Skripsi</label>
+                        <div class="col">
+                            <select class="form-control" id="dosPemS" name="dosPemS">
+                                <option value="">Pilih Dosen Pembimbing</option>
+                                <?php
+                                    $result5 = $db->query('select * from tb_dosen where Kode_Wali IS NOT NULL');
+                                    $skripsi = $db->query('SELECT * FROM tb_skripsi WHERE Nim = "' . $result->Nim . '"')->fetch_object();
+                                    ?>
+                                    <?php while ($doswal = $result5->fetch_object()) : ?>
+                                        <option value="<?php echo $doswal->Kode_Wali ?>" <?php if ($skripsi->Kode_Pemb_S == $doswal->Kode_Wali) echo "selected" ?>><?php echo $doswal->Nama ?></option>
+                                    <?php
+                                    endwhile; ?>
+                            </select>
+                        </div>
+                    </div>
                     <!-- button update data -->
                 </div>
                 <div class="text-center">

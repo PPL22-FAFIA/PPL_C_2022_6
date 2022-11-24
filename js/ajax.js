@@ -123,6 +123,8 @@ function editMhsOperator(){
   var nim = document.getElementById('nim').value;
   var nama = document.getElementById('nama').value;
   var doswal = document.getElementById('doswal').value;
+  var dosPemP = document.getElementById('dosPemP').value;
+  var dosPemS = document.getElementById('dosPemS').value;
   //validate
   if (noHP !="" && email != "" && alamat != "") {
 
@@ -131,7 +133,7 @@ function editMhsOperator(){
       //alert (url);
       var inner = "responseedit";
       //open request
-      var params = "nim="+ nim + "&no_hp=" + noHP + "&email=" + email + "&alamat=" + alamat + "&kabupaten=" + kabupaten + "&nama=" + nama + "&status=" + status + "&doswal=" + doswal;
+      var params = "nim="+ nim + "&no_hp=" + noHP + "&email=" + email + "&alamat=" + alamat + "&kabupaten=" + kabupaten + "&nama=" + nama + "&status=" + status + "&doswal=" + doswal + "&dosPemP=" + dosPemP + "&dosPemS=" + dosPemS;
       xmlhttp.open('POST' , url, true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xmlhttp.onreadystatechange = function(){
