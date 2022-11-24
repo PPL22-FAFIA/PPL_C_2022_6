@@ -109,8 +109,17 @@
                                 while ($row = $result->fetch_object()) {
                                     echo '<tr>';
                                     echo '<td>'.$row->nama_mk.'</td>';
-                                    echo "<input type='hidden' name='mata_kuliah[]' value='".$row->Kode_Matkul."'>";
-                                    echo "<td><input name='nilai[]' aria-label='Default select example' value='".$row->Nilai."'></td>";
+                                    echo "<input type='hidden' name='mata_kuliah[]' value='".$row->Kode_Matkul."'>";?>
+                                    <td><select class='form-select' name='nilai[]' aria-label='Default select example'>
+                                        <option value=''>Masukkan Nilai</option>
+                                        <option value='A' <?php if ($row->Nilai == 'A') echo "selected" ?>>A</option>
+                                        <option value='B' <?php if ($row->Nilai == 'B') echo "selected" ?>>B</option>
+                                        <option value='C' <?php if ($row->Nilai == 'C') echo "selected" ?>>C</option>
+                                        <option value='D' <?php if ($row->Nilai == 'D') echo "selected" ?>>D</option>
+                                        <option value='E' <?php if ($row->Nilai == 'E') echo "selected" ?>>E</option>
+                                    </select></td>
+                                    <?php
+                                    // echo "<td><input name='nilai[]' aria-label='Default select example' value='".$row->Nilai."'></td>";
                                     echo '</tr>';
                                 }
                             }
