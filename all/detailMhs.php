@@ -52,18 +52,20 @@ if (!isset($_SESSION['user'])) {
         $dosbingSkripsi = "Belum ada";
     }
 
-    $statusPKL = mysqli_query($db,"SELECT Status FROM tb_pkl WHERE Nim = '$nim'");
-    if (mysqli_num_rows($statusPKL) > 0) {
+    $PKL = mysqli_query($db,"SELECT * FROM tb_pkl WHERE Nim = '$nim'");
+    if (mysqli_num_rows($PKL) > 0) {
         // get data
-        $statusPKL = mysqli_fetch_assoc($statusPKL)['Status'];
+        $pklMhs = mysqli_fetch_assoc($PKL);
+        $statusPKL = $pklMhs['Status'];
     }
     else {
         $statusPKL = "Belum Mengambil PKL";
     }
-    $statusSkripsi = mysqli_query($db,"SELECT Status FROM tb_skripsi WHERE Nim = '$nim'");
-    if (mysqli_num_rows($statusSkripsi) > 0) {
+    $Skripsi = mysqli_query($db,"SELECT * FROM tb_skripsi WHERE Nim = '$nim'");
+    if (mysqli_num_rows($Skripsi) > 0) {
         // get data
-        $statusSkripsi = mysqli_fetch_assoc($statusSkripsi)['Status'];
+        $SkripsiMhs = mysqli_fetch_assoc($Skripsi);
+        $statusSkripsi = $SkripsiMhs['Status'];
     }
     else{
         $statusSkripsi = "Belum Mengambil Skripsi";
@@ -213,7 +215,16 @@ if (!isset($_SESSION['user'])) {
                         <div>: <span class="bg-success p-2 text-white fw-semibold rounded h6"><?php 
                         echo $statusPKL?></span></div>
                     </div>
-                    <div class="btn-unduh">: <button class="btn btn-success text-white fw-semibold h6">Unduh</button></div>
+                    <div class='btn-unduh'>:
+                    <?php 
+                    if($pklMhs['File_PKL'] != ""){
+                    echo "<button onclick='location.href = ".'"'. "../upload/pkl/".$pklMhs['File_PKL']."".'"'."' class='btn btn-success text-white fw-semibold h6'>Unduh</button>";
+                    }
+                    else{
+                        echo "<span class='fw-semibold'>Belum Ada Berita Acara</span>";
+                    }
+                    ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -241,7 +252,16 @@ if (!isset($_SESSION['user'])) {
                     <div class="jawab-status">
                         <div>: <span class="bg-success p-2 text-white rounded h6"><?= $statusSkripsi?></span></div>
                     </div>
-                    <div class="btn-unduh">: <button class="btn btn-success text-white h6 fw-semibold">Unduh</button></div>
+                    <div class="btn-unduh">: 
+                    <?php 
+                    if($SkripsiMhs['File_Skripsi'] != ""){
+                    echo "<button onclick='location.href = ".'"'. "../upload/pkl/".$SkripsiMhs['File_Skripsi']."".'"'."' class='btn btn-success text-white fw-semibold h6'>Unduh</button>";
+                    }
+                    else{
+                        echo "<span class='fw-semibold'>Belum Ada Berita Acara</span>";
+                    }
+                    ?>
+                    </div>
                 </div>
             </div>
 

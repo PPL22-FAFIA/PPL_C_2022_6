@@ -43,9 +43,9 @@
             echo 'Jumlah SKS: ' . $sumSKS->TotalSKS . ' SKS';
             ?>
             <div class="d-flex mb-3">
-                
-                <button type="button" onclick="location.href = '../upload/khs/<?php echo $resultobjek->File_KHS ?>'" class="me-auto btn btn-primary mt-3">Download File KHS</button>
-                <?php
+                    <?php if($resultobjek->File_KHS != ""){
+                        echo "<button type='button' onclick='location.href =".'"'. "../upload/khs/$resultobjek->File_KHS".'"'."' class='me-auto btn btn-primary mt-3'>Download File KHS</button>";
+                        }
                     $query4 = "SELECT Status FROM tb_khs WHERE Nim = '$nim' AND Semester = '$smt' ";
                     $status = $db->query($query4)->fetch_object();
                     if ($status->Status == 'Disetujui') {

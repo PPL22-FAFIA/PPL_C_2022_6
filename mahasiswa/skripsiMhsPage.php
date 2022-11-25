@@ -12,7 +12,7 @@ else{
 $nim = $_SESSION['user']['Nim_Nip'];
 require_once("../lib/db_login.php");
 $statusskripsi = $db->query("SELECT * FROM tb_skripsi WHERE Nim = '$nim'")->fetch_object();
-$dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statusskripsi->Kode_Pemb_S'")->fetch_object();
+$dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statusskripsi->Kode_Pemb_S'");
 ?><div class="row g-0">
     <div class="col-2">
         <?php require_once '../dashboard/sidebarMhs.php' ?>
@@ -32,7 +32,14 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statusskripsi->K
 
                             <h5 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
                             <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
-                            <h6>Dosen Pembimbing: <?php echo $dosen->Nama ?></h6>
+                            <h6>Dosen Pembimbing: <?php 
+                            if($dosen->num_rows >0){
+                                $dosen = $dosen->fetch_object();
+                            echo $dosen->Nama ;
+                            }
+                            else{
+                                echo "Belum ada dosen pembimbing";
+                            }?></h6>
                         </div>
                         <div class="col-3">
                             <h4 class="text-center">Status</h4><?php

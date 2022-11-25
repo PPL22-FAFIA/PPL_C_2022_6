@@ -5,18 +5,20 @@ if (!isset($_SESSION['user'])) {
 }
 $user = $_SESSION['user']['Username'];
 ?>
-<h1 class="d-flex justify-content-center">Dashboard Departemen</h1>
+<h1 class="d-flex justify-content-center mb-4">Dashboard Departemen</h1>
 <div class="container">
     <div class="row">
-        <div class="col left-content d-flex flex-column">
-            <div class="card-body text-center mt-5">
-                <img src="https://1.bp.blogspot.com/-ofTtY8AGS78/YZhezd9jcrI/AAAAAAAACj4/-Mku0-NCv34U0UA3U6QfVdTJWMvfHykVgCNcBGAsYHQ/s2048/logo-undip-01.png" width="150" alt="gene">
-                <h2 class="m-0"><?php echo $user ?></h2>
-                <p class="m-0">Departemen Informatika</p>
-                <p class="m-0">Fakultas Sains dan Matematika</p>
+        <div class="col left-content d-flex flex-column w-100">
+            <div class="card-body d-flex align-items-center justify-content-center text-center round-content">
+                <div class="content">
+                    <img src="https://1.bp.blogspot.com/-ofTtY8AGS78/YZhezd9jcrI/AAAAAAAACj4/-Mku0-NCv34U0UA3U6QfVdTJWMvfHykVgCNcBGAsYHQ/s2048/logo-undip-01.png" width="150" alt="gene">
+                    <h2 class="m-0"><?php echo $user ?></h2>
+                    <p class="m-0">Departemen Informatika</p>
+                    <p class="m-0">Fakultas Sains dan Matematika</p>
+                </div>
             </div>
 
-            <div class="card chart-jumlah-mahasiswa text-center p-3">
+            <div class="card chart-jumlah-mahasiswa text-center p-3 round-content mt-3">
                 <h5 class="card-title">Jumlah Mahasiswa</h5>
                 <?php
                 $sum = $db->query("SELECT COUNT(*) AS total FROM tb_mhs");
@@ -84,7 +86,7 @@ $user = $_SESSION['user']['Username'];
         </div>
         <div class="col">
             <div class="right-content">
-                <div class="card text-center p-3 my-3">
+                <div class="card round-content text-center pt-3 my-3 w-100">
                     <!-- Donut Chart Jumlah Mahasiswa -->
                     <!-- Donut Chart Mahasiswa Aktif -->
                     <h5 class="card-title">Mahasiswa Aktif</h5>
@@ -152,7 +154,7 @@ $user = $_SESSION['user']['Username'];
                 </div>
 
 
-                <div class="card text-center p-3 ">
+                <div class="card round-content text-center p-3 ">
 
                     <!-- Donut Chart Mahasiswa Non-Aktif -->
                     <h5 class="card-title">Mahasiswa Non-Aktif</h5>
@@ -218,6 +220,12 @@ $user = $_SESSION['user']['Username'];
                         <div id="nonActiveChart"></div>
                     </div>
                 </div>
+                <style>
+                    .round-content {
+                        border: 2px solid #EAEAEA;
+                        border-radius: 25px;
+                    }
+                </style>
             </div>
         </div>
     </div>

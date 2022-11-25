@@ -46,7 +46,7 @@
             $result2 = $db->query("INSERT INTO tb_khs(Nim, Semester, Ip, Ip_Kumulatif, Status, Jml_SKS_Kumulatif, Jml_SKS_Semester, File_KHS) VALUES('$nim', '$smt', '$ip', '$ipk', 'Belum Disetujui', '".$sumSKS->TotalSKS."', '".$result3->Jml_SKS."','$namaFile')");
         }
         else{
-            $queryEdit = "UPDATE tb_khs SET Ip = '$ip', Ip_Kumulatif = '$ipk', Jml_SKS_Kumulatif = '$sumSKS->TotalSKS', Jml_SKS_Semester = '$result3->Jml_SKS' WHERE Nim = '$nim' AND Semester = '$smt'";
+            $queryEdit = "UPDATE tb_khs SET Ip = '$ip', File_KHS = '$namaFile', Ip_Kumulatif = '$ipk', Jml_SKS_Kumulatif = '$sumSKS->TotalSKS', Jml_SKS_Semester = '$result3->Jml_SKS' WHERE Nim = '$nim' AND Semester = '$smt'";
             $result = $db->query($queryEdit);
         }
         header("Location: ./khsMhsPage.php");
