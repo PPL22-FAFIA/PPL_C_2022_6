@@ -89,15 +89,20 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
                 
                 <h4 class="ms-4 mt-4 fw-bold">Upload Scan Berita Acara</h4>
                 <div class="form-group d-flex flex-column">
-                    <label for="exampleFormControlFile1" class="ms-4 mb-2">Upload File</label>
-                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning d-flex justify-content-between"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
-                    <p id="file_info"></p>
-                    <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
-                    <input type="file" hidden id="selectfile">
-                    <p id="message_info"></p>
+                    <div class="upload-file d-flex align-items-center">
+                        <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning d-flex justify-content-between fw-semibold text-white mt-3"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
+                        <p id="file_info"></p>
+                        <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary mt-3"><span class="glyphicon glyphicon-arrow-up fw-semibold"></span> Upload To Server</button></p>
+                        <input type="file" hidden id="selectfile">
+                        <p id="message_info"></p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="simpan">
+                            <button class="ms-4 btn btn-success fw-semibold mt-4" type="button" onclick="editPKL()">Simpan</button>
+                            <div id="responseedit"></div>
+                        </div>
+                    </div>
                 </div>
-                <button class="ms-4 btn btn-success" type="button" onclick="editPKL()">Simpan</button>
-                <div id="responseedit"></div>
             </form>
         </div>
     </div>
