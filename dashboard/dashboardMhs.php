@@ -64,10 +64,10 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
         <div class="col">
             <div class="card mt-3 mb-2 me-4 w-100 h-100">
                 <div class="card-body text-center">
-                <img class="img-thumbnail rounded p-0 mt-1" src="../lib/pp.jpg" alt="profile" width="130">
+                <img class="img-thumbnail rounded p-0 mt-4" src="../lib/pp.jpg" alt="profile" width="130">
                     <h3 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
                     <p class="m-0"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
-                    <p class="mb-2">Mahasiswa</p>
+                    <h5 class="mt-1 mb-2">Mahasiswa</h5>
                 </div>
             </div>
         </div>
