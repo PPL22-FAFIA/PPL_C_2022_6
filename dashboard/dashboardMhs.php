@@ -83,11 +83,11 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
                     </div>
                     <div class="mt-3">
                         <p class="m-0">NIM</p>
-                        <p class="fw-bold m-0"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <!-- anchor editProfil -->
-                        <a href="../mahasiswa/editProfilMhsPage.php" class="btn btn-primary mt-3">Edit Profil</a>
+                        <div class="d-flex justify-content-between">
+                            <!-- anchor editProfil -->
+                                <p class="fw-bold"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
+                            <a href="../mahasiswa/editProfilMhsPage.php" class="btn btn-primary">Edit Profil</a>
+                        </div>
                     </div>
                 </div>
             </div>
