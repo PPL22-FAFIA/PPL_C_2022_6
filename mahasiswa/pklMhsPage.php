@@ -33,6 +33,7 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
     <div class="col p-4">
         <h1 class="mt-1 mb-3 d-flex justify-content-center">PKL</h1>
         <div class="card ms-2 me-2">
+            
             <h3 class="card-header">Entry PKL</h3>
             <form class="card-body">
                 <div class="row gx-5 d-flex">
@@ -56,9 +57,9 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
                                             if ($_SESSION['dataMhs']['Status'] == "Aktif") {
                                                 echo '<h4 class=" mx-auto rounded w-50 px-1 py-1 text-bg-success text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h4>';
                                             } else if ($_SESSION['dataMhs']['Status'] == "Cuti") {
-                                                echo '<h5 class=" mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                echo '<h4 class=" mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             } else {
-                                                echo '<h5 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                echo '<h4 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             }
                                             ?>
                         </div>
