@@ -29,7 +29,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
     <h1 class="d-flex justify-content-center mt-4 mb-3">Dashboard Mahasiswa</h1>
     <div class="row">
         <div class="col">
-            <div class="card mt-3 mb-2 w-100 h-100">
+            <div class="card me-5 mt-3 mb-2 w-100 h-100">
                 <div class="d-flex justify-content-center align-middle">
                     <div class="card-body mt-3">
                         <h4 class="card-title mb-3">Status Akademik</h4>
@@ -74,7 +74,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
     </div>
     <div class="row mt-3">
         <div class="col">
-            <div class="card w-100 h-100">
+            <div class="card mt-3 w-100 h-100">
                 <div class="card-body">
                     <h4>Data Mahasiswa</h4>
                     <div class="mt-3">
@@ -93,7 +93,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
             </div>
         </div>
         <div class="col">
-            <div class="card w-100 h-100">
+            <div class="card mt-3 w-100 h-100">
                 <div class="card-body">
                     <h4 class="card-title text-center mb-3">Prestasi Akademik</h4>
                     <div class="row">
