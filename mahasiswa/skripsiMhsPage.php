@@ -75,16 +75,21 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statusskripsi->K
                     </select></div>
                 <div class="col">
                     <h4 class="ms-4 mt-4 fw-bold">Upload Scan Berita Acara</h4>
-                <div class="form-group d-flex flex-column mb-2">
+                <div class="form-group d-flex mb-2">
                     <!--<label for="exampleFormControlFile1" class="ms-4 mb-2">Upload File</label>-->
-                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
+                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning mt-3"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
                     <p id="file_info"></p>
-                    <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
+                    <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary mt-3"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
                     <input type="file" hidden id="selectfile">
                     <p id="message_info"></p>
                 </div>
-                <button class="btn btn-success ms-4 mt-3" type="button" onclick="editSkripsi()">Simpan</button>
-                <div id="responseedit"></div>
+
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <button class="btn btn-success ms-4" type="button" onclick="editSkripsi()">Simpan</button>
+                        <div id="responseedit"></div>
+                    </div>
+                </div>
                 </div>
             </form>
         </div>
