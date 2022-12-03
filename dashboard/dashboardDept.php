@@ -223,7 +223,7 @@ $user = $_SESSION['user']['Username'];
                 <style>
                     .round-content {
                         border: 2px solid #EAEAEA;
-                        border-radius: 25px;
+                        border-radius: 35px;
                     }
                 </style>
             </div>

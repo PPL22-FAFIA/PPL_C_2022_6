@@ -25,13 +25,19 @@ $queryDoswal = "SELECT d.Nip AS nip, d.Nama AS nama_dsn FROM tb_mhs m JOIN tb_do
 $resultDoswal = $db->query($queryDoswal)->fetch_object();
 ?>
 
+<style>
+    .content-border{
+        border-radius: 35px;
+        border : 1px solid #D1D1D1;
+    }
+</style>
 <div class="container">
     <h1 class="d-flex justify-content-center mt-4 mb-3">Dashboard Mahasiswa</h1>
     <div class="row">
-        <div class="col">
-            <div class="card ms-2 mt-3 mb-2 w-100 h-100">
-                <div class="d-flex justify-content-center align-middle">
-                    <div class="card-body mt-3">
+        <div class="col" >
+            <div class="content-border ms-2 mt-3 mb-2 w-100 h-100">
+                <div class="d-flex justify-content-center align-middle m-3">
+                    <div class="card-body mt-3" style="border-radius: 40px;">
                         <h4 class="card-title mb-3">Status Akademik</h4>
                         <p class="card-text m-0">Dosen Wali</p>
                         <p class="fw-bold mb-2"><?php echo $resultDoswal->nama_dsn ?></p>
@@ -62,7 +68,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
             </div>
         </div>
         <div class="col me-4">
-            <div class="card mt-3 mb-2 me-5 w-100 h-100">
+            <div class=" content-border mt-3 mb-2 me-5 w-100 h-100">
                 <div class="card-body text-center">
                 <img class="img-thumbnail rounded p-0 mt-4" src="../lib/pp.jpg" alt="profile" width="130">
                     <h3 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
@@ -74,8 +80,8 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
     </div>
     <div class="row mt-3">
         <div class="col ms-2">
-            <div class="card mt-3 w-100 h-100">
-                <div class="card-body">
+            <div class="content-border mt-3 w-100 h-100">
+                <div class="card-body m-3">
                     <h4 class="mt-2">Data Mahasiswa</h4>
                     <div class="mt-3">
                         <p class="m-0">Nama Lengkap</p>
@@ -93,7 +99,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
             </div>
         </div>
         <div class="col me-4 ">
-            <div class="card mt-3 w-100 h-100">
+            <div class="content-border mt-3 w-100 h-100">
                 <div class="card-body">
                     <h4 class="card-title text-center mt-2 mb-3">Prestasi Akademik</h4>
                     <div class="row">

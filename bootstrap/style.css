@@ -2,3 +2,7 @@ hr {
     width: 30%;
 }
 
+.content-border{
+    border-radius: 35px;
+    border : 1px solid grey
+}

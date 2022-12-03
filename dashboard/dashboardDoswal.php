@@ -18,9 +18,9 @@ if (mysqli_num_rows($result) > 0) {
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-center">
-                    <div>
+                    <div class="w-100">
                         <div class="round-content profile p-3 h-100 w-100">
-                            <div>
+                            <div class="d-flex justify-content-center">
                                 <img class="img-fluid" src="../lib/pp.jpg" alt="profile">
                             </div>
                             <div class="profile-name text-center">
@@ -237,7 +237,7 @@ if (mysqli_num_rows($result) > 0) {
         <style>
             .round-content {
                 border: 2px solid #EAEAEA;
-                border-radius: 25px;
+                border-radius: 35px;
             }
         </style>
     </div>

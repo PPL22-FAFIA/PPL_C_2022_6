@@ -15,14 +15,22 @@ $query3 = "SELECT * FROM tb_User";
 $result3 = mysqli_query($db, $query3);
 
 ?>
+
+<style>
+    .content-border{
+        border-radius: 35px;
+        border : 1px solid #D1D1D1;
+    }
+</style>
+
 <div class="container">
     <h3 class="d-flex justify-content-center mt-3 fw-semibold display-6">Dashboard Operator</h3>
-    <div class="row mt-5">
-        <div class="col d-flex align-item-center justify-content-center">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title text-center">Data Mahasiswa</h3>
-                    <div class="row">
+    <div class="content d-flex justify-content-around">
+        <div class="row mt-5">
+            <div class="col d-flex align-item-center justify-content-center me-5">
+                <div class="content-border h-100">
+                    <h3 class="card-title text-center mt-4">Data Mahasiswa</h3>
+                    <div class="row mx-5 mt-5 ">
                         <div class="tengah d-flex justify-content-center">
                             <div class="chart col text-center ml-5">
                                 <?php
@@ -36,11 +44,11 @@ $result3 = mysqli_query($db, $query3);
                                     echo $db->error;
                                 }
                                 echo "<script>
-                                                    var my_2d = " . json_encode($php_data_array) . "
-                                                    for(i = 0; i < my_2d.length; i++){
-                                                        data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
-                                                    }
-                                                </script>";
+                                                            var my_2d = " . json_encode($php_data_array) . "
+                                                            for(i = 0; i < my_2d.length; i++){
+                                                                data.addRow([my_2d[i][0], parseInt(my_2d[i][1])]);
+                                                            }
+                                                        </script>";
                                 ?>
                                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                                 <script>
@@ -87,41 +95,41 @@ $result3 = mysqli_query($db, $query3);
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="d-flex align-item-center justify-content-center">
+            <div class="col ms-5">
+                <div class="d-flex align-item-center justify-content-center">
 
-                <div class="align">
-                    <div class="card w-100">
-                        <div class="card-body text-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
-                            <h2><?php echo $_SESSION["user"]["Username"] ?></h2>
-                            <h5>Operator</h5>
-                            <!-- Path masih ngebug -->
-                            <a href="../operator/editProfileOp.php?nimnip=<?php echo $nip?>" class="btn btn-primary">Edit Profil</a>
+                    <div class="align">
+                        <div class="content-border w-100">
+                            <div class="card-body text-center m-3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/512px-Bootstrap_logo.svg.png" width="150" alt="gene">
+                                <h2><?php echo $_SESSION["user"]["Username"] ?></h2>
+                                <h5>Operator</h5>
+                                <!-- Path masih ngebug -->
+                                <a href="../operator/editProfileOp.php?nimnip=<?php echo $nip ?>" class="btn btn-primary">Edit Profil</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-3"></div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Data User</h3>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="text-center m-0">Mahasiswa</div>
-                                    <h3 class="text-center"><?php echo mysqli_num_rows($result1); ?></h3>
-                                </div>
-                                <div class="col">
-                                    <div class="text-center m-0">Dosen</div>
-                                    <h3 class="text-center"><?php echo mysqli_num_rows($result2); ?></h3>
-                                </div>
+                        <div class="row mt-3"></div>
+                        <div class="content-border">
+                            <div class="card-body m-3">
+                                <h3 class="card-title text-center">Data User</h3>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="text-center ">Total User</div>
-                                        <h3 class="text-center"><?php echo mysqli_num_rows($result3); ?></h3>
+                                        <div class="text-center m-0">Mahasiswa</div>
+                                        <h3 class="text-center"><?php echo mysqli_num_rows($result1); ?></h3>
                                     </div>
-                                </div>
-                                <div class="text-center mt-4">
-                                    <a href="../operator/addUserPage.php" class="btn btn-primary px-3 py-2">Add User</a>
+                                    <div class="col">
+                                        <div class="text-center m-0">Dosen</div>
+                                        <h3 class="text-center"><?php echo mysqli_num_rows($result2); ?></h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="text-center ">Total User</div>
+                                            <h3 class="text-center"><?php echo mysqli_num_rows($result3); ?></h3>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <a href="../operator/addUserPage.php" class="btn btn-primary px-3 py-2">Add User</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -6,16 +6,16 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start d-grid"
                     id="menu">
                     <li class="nav-item">
-                        <a href="../dashboard/" class="nav-link align-middle text-start px-0 text-white fs-5 btn btn-primary">Dashboard
+                        <a href="../dashboard/" class="nav-link align-middle text-start px-0 text-white fs-5 btn btn-primary px-2">Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="../departemen/daftarMhsDept.php" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary">
+                        <a href="../departemen/daftarMhsDept.php" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary px-2">
                             Daftar Mahasiswa</a>
                     </li>
                     
                     <li>
-                        <a href="../departemen/daftarDosenDept.php" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary">
+                        <a href="../departemen/daftarDosenDept.php" class="nav-link px-0 align-middle text-start text-white fs-5  btn btn-primary px-2">
                             Daftar Dosen</a>
                     </li>
                 </ul>
