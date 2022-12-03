@@ -43,9 +43,18 @@
             echo 'Jumlah SKS: ' . $sumSKS->TotalSKS . ' SKS';
             ?>
             <div class="d-flex mb-3">
-                
-                <button type="button" onclick="location.href = '../upload/khs/<?php echo $resultobjek->File_KHS ?>'" class="me-auto btn btn-primary mt-3">Download File KHS</button>
-               <a href="../mahasiswa/addKhsPage.php?semester=<?php echo $smt?>" class="btn btn-warning mt-3">Tambah Data KHS</a>
+                    <?php if($resultobjek->File_KHS != ""){
+                        echo "<button type='button' onclick='location.href =".'"'. "../upload/khs/$resultobjek->File_KHS".'"'."' class='me-auto btn btn-primary mt-3'>Download File KHS</button>";
+                        }
+                    $query4 = "SELECT Status FROM tb_khs WHERE Nim = '$nim' AND Semester = '$smt' ";
+                    $status = $db->query($query4)->fetch_object();
+                    if ($status->Status == 'Disetujui') {
+                        echo '<div class="btn btn-success mt-3">KHS Telah Disetujui</div>';
+                    } else {
+                        echo '<a href="../mahasiswa/addKhsPage.php?semester='.$smt.'" class="btn btn-warning mt-3">Edit Data KHS</a>';
+                    }
+
+                ?>
             </div>
         <?php }
     }

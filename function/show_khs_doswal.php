@@ -11,10 +11,23 @@
                 FROM tb_nilai n JOIN tb_mhs m JOIN tb_matkul k 
                 WHERE n.Nim = m.Nim AND n.Kode_Matkul = k.Kode_Matkul AND m.Nim = '$nim' AND n.Semester = '$smt' ";
         $result = $db->query($query);
-        if ($result->num_rows > 0) {
 ?>
-        <!-- label status irs-->
-
+        <!-- label status khs-->
+        <div class="status" id="status">
+            
+        <?php
+        if ($result->num_rows > 0) {
+            $query2 = "SELECT Status FROM tb_khs WHERE Nim = '$nim' AND Semester = '$smt' ";
+            $status = $db->query($query2)->fetch_object();
+            if ($status->Status == 'Disetujui') {
+                echo '<div id="setujui"  class="alert alert-success" role="alert">KHS Telah Disetujui</div>';
+            }
+            else{
+                echo '<div id="setujui"  class="alert alert-danger" role="alert">KHS Belum Disetujui</div>';
+            }
+?>
+        
+        </div>
         <table class="table table-borderless text-center">
             <thead>
                 <th scope="col" class="h5">No</th>
@@ -37,7 +50,13 @@
             ?>
             </tbody>
         </table>
-
+        <!-- button approve -->
+        <input type="hidden" id="smt" value="<?= $smt?>">
+        
+        <input id="nim" type="hidden" value="<?= $nim?>">
+        <button type="button" onclick="approveKHS()" class="btn btn-success">Setujui</button>
+        
+        <button class="btn btn-danger" onclick="denyKHS()">Batal Setujui</button>
 <?php
         } else {
             echo '<div class="alert alert-danger" role="alert">Data tidak ditemukan</div>';

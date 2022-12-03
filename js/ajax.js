@@ -191,6 +191,48 @@ function denyIRS(){
   xmlhttp.send(params);
 }
 
+function approveKHS(){
+  var xmlhttp = getXMLHttpRequest();
+  var nim = document.getElementById("nim").value;
+  var smt = document.getElementById('smt').value;
+  //set url and inner
+  var url = "../function/approveKHS.php";
+  //alert (url);
+  var inner = "status";
+  //open request
+  var params = "nim="+ nim + "&smt=" + smt;
+  xmlhttp.open('POST' , url, true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.onreadystatechange = function(){
+      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+          document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+  }
+  xmlhttp.send(params);
+}
+
+function denyKHS(){
+  var xmlhttp = getXMLHttpRequest();
+  var nim = document.getElementById("nim").value;
+  var smt = document.getElementById('smt').value;
+  //set url and inner
+  var url = "../function/denyKHS.php";
+  //alert (url);
+  var inner = "status";
+  //open request
+  var params = "nim="+ nim + "&smt=" + smt;
+  xmlhttp.open('POST' , url, true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.onreadystatechange = function(){
+      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+          document.getElementById(inner).innerHTML = xmlhttp.responseText;
+      }
+      return false;
+  }
+  xmlhttp.send(params);
+}
+
 function editDoswalOperator(){
   var xmlhttp = getXMLHttpRequest();
   //get input value

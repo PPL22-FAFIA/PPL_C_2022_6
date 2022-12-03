@@ -21,7 +21,7 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION['dataMhs'] = $data;
 }
 $statuspkl = $db->query("SELECT * FROM tb_pkl WHERE Nim = '$nim'")->fetch_object();
-$dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_Pemb_P'")->fetch_object();
+$dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_Pemb_P'");
 ?>
 
 <div class="row g-0">
@@ -31,65 +31,79 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
     </div>
 
     <div class="col p-4">
-        <h1 class="d-flex justify-content-center">PKL</h1>
-        <div class="card">
+        <h1 class="mt-1 mb-3 d-flex justify-content-center">PKL</h1>
+        <div class="card ms-2 me-2">
+            
             <h3 class="card-header">Entry PKL</h3>
             <form class="card-body">
                 <div class="row gx-5 d-flex">
                     <div class="d-flex flex-row">
-                        <img class="img-thumbnail rounded p-3" src="../lib/pp.jpg" alt="profile" width="150">
+                        <img class="ms-4 mt-3 img-thumbnail rounded p-3" src="../lib/pp.jpg" alt="profile" width="150">
                         <div class="col ms-3 my-auto">
 
-                            <h5 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h5>
-                            <p><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
-                            <h6>Dosen Pembimbing: <?php echo $dosen->Nama ?></h6>
+                            <h4 class="fw-bold mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h4>
+                            <h5><?php echo $_SESSION["dataMhs"]["Nim"] ?></h5>
+                            <h6>Dosen Pembimbing: <?php 
+                            if($dosen->num_rows >0){
+                                $dosen = $dosen->fetch_object();
+                            echo $dosen->Nama ;
+                            }
+                            else{
+                                echo "Belum ada dosen pembimbing";
+                            }?></h6>
                         </div>
                         <div class="col-3">
-                            <h4 class="text-center">Status</h4><?php
+                            <h5 class="fs-4 fw-bold mt-3 mb-2 text-center">Status</h5><?php
                                             if ($_SESSION['dataMhs']['Status'] == "Aktif") {
-                                                echo '<h5 class=" mx-auto rounded w-50 px-1 py-1 text-bg-success text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                echo '<h4 class=" mx-auto rounded w-50 px-1 py-1 text-bg-success text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h4>';
                                             } else if ($_SESSION['dataMhs']['Status'] == "Cuti") {
-                                                echo '<h5 class="  mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                echo '<h4 class=" mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             } else {
-                                                echo '<h5 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                echo '<h4 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
                                             }
                                             ?>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <label>Status PKL</label>
-                    <select class="form-select" id="statuspkl" name="statuspkl" aria-label="Default select example">
+                <div class="col-11 mt-3 mb-3">
+                    <label class=" fs-5 fw-bold ms-4 mb-2">Status PKL</label>
+                    <select class="ms-4 form-select" id="statuspkl" name="statuspkl" aria-label="Default select example">
                         <option value="Sudah Ambil" <?php if ($statuspkl->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
                         <option value="Sedang Mengambil" <?php if ($statuspkl->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
                         <option value="Belum Ambil" <?php if ($statuspkl->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
-                <div>
-                    <label for="nilai" class="form-label">Nilai</label>
+                <div class="col-11 mb-3">
+                    <label for="nilai" class="fs-5 ms-4 fw-bold form-label">Nilai</label>
                     <!-- select option A-E -->
-                    <select class="form-select" id="nilai" name="nilai" aria-label="Default select example">
+                    <select class="ms-4 form-select" id="nilai" name="nilai" aria-label="Default select example">
                         <option value="A" <?php if ($statuspkl->Nilai == "A") echo "selected" ?>>A</option>
                         <option value="B" <?php if ($statuspkl->Nilai == "B") echo "selected" ?>>B</option>
                         <option value="C" <?php if ($statuspkl->Nilai == "C") echo "selected" ?>>C</option>
                         <option value="D" <?php if ($statuspkl->Nilai == "D") echo "selected" ?>>D</option>
                         <option value="E" <?php if ($statuspkl->Nilai == "E") echo "selected" ?>>E</option>
                     </select></div>
-                <div class="col">
-                    <label>Tempat PKL</label>
+                <div class="ms-4 mt-3 col-11">
+                    <label class="fs-5 fw-bold mb-2">Tempat PKL</label>
+                    <input class="form-group form-control" type="text" id="tempat" name="tempat" value="<?= $statuspkl->Tempat?>">
                 </div>
-                <input class="form-group form-control" type="text" id="tempat" name="tempat" value="<?= $statuspkl->Tempat?>">
-                <h4 class="fw-bold">Upload Scan Berita Acara</h4>
-                <div class="form-group d-flex flex-column mb-2">
-                    <label for="exampleFormControlFile1">Upload File</label>
-                    <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="btn btn-warning"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
-                    <p id="file_info"></p>
-                    <p><button type="button" onclick="btnUpload()" id="btn_upload" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
-                    <input type="file" hidden id="selectfile">
-                    <p id="message_info"></p>
+                
+                <h4 class="ms-4 mt-4 fw-bold">Upload Scan Berita Acara</h4>
+                <div class="form-group d-flex flex-column">
+                    <div class="upload-file d-flex align-items-center">
+                        <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning d-flex justify-content-between fw-semibold text-white mt-3"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
+                        <p id="file_info"></p>
+                        <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary mt-3"><span class="glyphicon glyphicon-arrow-up fw-semibold"></span> Upload To Server</button></p>
+                        <input type="file" hidden id="selectfile">
+                        <p id="message_info"></p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="simpan">
+                            <button class="ms-4 btn btn-success fw-semibold mt-4" type="button" onclick="editPKL()">Simpan</button>
+                            <div id="responseedit"></div>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn btn-success mt-3" type="button" onclick="editPKL()">Simpan</button>
-                <div id="responseedit"></div>
             </form>
         </div>
     </div>
