@@ -9,7 +9,7 @@ $user = $_SESSION['user']['Username'];
 <div class="container">
     <div class="row">
         <div class="col left-content d-flex flex-column w-100">
-            <div class="card-body d-flex align-items-center justify-content-center text-center round-content">
+            <div class="card-body d-flex align-items-center justify-content-center text-center round-content mt-3">
                 <div class="content">
                     <img src="https://1.bp.blogspot.com/-ofTtY8AGS78/YZhezd9jcrI/AAAAAAAACj4/-Mku0-NCv34U0UA3U6QfVdTJWMvfHykVgCNcBGAsYHQ/s2048/logo-undip-01.png" width="150" alt="gene">
                     <h2 class="m-0"><?php echo $user ?></h2>
