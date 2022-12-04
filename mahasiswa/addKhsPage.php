@@ -59,15 +59,15 @@
 
     </div>
     <div class="col p-4">
-        <h1 class="d-flex justify-content-center">KHS</h1>
+        <h1 class="d-flex justify-content-center my-4">KHS</h1>
         <div class="card">
 
-            <h1 class="card-header">Entry KHS</h1>
-            <form class="card-body" method="POST" action="" enctype="multipart/form-data">
+            <h3 class="card-header">Entry KHS</h3>
+            <form class="card-body m-2" method="POST" action="" enctype="multipart/form-data">
                 <div class="row gx-5">
                     <div class="col">
-                        <label>Semester</label>
-                        <p><?php echo $smt?></p>
+                        <label class="fw-semibold text-center">Semester</label>
+                        <h3><?php echo $smt?></h3>
                     </div>
                     <div class="col">
                         <?php 
@@ -76,22 +76,22 @@
                             // check result
                             if (mysqli_num_rows($result) > 0) {
                                 $row = $result->fetch_object();
-                                echo "<label>IP Semester</label>";
-                                echo "<input type='text' name='ip' value='".$row->Ip."'><br>";
-                                echo "<label>IP Komulatif</label>";
-                                echo "<input type='text' name='ipk' value='".$row->Ip_Kumulatif."''>";
+                                echo "<label class='fw-semibold'>IP Semester</label>";
+                                echo "<input class='form-control' type='text' name='ip' value='".$row->Ip."'><br>";
+                                echo "<label class='fw-semibold'>IP Komulatif</label>";
+                                echo "<input class='form-control' type='text' name='ipk' value='".$row->Ip_Kumulatif."''>";
                             }
                             else{
-                                echo "<label>IP Semester</label>";
-                                echo "<input type='text' name='ip'><br>";
-                                echo "<label>IP Komulatif</label>";
-                                echo "<input type='text' name='ipk'>";
+                                echo "<label class='fw-semibold' >IP Semester</label>";
+                                echo "<input class='form-control' type='text' name='ip'><br>";
+                                echo "<label class='fw-semibold'>IP Komulatif</label>";
+                                echo "<input class='form-control' type='text' name='ipk'>";
                             }
                         ?>
                     </div>
                 </div>
                 <!-- Input Matkul dan Kelas -->
-                <div class="row mt-4 g-0">
+                <div class="row mt-4 me-2">
                     <table>
                         <tr>
                             <th>Mata Kuliah</th>
@@ -129,10 +129,10 @@
                     
                 </div>
 
-                <h4 class="fw-bold">Upload KHS</h4>
+                <h4 class="fw-bold mt-3">Upload KHS</h4>
                 <div class="form-group d-flex flex-column mb-2">
                     <label for="uploadKhs">Upload File</label>
-                    <input type="file" class="form-control-file" name="uploadKhs" id="uploadKhs">
+                    <input type="file"class="form-control" style="width:30% ;" name="uploadKhs" id="uploadKhs">
                 </div>
                 <div class="d-flex mb-3">
                     <button type="submit" name="submit" class=" btn btn-primary mt-3">Simpan</button>
