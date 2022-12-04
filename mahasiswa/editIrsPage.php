@@ -69,8 +69,8 @@
             <form class="card-body" method="POST" action="">
                 <div class="row gx-5">
                     <div class="col">
-                        <label>Semester</label>
-                        <p><?php echo $smt?></p>
+                        <label  class="fw-semibold text-center">Semester</label>
+                        <h3 class="ms-3"><?php echo $smt?></h3>
                     </div>
                 </div>
                 <!-- Input Matkul dan Kelas -->
