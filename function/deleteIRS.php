@@ -25,8 +25,13 @@ if (!$delete) {
         while ($row = $result->fetch_object()) {
             echo '<tr>';
             echo '<td>'.$row->Nama_Matkul.'</td>';
-            echo "<input type='hidden' name='edit_mk[]' value='$row->Kode_Matkul'>";
-            echo "<td><input name='edit_kelas[]' aria-label='Default select example' value='".$row->Kelas."'></td>";
+            echo "<input type='hidden' name='edit_mk[]' value='$row->Kode_Matkul'>";;?>
+            <td><select class='form-select' name='edit_kelas[]' aria-label='Default select example'>
+                <option value='A' <?php if ($row->Kelas == 'A') echo "selected" ?>>A</option>
+                <option value='B' <?php if ($row->Kelas == 'B') echo "selected" ?>>B</option>
+                <option value='C' <?php if ($row->Kelas == 'C') echo "selected" ?>>C</option>
+            </select></td>
+            <?php 
             echo "<td><button class='btn btn-danger' type='button' onclick='deleteIRS(`".$row->Nim."`,`".$row->Kode_Matkul."`,`".$row->Kelas."`,".$smt.")'>Hapus</button></td>";
             echo '</tr>';
         }
