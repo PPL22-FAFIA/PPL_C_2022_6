@@ -215,7 +215,7 @@ if (mysqli_num_rows($result) > 0) {
                                 'alignment': 'center',
                                 'chartArea': {
                                     'width': '100%',
-                                    '   height': '90%'
+                                    'height': '90%'
                                 },
                                 'pieSliceText': 'label',
                                 'pieSliceTextStyle': {
