@@ -1,17 +1,16 @@
-<?php require_once '../bootstrap/header.html'; 
+<?php require_once '../bootstrap/header.html';
 require_once '../lib/db_login.php';
 session_start();
-if(!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     header("Location: ../auth/login.php");
-}
-else{
+} else {
     $user = $_SESSION['user']['Role'];
-    if($user!='3'){
+    if ($user != '3') {
         header("Location: ../index.php");
     }
 }
 // form validation
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $nimnip = $_POST['nimnip'];
     $email = $_POST['email'];
@@ -20,24 +19,26 @@ if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $query = "INSERT INTO tb_user (Nim_Nip, Username, Password, Role) VALUES ('$nimnip', '$username', '$password','$role')";
     $result =  $db->query($query);
-    if($result){
-        if($role==1){
-            $query = "INSERT INTO tb_mhs (Nim, Nama, Email_SSO, Kode_Kabupaten, Kode_Wali) VALUES ('$nimnip', '$nama', '$email', '0', NULL)";
-            $result =  $db->query($query);
-            if($result){
-                header("Location: ../operator/listUserPage.php");
+    if ($result) {
+        if ($role == 1) {
+            if (is_int($_POST['nimnip']) && is_string($_POST['nama'])) {
+                $query = "INSERT INTO tb_mhs (Nim, Nama, Email_SSO, Kode_Kabupaten, Kode_Wali) VALUES ('$nimnip', '$nama', '$email', '0', NULL)";
+                $result =  $db->query($query);
+                if ($result) {
+                    header("Location: ../operator/listUserPage.php");
+                }
+            } else {
+                $error = "Nama harus berupa huruf dan NIM harus berupa angka ";
             }
-        }
-        else {
+        } else {
             $query = "INSERT INTO tb_dosen (Nip, Nama, Email_SSO) VALUES ('$nimnip', '$nama', '$email')";
             $result =  $db->query($query);
-            if($result){
+            if ($result) {
                 header("Location: ../operator/listUserPage.php");
             }
+            header("Location: ../index.php");
         }
-        header("Location: ../index.php");
-    }
-    else{
+    } else {
         echo "Error: " . $query . "<br>" . mysqli_error($db);
     }
 }
@@ -50,55 +51,60 @@ if(isset($_POST['submit'])){
         <h1 class="d-flex justify-content-center">Add User</h1>
         <div class="card">
             <form class="card-body" method="POST" action="">
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Nama</label>
-                        <div class="col">
-                            <input type="text" name="nama" class="form-control" placeholder="">
-                        </div>
+                <div class="form-group mt-3">
+                    <label class="fw-bold">Nama</label>
+                    <div class="col">
+                        <input type="text" name="nama" class="form-control" placeholder="" required>
                     </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">NIM/NIP</label>
-                        <div class="col">
-                            <input type="text" name="nimnip" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Username</label>
-                        <div class="col">
-                            <input type="text" name="username" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Email</label>
-                        <div class="col">
-                            <input type="email" name="email" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Password</label>
-                        <div class="col">
-                            <input type="password" name="password" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label class="fw-bold">Role</label>
-                        <div class="col">
-                            <select name="role" id="role">
-                                <option value="1">Mahasiswa</option>
-                                <option value="2">Dosen</option>
-                                <option value="3">Operator</option>
-
-                            </select>
-                        </div>
-                    </div>
-                    <!-- button update data -->
                 </div>
-                <div class="text-center">
-                    <button type="submit" name="submit" class="btn btn-primary fw-bold mt-4">Upload Data</button>
+                <div class="form-group mt-3">
+                    <label class="fw-bold">NIM/NIP</label>
+                    <div class="col">
+                        <input type="text" name="nimnip" class="form-control" placeholder="" required>
+                    </div>
                 </div>
+                <div class="form-group mt-3">
+                    <label class="fw-bold">Username</label>
+                    <div class="col">
+                        <input type="text" name="username" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="fw-bold">Email</label>
+                    <div class="col">
+                        <input type="email" name="email" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="fw-bold">Password</label>
+                    <div class="col">
+                        <input type="password" name="password" class="form-control" placeholder="" required>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="fw-bold">Role</label>
+                    <div class="col">
+                        <select name="role" id="role">
+                            <option value="1">Mahasiswa</option>
+                            <option value="2">Dosen</option>
+                            <option value="3">Operator</option>
 
-            </form>
+                        </select>
+                    </div>
+                </div>
+                <?php if (isset($error)) : ?>
+                    <div class="alert alert-danger mt-3" role="alert">
+                        <?php echo $error; ?>
+                    </div>
+                <?php endif; ?>
+                <!-- button update data -->
         </div>
+        <div class="text-center">
+            <button type="submit" name="submit" class="btn btn-primary fw-bold mt-4">Upload Data</button>
+        </div>
+
+        </form>
     </div>
+</div>
 </div>
 <?php require_once '../bootstrap/footer.html' ?>
