@@ -19,7 +19,7 @@
         if ($result->num_rows > 0) {
             $query2 = "SELECT Status FROM tb_khs WHERE Nim = '$nim' AND Semester = '$smt' ";
             $status = $db->query($query2)->fetch_object();
-            if ($status->Status == 'Disetujui') {
+            if ($status == 'Disetujui') {
                 echo '<div id="setujui"  class="alert alert-success" role="alert">KHS Telah Disetujui</div>';
             }
             else{
