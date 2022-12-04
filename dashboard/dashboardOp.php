@@ -10,7 +10,7 @@ $query2 = "SELECT * FROM tb_dosen";
 $result2 = mysqli_query($db, $query2);
 
 $total = $_SESSION['user']['Nim_Nip'];
-$query3 = "SELECT * FROM tb_User";
+$query3 = "SELECT * FROM tb_User WHERE Role = 1 OR Role = 2";
 // execute query
 $result3 = mysqli_query($db, $query3);
 
@@ -29,7 +29,7 @@ $result3 = mysqli_query($db, $query3);
         <div class="row mt-5">
             <div class="col d-flex align-item-center justify-content-center me-5">
                 <div class="content-border h-100">
-                    <h3 class="card-title text-center mt-4">Data Mahasiswa</h3>
+                    <h3 class="card-title text-center my-4">Data Mahasiswa</h3>
                     <div class="row mx-5 mt-5 ">
                         <div class="tengah d-flex justify-content-center">
                             <div class="chart col text-center ml-5">
@@ -111,7 +111,7 @@ $result3 = mysqli_query($db, $query3);
                         <div class="row mt-3"></div>
                         <div class="content-border">
                             <div class="card-body m-3">
-                                <h3 class="card-title text-center">Data User</h3>
+                                <h3 class="card-title text-center my-4">Data User</h3>
                                 <div class="row">
                                     <div class="col">
                                         <div class="text-center m-0">Mahasiswa</div>
@@ -121,11 +121,9 @@ $result3 = mysqli_query($db, $query3);
                                         <div class="text-center m-0">Dosen</div>
                                         <h3 class="text-center"><?php echo mysqli_num_rows($result2); ?></h3>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
+                                    <div class="row" style="margin: auto;">
                                             <div class="text-center ">Total User</div>
                                             <h3 class="text-center"><?php echo mysqli_num_rows($result3); ?></h3>
-                                        </div>
                                     </div>
                                     <div class="text-center mt-4">
                                         <a href="../operator/addUserPage.php" class="btn btn-primary px-3 py-2">Add User</a>

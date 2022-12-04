@@ -17,7 +17,7 @@ if (!isset($_SESSION['user'])) {
 
     </div>
     <div class="col d-flex flex-column m-3">
-        <h3 class="text-center">Daftar Dosen</h3>
+        <h1 class="text-center mt-4">Daftar Dosen</h1>
             <div class="col-3 my-3">
                 <div class="search-title h6">Cari Dosen</div>
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchDosen(this.value)">
@@ -47,7 +47,7 @@ if (!isset($_SESSION['user'])) {
                             echo '<th class="text-center" scope="row">' . $i . '</th>';
                             echo '<td class="text-center" >' . $row->Nip . '</td>';
                             echo '<td class="text-center" >' . $row->Nama . '</td>';
-                            echo '<td  class="text-center"><a href="../doswal/daftarDoswal.php?nip=' . $row->Nip . '" class="btn btn-primary">Detail</a></td>';
+                            echo '<td  class="text-center"><a href="../doswal/daftarDoswal.php?nip=' . $row->Nip . '" class="btn btn-primary fw-semibold">Detail</a></td>';
                             echo '</tr>';
                             $i++;
                         }
