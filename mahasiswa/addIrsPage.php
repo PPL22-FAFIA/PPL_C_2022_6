@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
     $sumSKS = $db->query($query3)->fetch_object();
     if ($sumSKS->TotalSKS != null) {
         $result2 = $db->query("INSERT INTO tb_irs(Nim, Semester, Status, Jml_SKS, File_IRS) VALUES('$nim', '$smt', 'Belum Disetujui', '" . $sumSKS->TotalSKS . "','$namaFile')");
+        $result3 = $db->query("INSERT INTO tb_khs(Nim, Semester, Ip, Ip_Kumulatif, Status, Jml_SKS_Kumulatif, Jml_SKS_Semester, File_KHS) VALUES('$nim', '$smt', '', '', 'Belum Disetujui', '".$sumSKS->TotalSKS."', '".$result3->Jml_SKS."','')");
     } else {
 ?> <div class="alert alert-error">Data Gagal Disimpan <?php echo $db->error ?></div> <?php
                                                                                     }
