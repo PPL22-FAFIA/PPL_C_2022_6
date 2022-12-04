@@ -29,7 +29,7 @@ $result = $db->query($query)->fetch_object();
                     <div class="form-group mt-3">
                         <label class="fw-bold">Email</label>
                         <div class="col">
-                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?=$result->Email_SSO?>">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<?=$result->Email_SSO?>">
                         </div>
                     </div>
                     <!-- button update data -->

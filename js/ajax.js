@@ -13,7 +13,7 @@ function callAjax(url, inner) {
   
     xmlHttp.onreadystatechange = function () {
       document.getElementById(inner).innerHTML =
-        '<img src="../img/ajax_loader.png" alt="ajax_loader" />';
+        '';
   
       if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
         document.getElementById(inner).innerHTML = xmlHttp.responseText;
@@ -71,15 +71,88 @@ function editProfile(){
 function editPKL(){
   var xmlhttp = getXMLHttpRequest();
   //get input value
-  var tempat = document.getElementById("tempat").value;
   var status = document.getElementById('statuspkl').value;
-  var nilai = document.getElementById('nilai').value;
   //set url and inner
   var url = "../function/edit_pkl.php";
   //alert (url);
   var inner = "responseedit";
   //open request
-  var params = "tempat="+ tempat + "&status=" + status + "&nilai=" + nilai;
+  
+  if(status == "Belum Ambil"){
+    var params = "status=" + status;
+    xmlhttp.open('POST' , url, true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = function(){
+        if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+            document.getElementById(inner).innerHTML = xmlhttp.responseText;
+        }
+        return false;
+    }
+    xmlhttp.send(params);
+  }
+  else if(status == "Sedang Mengambil"){
+    if(document.getElementById("tempat").value != ""){
+    var tempat = document.getElementById("tempat").value;
+    var params = "tempat="+ tempat + "&status=" + status;
+    xmlhttp.open('POST' , url, true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = function(){
+        if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+            document.getElementById(inner).innerHTML = xmlhttp.responseText;
+        }
+        return false;
+    }
+    xmlhttp.send(params);
+    }
+    else{
+      alert("Please fill all the fields");
+    }
+  }
+  else{
+    if(document.getElementById("tempat").value != ""){
+    var tempat = document.getElementById("tempat").value;
+    var nilai = document.getElementById('nilai').value;
+    var params = "tempat="+ tempat + "&status=" + status + "&nilai=" + nilai;
+    xmlhttp.open('POST' , url, true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = function(){
+        if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+            document.getElementById(inner).innerHTML = xmlhttp.responseText;
+        }
+        return false;
+    }
+    xmlhttp.send(params);
+    }
+    else{
+      alert("Please fill all the fields");
+    }
+}
+}
+function editSkripsi(){
+  var xmlhttp = getXMLHttpRequest();
+  //get input value
+  
+  var status = document.getElementById('statusskripsi').value;
+  //set url and inner
+  var url = "../function/edit_skripsi.php";
+  //alert (url);
+  var inner = "responseedit";
+  //open request
+  if(status == "Sudah Ambil"){
+    var nilai = document.getElementById("nilai").value;
+    var params = "nilai="+ nilai + "&status=" + status;
+    xmlhttp.open('POST' , url, true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = function(){
+        if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
+            document.getElementById(inner).innerHTML = xmlhttp.responseText;
+        }
+        return false;
+    }
+    xmlhttp.send(params);
+  }
+  else{
+  var params = "status=" + status;
   xmlhttp.open('POST' , url, true);
   xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   xmlhttp.onreadystatechange = function(){
@@ -90,27 +163,6 @@ function editPKL(){
   }
   xmlhttp.send(params);
 }
-
-function editSkripsi(){
-  var xmlhttp = getXMLHttpRequest();
-  //get input value
-  var nilai = document.getElementById("nilai").value;
-  var status = document.getElementById('statusskripsi').value;
-  //set url and inner
-  var url = "../function/edit_skripsi.php";
-  //alert (url);
-  var inner = "responseedit";
-  //open request
-  var params = "nilai="+ nilai + "&status=" + status;
-  xmlhttp.open('POST' , url, true);
-  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  xmlhttp.onreadystatechange = function(){
-      if ((xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
-          document.getElementById(inner).innerHTML = xmlhttp.responseText;
-      }
-      return false;
-  }
-  xmlhttp.send(params);
 }
 function editMhsOperator(){
   var xmlhttp = getXMLHttpRequest();
@@ -137,7 +189,7 @@ function editMhsOperator(){
       xmlhttp.open('POST' , url, true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xmlhttp.onreadystatechange = function(){
-          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          document.getElementById(inner).innerHTML = '';
           if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
               document.getElementById(inner).innerHTML = xmlhttp.responseText;
           }
@@ -252,7 +304,7 @@ function editDoswalOperator(){
       xmlhttp.open('POST' , url, true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xmlhttp.onreadystatechange = function(){
-          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          document.getElementById(inner).innerHTML = '';
           if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
               document.getElementById(inner).innerHTML = xmlhttp.responseText;
           }
@@ -281,7 +333,7 @@ function editOpOperator(){
       xmlhttp.open('POST' , url, true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xmlhttp.onreadystatechange = function(){
-          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          document.getElementById(inner).innerHTML = '';
           if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
               document.getElementById(inner).innerHTML = xmlhttp.responseText;
           }
@@ -310,7 +362,7 @@ function editDeptOperator(){
       xmlhttp.open('POST' , url, true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xmlhttp.onreadystatechange = function(){
-          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          document.getElementById(inner).innerHTML = '';
           if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
               document.getElementById(inner).innerHTML = xmlhttp.responseText;
           }
@@ -385,7 +437,7 @@ function deleteIRS(nim,matkul,kelas,smt){
       xmlhttp.open('POST' , url, true);
       xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
       xmlhttp.onreadystatechange = function(){
-          document.getElementById(inner).innerHTML = '<img src="images/ajax_loader.png"/>';
+          document.getElementById(inner).innerHTML = '';
           if ( (xmlhttp.readyState == 4) && (xmlhttp.status == 200)){
               document.getElementById(inner).innerHTML = xmlhttp.responseText;
           }
@@ -412,5 +464,15 @@ function searchMhsDoswal(namaMhs,angkatan, nip) {
 function searchUser(username) {
   var inner = "daftarUser";
   var url = `../function/searchUser.php?username=${username}`;
+  callAjax(url, inner);
+}
+function hideNilai(status) {
+  var url = "../function/hideNilai.php?status="+status;
+  var inner = "divskripsi";
+  callAjax(url, inner);
+}
+function hidePKL(status){
+  var url = "../function/hidePKL.php?status="+status;
+  var inner = "divpkl";
   callAjax(url, inner);
 }

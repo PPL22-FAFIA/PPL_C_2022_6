@@ -33,7 +33,7 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
     <div class="col p-4">
         <h1 class="mt-1 mb-3 d-flex justify-content-center">PKL</h1>
         <div class="card ms-2 me-2">
-            
+
             <h3 class="card-header">Entry PKL</h3>
             <form class="card-body">
                 <div class="row gx-5 d-flex">
@@ -43,60 +43,85 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
 
                             <h4 class="fw-bold mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h4>
                             <h5><?php echo $_SESSION["dataMhs"]["Nim"] ?></h5>
-                            <h6>Dosen Pembimbing: <?php 
-                            if($dosen->num_rows >0){
-                                $dosen = $dosen->fetch_object();
-                            echo $dosen->Nama ;
-                            }
-                            else{
-                                echo "Belum ada dosen pembimbing";
-                            }?></h6>
+                            <h6>Dosen Pembimbing: <?php
+                                                    if ($dosen->num_rows > 0) {
+                                                        $dosen = $dosen->fetch_object();
+                                                        echo $dosen->Nama;
+                                                    } else {
+                                                        echo "Belum ada dosen pembimbing";
+                                                    } ?></h6>
                         </div>
                         <div class="col-3">
                             <h5 class="fs-4 fw-bold mt-3 mb-2 text-center">Status</h5><?php
-                                            if ($_SESSION['dataMhs']['Status'] == "Aktif") {
-                                                echo '<h4 class=" mx-auto rounded w-50 px-1 py-1 text-bg-success text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h4>';
-                                            } else if ($_SESSION['dataMhs']['Status'] == "Cuti") {
-                                                echo '<h4 class=" mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
-                                            } else {
-                                                echo '<h4 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
-                                            }
-                                            ?>
+                                                                                        if ($_SESSION['dataMhs']['Status'] == "Aktif") {
+                                                                                            echo '<h4 class=" mx-auto rounded w-50 px-1 py-1 text-bg-success text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h4>';
+                                                                                        } else if ($_SESSION['dataMhs']['Status'] == "Cuti") {
+                                                                                            echo '<h4 class=" mx-auto rounded w-50 px-2 py-1 text-bg-primary text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                                                        } else {
+                                                                                            echo '<h4 class="  mx-auto rounded w-50 px-2 py-1 text-bg-danger text-white text-center">' . $_SESSION["dataMhs"]["Status"] . '</h5>';
+                                                                                        }
+                                                                                        ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-11 mt-3 mb-3">
                     <label class=" fs-5 fw-bold ms-4 mb-2">Status PKL</label>
-                    <select class="ms-4 form-select" id="statuspkl" name="statuspkl" aria-label="Default select example">
+                    <select class="ms-4 form-select" id="statuspkl" name="statuspkl" aria-label="Default select example" onchange="hidePKL(this.value)">
                         <option value="Sudah Ambil" <?php if ($statuspkl->Status == "Sudah Ambil") echo "selected" ?>>Sudah Ambil</option>
                         <option value="Sedang Mengambil" <?php if ($statuspkl->Status == "Sedang Mengambil") echo "selected" ?>>Sedang Mengambil</option>
                         <option value="Belum Ambil" <?php if ($statuspkl->Status == "Belum Ambil") echo "selected" ?>>Belum Ambil</option>
                     </select>
                 </div>
-                <div class="col-11 mb-3">
-                    <label for="nilai" class="fs-5 ms-4 fw-bold form-label">Nilai</label>
-                    <!-- select option A-E -->
-                    <select class="ms-4 form-select" id="nilai" name="nilai" aria-label="Default select example">
-                        <option value="A" <?php if ($statuspkl->Nilai == "A") echo "selected" ?>>A</option>
-                        <option value="B" <?php if ($statuspkl->Nilai == "B") echo "selected" ?>>B</option>
-                        <option value="C" <?php if ($statuspkl->Nilai == "C") echo "selected" ?>>C</option>
-                        <option value="D" <?php if ($statuspkl->Nilai == "D") echo "selected" ?>>D</option>
-                        <option value="E" <?php if ($statuspkl->Nilai == "E") echo "selected" ?>>E</option>
-                    </select></div>
-                <div class="ms-4 mt-3 col-11">
-                    <label class="fs-5 fw-bold mb-2">Tempat PKL</label>
-                    <input class="form-group form-control" type="text" id="tempat" name="tempat" value="<?= $statuspkl->Tempat?>">
+                <div id="divpkl">
+                    <?php if ($statuspkl->Status == "Sudah Ambil") {
+                                        echo '
+                    <div class="col-11 mb-3" id="divnilai">
+                        <label for="nilai" class="fs-5 ms-4 fw-bold form-label">Nilai</label>
+                    <select class="ms-4 form-select" id="nilai" name="nilai" aria-label="Nilai PKL" required>
+                    <option value="A"';
+                                        if ($statuspkl->Nilai == "A") echo "selected";
+                                        echo '>A</option>
+                    <option value="B"';
+                                        if ($statuspkl->Nilai == "B") echo "selected";
+                                        echo '>B</option>
+                    <option value="C" ';
+                                        if ($statuspkl->Nilai == "C") echo "selected";
+                                        echo '>C</option>
+                    <option value="D" ';
+                                        if ($statuspkl->Nilai == "D") echo "selected";
+                                        echo '>D</option>
+                    <option value="E" ';
+                                        if ($statuspkl->Nilai == "E") echo "selected";
+                                        echo '>E</option>
+                    </select>
+                    </div>';
+                                    } 
+                                    if ($statuspkl->Status != "Belum Ambil") {
+                                        echo '
+                    <div class="ms-4 mt-3 col-11">
+                        <label class="fs-5 fw-bold mb-2">Tempat PKL</label>
+                        <input class="form-group form-control" type="text" id="tempat" name="tempat" value="' . $statuspkl->Tempat . '">
+                    </div>';
+                    }
+                    if ($statuspkl->Status == "Sudah Ambil") {
+                    echo '
+                    <div class="col" id="divupload">
+                        <h4 class="ms-4 mt-4 fw-bold">Upload Scan Berita Acara</h4>
+                        <div class="form-group d-flex mb-2">
+                            <!--<label for="exampleFormControlFile1" class="ms-4 mb-2">Upload File</label>-->
+                            <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning mt-3"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
+                            <p id="file_info"></p>
+                            <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary mt-3"><span class="glyphicon glyphicon-arrow-up"></span> Upload To Server</button></p>
+                            <input type="file" hidden id="selectfile">
+                            <p id="message_info"></p>
+                        </div>
+                    </div>';
+                    }
+                    ?>
                 </div>
-                
-                <h4 class="ms-4 mt-4 fw-bold">Upload Scan Berita Acara</h4>
+
                 <div class="form-group d-flex flex-column">
-                    <div class="upload-file d-flex align-items-center">
-                        <p><button type="button" onclick="btnFilePick()" id="btn_file_pick" class="ms-4 btn btn-warning d-flex justify-content-between fw-semibold text-white mt-3"><span class="glyphicon glyphicon-folder-open"></span> Select File</button></p>
-                        <p id="file_info"></p>
-                        <p><button type="button" onclick="btnUpload()" id="btn_upload" class="ms-4 btn btn-primary mt-3"><span class="glyphicon glyphicon-arrow-up fw-semibold"></span> Upload To Server</button></p>
-                        <input type="file" hidden id="selectfile">
-                        <p id="message_info"></p>
-                    </div>
+
                     <div class="d-flex justify-content-center">
                         <div class="simpan">
                             <button class="ms-4 btn btn-success fw-semibold mt-4" type="button" onclick="editPKL()">Simpan</button>

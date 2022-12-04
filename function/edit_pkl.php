@@ -1,8 +1,14 @@
 <?php
 session_start();
 require_once('../lib/db_login.php');
-    $tempat = $_POST['tempat'];
-    $nilai = $_POST['nilai'];
+    $nilai = "";
+    if(isset($_POST['nilai'])){
+        $nilai = $_POST['nilai'];
+    }
+    $tempat ="";
+    if(isset($_POST['tempat'])){
+        $tempat = $_POST['tempat'];
+    }
     $status = $_POST['status'];
     $nim = $_SESSION["user"]["Nim_Nip"];
     $query = "UPDATE tb_pkl SET Tempat='$tempat', Status ='$status', Nilai = '$nilai' WHERE Nim='$nim'";
