@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
                     <div class="form-group mt-3">
                         <label class="fw-bold">Kode Wali</label>
                         <div class="col">
-                            <input type="text" id="kowal" name="kowal" class="form-control" placeholder="Dosen Wali"value="<?=$result->Kode_Wali?>">
+                            <input type="number" id="kowal" name="kowal" class="form-control" placeholder="Dosen Wali"value="<?=$result->Kode_Wali?>">
                         </div>
                     </div>
                     <!-- button update data -->
