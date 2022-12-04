@@ -17,7 +17,7 @@ session_start();
 
     </div>
     <div class="col m-3">
-        <h3 class="text-center">Daftar Mahasiswa</h3>
+        <h1 class="text-center my-4">Daftar Mahasiswa</h1>
         <div class="col-3 my-3">
             <div class="h6">Cari Mahasiswa</div>
             <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" onkeyup="searchMhs(this.value)">
@@ -49,7 +49,7 @@ session_start();
                 echo '<td class="text-center">' . $row->Nim . '</td>';
                 echo '<td class="text-center">' . $row->nama_mhs . '</td>';
                 echo '<td class="text-center">' . $row->nama_dsn . '</td>';
-                echo '<td class="text-center"><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary">Detail</a></td>';
+                echo '<td class="text-center"><a href="../all/detailMhs.php?nim=' . $row->Nim . '" class="btn btn-primary fw-semibold">Detail</a></td>';
                 echo '</tr>';
                 $i++;
             }
