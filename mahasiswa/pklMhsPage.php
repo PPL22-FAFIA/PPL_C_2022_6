@@ -100,7 +100,7 @@ $dosen = $db->query("SELECT * FROM tb_dosen WHERE Kode_Wali = '$statuspkl->Kode_
                                         echo '
                     <div class="ms-4 mt-3 col-11">
                         <label class="fs-5 fw-bold mb-2">Tempat PKL</label>
-                        <input class="form-group form-control" type="text" id="tempat" name="tempat" value="' . $statuspkl->Tempat . '">
+                        <input class="form-group form-control" type="text" id="tempat" name="tempat" value="' . $statuspkl->Tempat . '" required>
                     </div>';
                     }
                     if ($statuspkl->Status == "Sudah Ambil") {
