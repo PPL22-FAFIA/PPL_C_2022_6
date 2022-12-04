@@ -69,7 +69,7 @@ $resultDoswal = $db->query($queryDoswal)->fetch_object();
         </div>
         <div class="col me-4">
             <div class=" content-border mt-3 mb-2 me-5 w-100 h-100">
-                <div class="card-body text-center">
+                <div class="mt-4 card-body text-center">
                 <img class="img-thumbnail rounded p-0 mt-4" src="../lib/pp.jpg" alt="profile" width="130">
                     <h3 class="mt-3"><?php echo $_SESSION["dataMhs"]["Nama"] ?></h3>
                     <p class="m-0"><?php echo $_SESSION["dataMhs"]["Nim"] ?></p>
